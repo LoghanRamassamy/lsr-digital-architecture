@@ -4,6 +4,7 @@ import { cn } from '../../utils/cn';
 interface BentoCardProps {
   children: React.ReactNode;
   className?: string;
+  contentClassName?: string;
   glowColor?: 'cyan' | 'blue' | 'amber';
   interactive?: boolean;
 }
@@ -11,6 +12,7 @@ interface BentoCardProps {
 export const BentoCard: React.FC<BentoCardProps> = ({
   children,
   className,
+  contentClassName,
   glowColor = 'cyan',
   interactive = true,
 }) => {
@@ -38,7 +40,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        'group relative rounded-[10px] overflow-hidden bg-[#0D111A] border border-white/[0.08] transition-all duration-300',
+        'group relative rounded-[10px] overflow-hidden bg-[#0D111A] border border-white/[0.08] transition-all duration-300 flex flex-col',
         interactive &&
           'hover:border-[#38BDF8]/40 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.6)]',
         className
@@ -55,7 +57,9 @@ export const BentoCard: React.FC<BentoCardProps> = ({
       )}
 
       {/* Content wrapper */}
-      <div className="relative z-10 h-full">{children}</div>
+      <div className={cn('relative z-10 h-full flex flex-col flex-1', contentClassName)}>
+        {children}
+      </div>
     </div>
   );
 };

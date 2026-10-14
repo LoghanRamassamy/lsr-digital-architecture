@@ -42,46 +42,49 @@ export const ServicesSection: React.FC = () => {
               <div
                 key={card.code}
                 onClick={() => setActiveCardCode(card.code)}
-                className="cursor-pointer"
+                className="cursor-pointer h-full flex flex-col"
               >
                 <BentoCard
                   glowColor={glowColor}
-                  className={`flex flex-col justify-between h-full ${
+                  className={`h-full flex-1 ${
                     isSelected ? 'border-[#38BDF8]/40 ring-1 ring-[#38BDF8]/20' : ''
                   }`}
+                  contentClassName="h-full flex flex-col justify-between"
                 >
-                  <div className="p-7">
-                    {/* Card Code & Icon */}
-                    <div className="flex items-center justify-between mb-5">
-                      <span className="font-mono text-xs font-semibold tracking-wider text-[#38BDF8] bg-[#38BDF8]/10 px-2.5 py-1 rounded border border-[#38BDF8]/20">
-                        {card.code}
-                      </span>
-                      <div className="p-2.5 rounded-lg bg-[#131926] border border-white/10 text-[#38BDF8]">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                    </div>
-
-                    {/* Card Title */}
-                    <h3 className="text-xl font-heading font-bold text-[#F8FAFC] mb-3 tracking-tight">
-                      {card.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-sm text-[#94A3B8] leading-relaxed mb-6">
-                      {card.description}
-                    </p>
-
-                    {/* Key Deliverables */}
-                    <div className="space-y-2.5 pt-4 border-t border-white/[0.08] mb-6">
-                      <span className="text-[11px] font-mono text-[#64748B] uppercase tracking-wider block mb-2">
-                        Périmètre & Livrables :
-                      </span>
-                      {card.deliverables.map((item, dIdx) => (
-                        <div key={dIdx} className="flex items-center gap-2 text-xs text-[#E2E8F0]">
-                          <CheckCircle className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
-                          <span className="leading-snug">{item}</span>
+                  <div className="p-7 flex-1 flex flex-col justify-between">
+                    <div>
+                      {/* Card Code & Icon */}
+                      <div className="flex items-center justify-between mb-5">
+                        <span className="font-mono text-xs font-semibold tracking-wider text-[#38BDF8] bg-[#38BDF8]/10 px-2.5 py-1 rounded border border-[#38BDF8]/20">
+                          {card.code}
+                        </span>
+                        <div className="p-2.5 rounded-lg bg-[#131926] border border-white/10 text-[#38BDF8]">
+                          <Icon className="w-5 h-5" />
                         </div>
-                      ))}
+                      </div>
+
+                      {/* Card Title */}
+                      <h3 className="text-xl font-heading font-bold text-[#F8FAFC] mb-3 tracking-tight">
+                        {card.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-sm text-[#94A3B8] leading-relaxed mb-6">
+                        {card.description}
+                      </p>
+
+                      {/* Key Deliverables */}
+                      <div className="space-y-2.5 pt-4 border-t border-white/[0.08] mb-6">
+                        <span className="text-[11px] font-mono text-[#64748B] uppercase tracking-wider block mb-2">
+                          Périmètre & Livrables :
+                        </span>
+                        {card.deliverables.map((item, dIdx) => (
+                          <div key={dIdx} className="flex items-center gap-2 text-xs text-[#E2E8F0]">
+                            <CheckCircle className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
+                            <span className="leading-snug">{item}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
                     {/* Tags */}
@@ -93,7 +96,7 @@ export const ServicesSection: React.FC = () => {
                   </div>
 
                   {/* Footer action trigger */}
-                  <div className="px-7 py-3 bg-[#090A0F]/60 border-t border-white/[0.05] flex items-center justify-between">
+                  <div className="px-7 py-3 bg-[#090A0F]/60 border-t border-white/[0.05] flex items-center justify-between shrink-0 mt-auto">
                     <span className="text-[11px] font-mono text-[#64748B]">
                       INTERVENTION SUR-MESURE
                     </span>
