@@ -34,7 +34,7 @@ L'univers visuel combine trois piliers fondamentaux : **Prestige & Haut de gamme
 ## ⚡ Stack Technique & Bonnes Pratiques
 
 - **Build Tool :** [Vite](https://vitejs.dev/) + [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) (`strict: true`)
-- **Styling :** [Tailwind CSS 3.4](https://tailwindcss.com/) + PostCSS + Autoprefixer
+- **Styling :** [SCSS / Sass](https://sass-lang.com/) modulaire (tokens, mixins, BEM & utilitaires blueprint haute performance)
 - **Iconographie :** [Lucide-React](https://lucide.dev/) + SVG Blueprint sur-mesure
 - **Qualité de code :** Linter ultra-rapide ([oxlint](https://oxc.rs/)), formateur haute performance ([oxfmt](https://oxc.rs/docs/guide/usage/formatter)), TypeScript strict
 - **Accessibilité (a11y) & SEO :** Mobile-first, balisage sémantique (`header`, `main`, `section`, `footer`), respect des contrastes WCAG, navigation au clavier et support de `prefers-reduced-motion`.
@@ -70,7 +70,12 @@ lsr-digital-architecture/
 │   ├── constants/
 │   │   └── siteContent.ts                    # Centralisation du contenu éditorial typé
 │   ├── styles/
-│   │   └── index.css                         # Tokens CSS variables, quadrillages & animations
+│   │   ├── _variables.scss                   # Variables SCSS & design tokens
+│   │   ├── _mixins.scss                      # Mixins responsives, flexbox & bento
+│   │   ├── _reset.scss                       # Reset, scrollbar technique & variables CSS
+│   │   ├── _utilities.scss                   # Utilitaires layout, typographie & animations
+│   │   ├── components/                       # Styles modulaires par composant
+│   │   └── main.scss                         # Point d'entrée SCSS principal
 │   ├── types/
 │   │   └── index.ts                          # Interfaces TypeScript strictes
 │   ├── utils/
@@ -78,7 +83,6 @@ lsr-digital-architecture/
 │   ├── App.tsx                               # Assemblage de l'application
 │   └── main.tsx                              # Point d'entrée React
 ├── index.html                                # Balisage SEO, OpenGraph & polices Google Fonts
-├── tailwind.config.js                        # Thème étendu (bento, glow, blueprint)
 └── package.json
 ```
 

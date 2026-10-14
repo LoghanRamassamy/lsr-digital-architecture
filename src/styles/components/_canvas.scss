@@ -1,0 +1,57 @@
+// ==========================================================================
+// LSR Digital Architecture — Architecture Canvas SCSS Component
+// ==========================================================================
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.architecture-canvas {
+  position: relative;
+  background-color: $bg-surface;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-bento;
+  overflow: hidden;
+  box-shadow: $shadow-bento;
+
+  &__svg-wrapper {
+    position: relative;
+    overflow-x: auto;
+    background-color: $bg-primary;
+    background-image:
+      linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  &__node {
+    cursor: pointer;
+    transition: opacity $transition-smooth;
+
+    circle {
+      transition:
+        stroke $transition-fast,
+        fill $transition-fast;
+    }
+
+    &:hover circle.outer-ring {
+      stroke: $accent-cyan;
+    }
+  }
+
+  &__data-path {
+    transition: stroke-opacity $transition-normal;
+  }
+
+  &__inspector {
+    background-color: $bg-surface;
+    border-top: 1px solid $border-subtle;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include respond-to(lg) {
+      border-top: none;
+      border-left: 1px solid $border-subtle;
+    }
+  }
+}

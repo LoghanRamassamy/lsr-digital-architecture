@@ -1,0 +1,17 @@
+// ==========================================================================
+// LSR Digital Architecture — Master SCSS Stylesheet
+// 100% Pure SCSS Architecture (Zero Tailwind dependency)
+// ==========================================================================
+
+// Core Tokens & Foundations
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'reset';
+@use 'utilities';
+
+// Components & Modules
+@use 'components/bento';
+@use 'components/header';
+@use 'components/canvas';
+@use 'components/calculator';
+@use 'components/craftsmanship';

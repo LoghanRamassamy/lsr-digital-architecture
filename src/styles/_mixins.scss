@@ -1,0 +1,96 @@
+// ==========================================================================
+// LSR Digital Architecture — Mixins SCSS
+// ==========================================================================
+@use 'variables' as *;
+
+// Responsive Breakpoint mixin
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $bp-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: $bp-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: $bp-lg) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: $bp-xl) {
+      @content;
+    }
+  } @else if $breakpoint == 2xl {
+    @media (min-width: $bp-2xl) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+// Flexbox Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// Glassmorphism Backdrop
+@mixin glassmorphism($blur: 16px, $bg: rgba(9, 10, 15, 0.85), $border: $border-subtle) {
+  background-color: $bg;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid $border;
+}
+
+// Bento Box Styling
+@mixin bento-box($interactive: true) {
+  position: relative;
+  background-color: $bg-surface;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-bento;
+  overflow: hidden;
+  box-shadow: $shadow-bento;
+  transition: all $transition-smooth;
+
+  @if $interactive {
+    &:hover {
+      border-color: $border-active;
+      transform: translateY(-2px);
+      box-shadow: $shadow-bento-hover;
+    }
+  }
+}
+
+// Neon / Radial Glow
+@mixin glow-filter($color: $accent-cyan, $radius: 6px) {
+  filter: drop-shadow(0 0 $radius $color);
+}
+
+// Truncate single line
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Focus ring
+@mixin focus-ring($color: $accent-cyan) {
+  outline: 2px solid $color;
+  outline-offset: 2px;
+}

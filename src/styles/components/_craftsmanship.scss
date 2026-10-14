@@ -1,0 +1,55 @@
+// ==========================================================================
+// LSR Digital Architecture — Code Craftsmanship Preview SCSS
+// ==========================================================================
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.code-craftsmanship {
+  &__tab-button {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    padding: 0.5rem 0.875rem;
+    border-radius: $radius-sm;
+    border: 1px solid transparent;
+    transition: all $transition-fast;
+
+    &--active {
+      background-color: rgba(56, 189, 248, 0.1);
+      color: $accent-cyan;
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+    }
+
+    &--inactive {
+      background-color: transparent;
+      color: $text-secondary;
+
+      &:hover {
+        background-color: $bg-surface-elevated;
+        color: $text-primary;
+      }
+    }
+  }
+
+  &__editor-pre {
+    font-family: $font-mono;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    color: #cbd5e1;
+
+    .code-comment {
+      color: $text-muted;
+      font-style: italic;
+    }
+    .code-keyword {
+      color: #93c5fd;
+    }
+    .code-string {
+      color: #86efac;
+    }
+    .code-type {
+      color: $accent-cyan;
+    }
+  }
+}
