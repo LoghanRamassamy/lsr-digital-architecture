@@ -5,8 +5,15 @@ import { Button } from '../common/Button';
 import { ArrowRight, ShieldCheck, Terminal, Compass, CheckCircle2 } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
-  const { systemTag, headline, subheadline, ctaPrimary, ctaSecondary, metricsBanner } =
-    siteContent.hero;
+  const {
+    systemTag,
+    headline,
+    headlineAccent,
+    subheadline,
+    ctaPrimary,
+    ctaSecondary,
+    metricsBanner,
+  } = siteContent.hero;
 
   const metricIcons = [ShieldCheck, Compass, CheckCircle2];
 
@@ -19,7 +26,7 @@ export const HeroSection: React.FC = () => {
       <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-[#2563EB]/15 via-[#38BDF8]/10 to-transparent blur-[120px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Monospace System Tag */}
           <div className="inline-flex items-center gap-2 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
@@ -29,8 +36,13 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold tracking-tight text-[#F8FAFC] leading-[1.12] mb-6">
-            {headline}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold tracking-tight text-[#F8FAFC] leading-[1.18] mb-6">
+            <span>{headline}</span>
+            {headlineAccent && (
+              <span className="block text-[#38BDF8] mt-1 sm:mt-2">
+                {headlineAccent}
+              </span>
+            )}
           </h1>
 
           {/* Subheadline */}

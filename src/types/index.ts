@@ -45,6 +45,7 @@ export interface SiteContent {
   hero: {
     systemTag: string;
     headline: string;
+    headlineAccent?: string;
     subheadline: string;
     ctaPrimary: string;
     ctaSecondary: string;

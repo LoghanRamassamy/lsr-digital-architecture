@@ -21,7 +21,8 @@ export const siteContent: SiteContent = {
   },
   hero: {
     systemTag: '[ ARCHITECTURE LOGICIELLE & INGÉNIERIE SYSTÈME ]',
-    headline: 'Façonner des architectures web robustes, conçues pour durer sans friction.',
+    headline: 'Architectures web haute résilience,',
+    headlineAccent: 'conçues pour durer.',
     subheadline:
       'Conception de socles techniques critiques et de systèmes distribués. Alliez Clean Architecture, haute performance et zéro dette technique.',
     ctaPrimary: 'Explorer nos expertises',
