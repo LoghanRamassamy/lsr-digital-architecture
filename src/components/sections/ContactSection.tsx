@@ -46,8 +46,8 @@ const PROJECT_TYPE_OPTIONS = [
     desc: "Revue de code & cadrage d'infrastructure",
   },
   {
-    value: 'Je ne sais pas mais je souhaite être accompagné sur mon projet',
-    label: 'Je ne sais pas mais je souhaite être accompagné sur mon projet',
+    value: 'Je souhaite simplement être accompagné sur mon projet',
+    label: 'Je souhaite simplement être accompagné sur mon projet',
     desc: 'Cadrage initial, audit du besoin et orientation technique sur-mesure',
     isFullWidth: true,
   },
