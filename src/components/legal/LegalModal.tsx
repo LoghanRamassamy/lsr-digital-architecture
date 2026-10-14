@@ -18,7 +18,15 @@ export const LegalModal: React.FC<LegalModalProps> = ({
   onTabChange,
 }) => {
   const modalCardRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  // Reset scroll to top when switching tabs
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0;
+    }
+  }, [activeTab]);
 
   // Focus trap, Escape key, and focus restoration
   useEffect(() => {
@@ -95,10 +103,12 @@ export const LegalModal: React.FC<LegalModalProps> = ({
         bottom: 0,
         zIndex: 100,
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
+        paddingTop: 'clamp(1.5rem, 5vh, 3rem)',
+        paddingBottom: 'clamp(1.5rem, 5vh, 3rem)',
       }}
-      className="p-4 sm:p-6 md:p-10"
+      className="px-4 sm:px-6 md:px-10"
     >
       {/* Backdrop */}
       <div
@@ -109,10 +119,14 @@ export const LegalModal: React.FC<LegalModalProps> = ({
       {/* Modal Card */}
       <div
         ref={modalCardRef}
-        className="relative w-full max-w-4xl max-h-[90vh] bg-[#0D111A] border border-white/10 rounded-[12px] shadow-2xl flex flex-col overflow-hidden z-10 text-[#F8FAFC]"
+        style={{
+          height: 'min(82vh, 820px)',
+          maxHeight: 'calc(100vh - 2 * clamp(1.5rem, 5vh, 3rem))',
+        }}
+        className="relative w-full max-w-4xl bg-[#0D111A] border border-white/10 rounded-[12px] shadow-2xl flex flex-col overflow-hidden z-10 text-[#F8FAFC]"
       >
         {/* Top Header */}
-        <div className="flex items-center justify-between border-b border-white/[0.08] px-6 py-4 bg-[#090A0F]/80">
+        <div className="flex items-center justify-between border-b border-white/[0.08] px-6 py-4 bg-[#090A0F]/80 shrink-0">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded bg-[#131926] text-[#38BDF8] border border-white/10">
               <Shield className="w-4 h-4" />
@@ -142,7 +156,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex border-b border-white/[0.08] bg-[#090A0F]/40 px-6 gap-2 py-2 overflow-x-auto">
+        <div className="flex border-b border-white/[0.08] bg-[#090A0F]/40 px-6 gap-2 py-2 overflow-x-auto shrink-0">
           <Button
             variant="tab"
             size="sm"
@@ -178,7 +192,15 @@ export const LegalModal: React.FC<LegalModalProps> = ({
         </div>
 
         {/* Tab Contents (Scrollable) */}
-        <div className="flex-1 overflow-y-auto p-6 sm:p-8 space-y-8 text-sm text-[#94A3B8] leading-relaxed">
+        <div
+          ref={contentRef}
+          style={{
+            overflowY: 'auto',
+            minHeight: 0,
+            overscrollBehavior: 'contain',
+          }}
+          className="flex-1 overflow-y-auto min-h-0 p-6 sm:p-8 space-y-8 text-sm text-[#94A3B8] leading-relaxed"
+        >
           {/* TAB 1: MENTIONS LÉGALES */}
           {activeTab === 'legal' && (
             <div className="space-y-6">
@@ -501,7 +523,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="border-t border-white/[0.08] px-6 py-3.5 bg-[#090A0F] flex items-center justify-between text-xs font-mono text-[#64748B]">
+        <div className="border-t border-white/[0.08] px-6 py-3.5 bg-[#090A0F] flex items-center justify-between text-xs font-mono text-[#64748B] shrink-0">
           <span>DERNIÈRE RÉVISION : AVRIL 2026 // CONFORME RGPD & LCEN</span>
           <Button variant="secondary" size="sm" onClick={onClose}>
             Fermer
