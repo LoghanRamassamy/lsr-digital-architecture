@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'tab';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -49,7 +49,7 @@ export const Button: React.FC<ButtonProps> = ({
   const content = (
     <>
       {icon && iconPosition === 'left' && <span className="btn__icon btn__icon--left">{icon}</span>}
-      {children && <span>{children}</span>}
+      {children && <span className="btn__content">{children}</span>}
       {icon && iconPosition === 'right' && (
         <span className="btn__icon btn__icon--right">{icon}</span>
       )}

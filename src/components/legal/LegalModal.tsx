@@ -146,10 +146,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({
 
           <Button
             variant="ghost"
-            size="sm"
+            size="icon"
             onClick={onClose}
             aria-label="Fermer la fenêtre"
-            className="p-1.5"
+            className="w-9 h-9 p-0"
           >
             <X className="w-5 h-5" />
           </Button>

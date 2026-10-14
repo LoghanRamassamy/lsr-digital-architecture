@@ -214,10 +214,10 @@ export const GlossaryModal: React.FC<GlossaryModalProps> = ({
 
           <Button
             variant="ghost"
-            size="sm"
+            size="icon"
             onClick={onClose}
             aria-label="Fermer le glossaire"
-            className="p-1.5 shrink-0"
+            className="w-9 h-9 p-0 shrink-0"
           >
             <X className="w-5 h-5" />
           </Button>
