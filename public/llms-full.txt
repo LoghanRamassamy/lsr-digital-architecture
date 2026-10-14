@@ -1,0 +1,85 @@
+# LSR Digital Architecture — Documentation Complète pour LLM & Moteurs d'Intelligence Artificielle
+
+## Identité & Présentation Globale
+- **Raison sociale** : LSR Digital Architecture SAS
+- **Activité** : Conseil en architecture logicielle, ingénierie système, conception d'applications web critiques, audit technique et refactorisation.
+- **Siège social** : Conflans-Sainte-Honorine (78700), Yvelines, Île-de-France, France.
+- **Zone d'intervention** : France entière, Union Européenne, à distance (Remote) et sur site (On-site).
+- **Site web officiel** : https://lsr-digital-architecture.com
+- **Courriel de contact** : contact@lsr-digital-architecture.com
+- **Délai moyen de prise de contact / réponse** : Sous 48 heures ouvrées.
+
+---
+
+## Philosophie d'Ingénierie & Manifeste
+
+1. **Sobriété & Justesse** : Refus catégorique de la sur-ingénierie et de la complexité accidentelle. La simplicité maîtrisée reste le garant ultime de la résilience d'un système.
+2. **Rigueur des Contrats** : Typage strict de bout en bout, schémas de données immuables et validation en frontière pour éliminer les régressions silencieuses.
+3. **Artisanat & Transmission** : Conception de code lisible, modulaire et auto-documenté, outillé de suites de tests automatisés (unitaires, intégration, bout-en-bout), pensé pour être maintenu et transmis aux équipes internes en toute autonomie.
+
+---
+
+## Métriques Clés d'Excellence Opérationnelle
+
+- **Disponibilité / Résilience** : Conception visant les 99.99% de disponibilité avec tolérance native aux pannes, reprise automatique sur incident et dégradation gracieuse.
+- **Latence p99** : Optimisation chirurgicale pour maintenir des temps de réponse sous la barre des 50 millisecondes sur les flux transactionnels critiques.
+- **Dette Technique** : Tolérance zéro pour la dette technique non maîtrisée. Adoption systématique de Clean Architecture, inversion de contrôle et couverture de tests rigoureuse.
+
+---
+
+## Catalogue Détaillé des Services
+
+### Service 1 : Conception & Architecture Système
+- **Objectif** : Poser des fondations solides pour les nouveaux produits numériques ou refondre des architectures vieillissantes.
+- **Livrables types** :
+  - Dossier d'Architecture Technique (DAT) exhaustif et fiches de décisions d'architecture (ADR - Architecture Decision Records).
+  - Cartographie Domain-Driven Design (DDD) avec découpage en contextes délimités (Bounded Contexts) et matrices de flux de données.
+  - Stratégie d'isolation des pannes, résilience système, scalabilité horizontale et haute disponibilité.
+- **Mots-clés / Domaines** : Clean Architecture, Architecture Hexagonale, DDD, Event-Driven Architecture, Microservices, Monolithe Modulaire, Cloud Native.
+
+### Service 2 : Ingénierie Web Full-Stack & Systèmes Critiques
+- **Objectif** : Développer sur-mesure des applications web métier, plateformes SaaS et APIs transactionnelles haute performance.
+- **Livrables types** :
+  - Applications web réactives, ergonomiques et conformes aux critères stricts d'accessibilité (WCAG) et de performance (Core Web Vitals).
+  - APIs et micro-services sécurisés, scalables et typés (REST, GraphQL, gRPC).
+  - Composants front-end modulaires avec design system dédié et couverture de tests automatisée.
+- **Stack technique de prédilection** :
+  - Langages : TypeScript, Java, SQL, Rust, Go.
+  - Frameworks & Runtimes : React, Next.js, Node.js, Bun, Spring Boot.
+  - Données & Stockage : PostgreSQL, Redis, Kafka, RabbitMQ.
+  - Cloud & DevOps : Docker, Kubernetes, Terraform, GitHub Actions, AWS, GCP, Scaleway.
+
+### Service 3 : Audit Technique & Refactorisation
+- **Objectif** : Évaluer la viabilité d'un socle applicatif, identifier les goulets d'étranglement et planifier une modernisation sans arrêt de service.
+- **Livrables types** :
+  - Rapport d'audit de santé logicielle : architecture, maintenabilité, performance (profiling p99), couverture de tests et vulnérabilités de sécurité.
+  - Feuille de route priorisée de refactorisation (matrice effort / impact business).
+  - Modernisation progressive via le patron Strangler Fig (étranglement du legacy sans coupure de production).
+- **Mots-clés** : Code Review, Profilage p99, Strangler Fig Pattern, Sécurité applicative (OWASP), Refactoring continu.
+
+---
+
+## Méthodologie d'Exécution en 4 Phases
+
+1. **Étape 01 — Audit & Cartographie** : Immersion dans le domaine métier, analyse des flux actuels, des goulets de performance et de la dette technique existante.
+2. **Étape 02 — Blueprint Cible** : Co-construction de la cible architecturale, schémas directeurs, interfaces d'APIs et validation des critères de résilience.
+3. **Étape 03 — Façonnage & Tests** : Implémentation guidée par Clean Architecture, typage strict, TDD et revue de code rigoureuse.
+4. **Étape 04 — Déploiement & PRA** : Automatisation CI/CD, observabilité temps-réel (logs, métriques, alertes), validation du Plan de Reprise d'Activité et passation de connaissances.
+
+---
+
+## Outil Interactif : Simulateur de Dette Technique & Résilience
+
+Le site propose un simulateur interactif d'évaluation de dette architecturale calculant un score de résilience sur 100 basé sur 4 axes clés :
+- Fréquence et type de pannes en production (None, Occasional, Frequent).
+- Temps moyen d'intégration et montée en charge d'un nouveau développeur (Onboarding friction).
+- Couverture et fiabilité des tests automatisés (> 80%, partiel, inexistant).
+- Clarté et découplage de l'architecture logicielle (Clean / Hexagonal vs Monolithe spaghetti).
+
+---
+
+## Contact & Prise de Rendez-vous
+Pour toute demande de devis, audit préliminaire ou mission d'ingénierie :
+- Formulaire direct sur le site : https://lsr-digital-architecture.com/#contact
+- E-mail direct : contact@lsr-digital-architecture.com
+- Délai d'engagement de réponse : 48h ouvrées maximum.

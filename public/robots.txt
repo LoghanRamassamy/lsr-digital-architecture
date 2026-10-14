@@ -1,0 +1,57 @@
+# ==============================================================================
+# Robots.txt — LSR Digital Architecture
+# Official Website: https://lsr-digital-architecture.com
+# LLM / AI Knowledge File: https://lsr-digital-architecture.com/llms.txt
+# Sitemap: https://lsr-digital-architecture.com/sitemap.xml
+# ==============================================================================
+
+# Search Engines (Google, Bing, Qwant, DuckDuckGo, Yahoo, etc.)
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Specific AI & LLM Search Crawlers (SearchGPT, ChatGPT, Claude, Perplexity, Gemini, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+# Directives
+Sitemap: https://lsr-digital-architecture.com/sitemap.xml

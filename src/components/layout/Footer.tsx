@@ -164,6 +164,25 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
             >
               Cookies
             </button>
+            <span>•</span>
+            <a
+              href="/llms.txt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#38BDF8] transition-colors"
+              title="Documentation structurée pour modèles de langage et agents IA"
+            >
+              llms.txt (IA)
+            </a>
+            <span>•</span>
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#38BDF8] transition-colors"
+            >
+              Sitemap
+            </a>
           </div>
         </div>
       </div>

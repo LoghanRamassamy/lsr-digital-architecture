@@ -1,0 +1,47 @@
+# LSR Digital Architecture
+
+> Société d'ingénierie et de conseil en architecture logicielle haute résilience. Conception sur-mesure d'applications web pérennes, de socles distribués scalables et audit de code pour systèmes critiques.
+
+LSR Digital Architecture accompagne les DSI, CTO, fondateurs tech et équipes d'ingénierie dans la conception, la modernisation et la stabilisation d'infrastructures applicatives critiques. Basée en Île-de-France et intervenant à distance comme sur site.
+
+- **Site officiel** : https://lsr-digital-architecture.com
+- **Email de contact** : contact@lsr-digital-architecture.com
+- **Localisation** : Conflans-Sainte-Honorine (78700), Île-de-France, France (Interventions France & Europe)
+- **Forme juridique** : SAS (Société par Actions Simplifiée)
+- **Disponibilité** : Projets Q4 2026 / 2027
+
+## Expertises Fondamentales
+
+- **Clean Architecture & Hexagonale** : Isolation du domaine métier, inversion de dépendances, testabilité totale sans effets de bord.
+- **Domain-Driven Design (DDD)** : Bounded contexts, Event Storming, modèles de domaine riches et contrats d'interfaces stricts.
+- **Systèmes Distribués & Event-Driven** : Architectures orientées événements, streaming, flux asynchrones, tolérance aux pannes (circuit breakers, outbox pattern).
+- **Haute Résilience & Zéro Dette** : SLA 99.99%, profilage de latence p99 (< 50ms), conception de plans de reprise d'activité (PRA).
+
+## Offres de Services
+
+1. **Conception & Architecture Système**
+   - Schémas directeurs & Dossiers d'Architecture Technique (DAT)
+   - Cartographie DDD & modélisation des flux de données
+   - Stratégies de scalabilité horizontale et haute disponibilité
+
+2. **Ingénierie Web Full-Stack & Systèmes Critiques**
+   - Applications web métier complexes et portails sécurisés
+   - Back-ends transactionnels haute performance (APIs REST, GraphQL, gRPC)
+   - Stacks : TypeScript, Node.js / Bun, Java Spring Boot, React, Next.js, PostgreSQL
+
+3. **Audit Technique & Refactorisation**
+   - Diagnostic chirurgical de la dette technique, performance et sécurité
+   - Plan de migration étape par étape (Strangler Fig pattern, zéro coupure)
+   - Optimisation p99, pipelines CI/CD et durcissement d'infrastructure
+
+## Méthode en 4 Étapes
+
+1. **01. Audit & Cartographie** : Analyse des flux opérationnels, contraintes de charge et points de fragilité existants.
+2. **02. Blueprint Cible** : Élaboration du schéma directeur, découpage en bounded contexts et contrats d'API stricts.
+3. **03. Façonnage & Tests** : Développement guidé par les tests (TDD), Clean Architecture et typage exhaustif.
+4. **04. Déploiement & PRA** : Mise en production sécurisée, observabilité fine (métriques, logs, traces) et passation d'équipe.
+
+## Ressources Complémentaires
+
+- [Documentation Complète pour LLM (llms-full.txt)](https://lsr-digital-architecture.com/llms-full.txt) : Spécifications détaillées, métriques et manifeste d'ingénierie.
+- [Sitemap XML](https://lsr-digital-architecture.com/sitemap.xml) : Index des URLs et ressources du site.

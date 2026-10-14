@@ -13,22 +13,215 @@
     />
     <meta
       name="keywords"
-      content="architecture logicielle, ingénierie système, Clean Architecture, DDD, TypeScript, Java Spring, haute disponibilité, résilience, audit technique"
+      content="architecture logicielle, ingénierie système, Clean Architecture, DDD, TypeScript, Java Spring, haute disponibilité, résilience, audit technique, systèmes distribués"
     />
+    <meta name="author" content="LSR Digital Architecture SAS" />
+    <meta name="publisher" content="LSR Digital Architecture SAS" />
     <meta name="theme-color" content="#090A0F" />
     <meta name="color-scheme" content="dark" />
 
-    <!-- Open Graph / Meta Réseaux -->
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lsr-digital-architecture.com/" />
+
+    <!-- Robots Directives pour Moteurs de Recherche & Crawlers IA -->
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta
+      name="googlebot"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta
+      name="bingbot"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <!-- Liens de Découverte LLM & Contextes IA (Standard llms.txt) -->
+    <link
+      rel="alternate"
+      type="text/plain"
+      href="https://lsr-digital-architecture.com/llms.txt"
+      title="Documentation LLM (Synthèse)"
+    />
+    <link
+      rel="alternate"
+      type="text/plain"
+      href="https://lsr-digital-architecture.com/llms-full.txt"
+      title="Documentation LLM (Complète)"
+    />
+
+    <!-- Open Graph (Facebook, LinkedIn, Slack, Perplexity, SearchGPT) -->
+    <meta property="og:site_name" content="LSR Digital Architecture" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lsr-digital-architecture.com/" />
     <meta
       property="og:title"
       content="LSR Digital Architecture — Ingénierie logicielle & Architectures web haute résilience"
     />
     <meta
       property="og:description"
-      content="Société d'ingénierie et de conseil en architecture logicielle. Conception sur-mesure d'applications web robustes et pérennes."
+      content="Société d'ingénierie et de conseil en architecture logicielle. Conception sur-mesure d'applications web robustes, scalables et pérennes."
+    />
+    <meta property="og:image" content="https://lsr-digital-architecture.com/og-image.jpg" />
+    <meta
+      property="og:image:secure_url"
+      content="https://lsr-digital-architecture.com/og-image.jpg"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="LSR Digital Architecture — Ingénierie logicielle & Systèmes haute résilience"
     />
     <meta property="og:locale" content="fr_FR" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="LSR Digital Architecture — Ingénierie logicielle & Architectures web haute résilience"
+    />
+    <meta
+      name="twitter:description"
+      content="Société d'ingénierie et de conseil en architecture logicielle. Conception sur-mesure d'applications web robustes, scalables et pérennes."
+    />
+    <meta name="twitter:image" content="https://lsr-digital-architecture.com/og-image.jpg" />
+    <meta
+      name="twitter:image:alt"
+      content="LSR Digital Architecture — Schéma d'architecture blueprint et ingénierie logicielle"
+    />
+
+    <!-- Données Structurées Schema.org (JSON-LD) : Entreprise, Services & FAQ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://lsr-digital-architecture.com/#organization",
+            "name": "LSR Digital Architecture SAS",
+            "legalName": "LSR Digital Architecture SAS",
+            "url": "https://lsr-digital-architecture.com",
+            "logo": "https://lsr-digital-architecture.com/favicon.svg",
+            "image": "https://lsr-digital-architecture.com/og-image.jpg",
+            "description": "Société d'ingénierie et de conseil en architecture logicielle. Conception sur-mesure d'applications web robustes, scalables et taillées pour les environnements critiques.",
+            "email": "contact@lsr-digital-architecture.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Conflans-Sainte-Honorine",
+              "postalCode": "78700",
+              "addressRegion": "Île-de-France",
+              "addressCountry": "FR"
+            },
+            "areaServed": [
+              { "@type": "Country", "name": "France" },
+              { "@type": "AdministrativeArea", "name": "Europe" }
+            ],
+            "priceRange": "$$$$",
+            "knowsAbout": [
+              "Software Architecture",
+              "Clean Architecture",
+              "Domain-Driven Design (DDD)",
+              "Distributed Systems",
+              "Event-Driven Architecture",
+              "High Availability",
+              "TypeScript",
+              "Java Spring Boot",
+              "PostgreSQL",
+              "Cloud Native Infrastructure",
+              "DevOps & CI/CD",
+              "Technical Debt Remediation"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Services d'Ingénierie & d'Architecture Logicielle",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Conception & Architecture Système",
+                    "description": "Plans directeurs (DAT), cartographie DDD et flux de données résilients pour garantir l'isolation des responsabilités et la haute disponibilité."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Ingénierie Web Full-Stack",
+                    "description": "Conception sur-mesure d'applications critiques, du back-end transactionnel aux interfaces réactives (TypeScript, Spring Boot, React, PostgreSQL)."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Audit Technique & Refactorisation",
+                    "description": "Diagnostic en profondeur, élimination des goulets d'étranglement, profilage de latence p99 et restructuration sans coupure de service."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://lsr-digital-architecture.com/#website",
+            "url": "https://lsr-digital-architecture.com",
+            "name": "LSR Digital Architecture",
+            "publisher": {
+              "@id": "https://lsr-digital-architecture.com/#organization"
+            },
+            "inLanguage": "fr-FR"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://lsr-digital-architecture.com/#webpage",
+            "url": "https://lsr-digital-architecture.com/",
+            "name": "LSR Digital Architecture — Ingénierie logicielle & Architectures web haute résilience",
+            "isPartOf": {
+              "@id": "https://lsr-digital-architecture.com/#website"
+            },
+            "about": {
+              "@id": "https://lsr-digital-architecture.com/#organization"
+            },
+            "description": "Société d'ingénierie et de conseil en architecture logicielle. Conception sur-mesure d'applications web robustes, scalables et taillées pour les environnements critiques.",
+            "inLanguage": "fr-FR"
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://lsr-digital-architecture.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Quels types de services propose LSR Digital Architecture ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "LSR Digital Architecture propose trois piliers de services : 1. Conception & Architecture Système (Dossier d'Architecture Technique, cartographie DDD, scalabilité), 2. Ingénierie Web Full-Stack (applications métier critiques, APIs scalables en TypeScript / Java Spring Boot), 3. Audit Technique & Refactorisation (diagnostic de dette technique, optimisation p99 et refactoring continu sans interruption de service)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quelle est la méthode d'intervention de LSR Digital Architecture ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "L'intervention se déroule en 4 étapes clés : 01. Audit & Cartographie (analyse des flux et points de friction), 02. Blueprint Cible (schéma directeur et contrats d'API), 03. Façonnage & Tests (Clean Architecture, typage strict, TDD), 04. Déploiement & Plan de Reprise d'Activité (mise en production sécurisée et observabilité continue)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Comment contacter LSR Digital Architecture pour un audit ou un projet ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Vous pouvez nous joindre par courriel à contact@lsr-digital-architecture.com ou via le formulaire sur notre site web. Une consultation technique préliminaire est proposée sous 48h ouvrées."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
 
     <!-- Typographies Modernes Haute Lisibilité -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -41,6 +234,61 @@
   <body
     class="bg-[#090A0F] text-[#F8FAFC] antialiased selection:bg-[#38BDF8]/20 selection:text-[#38BDF8] min-h-screen"
   >
+    <!-- Fallback sémantique pour moteurs de recherche et scrapers/LLM sans exécution JavaScript -->
+    <noscript>
+      <div
+        style="
+          padding: 2rem;
+          max-width: 800px;
+          margin: 0 auto;
+          font-family: sans-serif;
+          color: #f8fafc;
+          background-color: #090a0f;
+        "
+      >
+        <h1>
+          LSR Digital Architecture — Ingénierie logicielle &amp; Architectures web haute résilience
+        </h1>
+        <p>
+          Société d'ingénierie et de conseil en architecture logicielle. Conception sur-mesure
+          d'applications web robustes, scalables et taillées pour les environnements critiques.
+        </p>
+
+        <h2>Nos Expertises &amp; Services</h2>
+        <ul>
+          <li>
+            <strong>01. Conception &amp; Architecture Système :</strong> Dossiers d'Architecture
+            Technique (DAT), modélisation DDD, architectures hexagonales et haute disponibilité.
+          </li>
+          <li>
+            <strong>02. Ingénierie Web Full-Stack :</strong> Applications web métier critiques, APIs
+            scalables (TypeScript, Java Spring Boot, React, PostgreSQL).
+          </li>
+          <li>
+            <strong>03. Audit Technique &amp; Refactorisation :</strong> Diagnostic de dette
+            technique, optimisation de latence p99 et modernisation progressive sans coupure.
+          </li>
+        </ul>
+
+        <h2>Notre Méthode d'Ingénierie</h2>
+        <ol>
+          <li>Audit &amp; Cartographie</li>
+          <li>Blueprint Cible</li>
+          <li>Façonnage &amp; Tests</li>
+          <li>Déploiement &amp; PRA</li>
+        </ol>
+
+        <h2>Contact</h2>
+        <p>
+          Email :
+          <a href="mailto:contact@lsr-digital-architecture.com" style="color: #38bdf8"
+            >contact@lsr-digital-architecture.com</a
+          >
+        </p>
+        <p>Localisation : Conflans-Sainte-Honorine (78700), Île-de-France, France</p>
+      </div>
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
