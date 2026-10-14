@@ -9,7 +9,7 @@
 
 L'univers visuel combine trois piliers fondamentaux : **Prestige & Haut de gamme**, **Précision chirurgicale**, et **Robustesse technique**.
 
-- **Atmosphère :** Dark theme immersif inspiré des plans d'architectes (*Blueprints*) et des interfaces d'ingénierie moderne (Linear, Supabase, Vercel).
+- **Atmosphère :** Dark theme immersif inspiré des plans d'architectes (_Blueprints_) et des interfaces d'ingénierie moderne (Linear, Supabase, Vercel).
 - **Palette chromatique & Variables CSS :**
   - `--bg-primary` : `#090A0F` (Noir Obsidian profond)
   - `--bg-surface` : `#0D111A` (Cartes Bento)
@@ -26,7 +26,7 @@ L'univers visuel combine trois piliers fondamentaux : **Prestige & Haut de gamme
   - Titres (H1/H2/H3) : `Plus Jakarta Sans` / `Cabinet Grotesk` (bold, tracking serré `-0.02em`)
   - Corps de texte : `Inter` (lisibilité optimale)
   - Éléments techniques & métadonnées : `JetBrains Mono` (espacement lettre `+0.05em`)
-- **Cartes Bento :** Coins arrondis à `10px`, bordures fines 1px, repères d'angles orthogonaux et halo lumineux dynamique (*cursor tracking spotlight*).
+- **Cartes Bento :** Coins arrondis à `10px`, bordures fines 1px, repères d'angles orthogonaux et halo lumineux dynamique (_cursor tracking spotlight_).
 - **Schémas d'Architecture :** Tracés filaires nets de 1.5px, connecteurs de données en dégradé de contour (`#2563EB` → `#38BDF8`), nœuds nodaux avec halo lumineux (`drop-shadow(0 0 6px #38BDF8)`).
 
 ---
@@ -36,7 +36,7 @@ L'univers visuel combine trois piliers fondamentaux : **Prestige & Haut de gamme
 - **Build Tool :** [Vite](https://vitejs.dev/) + [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) (`strict: true`)
 - **Styling :** [Tailwind CSS 3.4](https://tailwindcss.com/) + PostCSS + Autoprefixer
 - **Iconographie :** [Lucide-React](https://lucide.dev/) + SVG Blueprint sur-mesure
-- **Qualité de code :** ESLint (`oxlint` hyper-rapide), [Prettier](https://prettier.io/), TypeScript strict
+- **Qualité de code :** Linter ultra-rapide ([oxlint](https://oxc.rs/)), formateur haute performance ([oxfmt](https://oxc.rs/docs/guide/usage/formatter)), TypeScript strict
 - **Accessibilité (a11y) & SEO :** Mobile-first, balisage sémantique (`header`, `main`, `section`, `footer`), respect des contrastes WCAG, navigation au clavier et support de `prefers-reduced-motion`.
 
 ---
@@ -99,8 +99,11 @@ pnpm typecheck
 # Linter
 pnpm lint
 
-# Formater le code avec Prettier
+# Formater le code avec oxfmt
 pnpm format
+
+# Vérifier le formatage du code
+pnpm format:check
 
 # Compiler le bundle de production optimisé
 pnpm build
@@ -120,4 +123,4 @@ L'application produit des artefacts statiques purs (`dist/`) ultra-légers et ha
 ## 📄 Licence & Droits
 
 © 2026 **LSR Digital Architecture SAS**. Tous droits réservés.  
-*Conçu avec précision. Bâti pour la performance.*
+_Conçu avec précision. Bâti pour la performance._
