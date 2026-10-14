@@ -3,11 +3,57 @@ import { siteContent } from '../../constants/siteContent';
 import { SectionTag } from '../common/SectionTag';
 import { BentoCard } from '../common/BentoCard';
 import { Button } from '../common/Button';
-import { MapPin, Clock, Send, CheckCircle, Copy, Mail, Terminal } from 'lucide-react';
+import {
+  MapPin,
+  Clock,
+  Send,
+  CheckCircle,
+  Copy,
+  Mail,
+  Terminal,
+  User,
+  Building2,
+  Layers,
+  MessageSquare,
+  Check,
+  AlertCircle,
+  ChevronDown,
+  ShieldCheck,
+  Loader2,
+} from 'lucide-react';
 
 interface ContactSectionProps {
   onOpenLegal?: (tab: 'legal' | 'privacy' | 'cookies') => void;
 }
+
+const PROJECT_TYPE_OPTIONS = [
+  {
+    value: 'Architecture & Conception Système',
+    label: 'Conception & Architecture Système (DAT, DDD, Résilience)',
+    shortLabel: 'Architecture & DAT',
+    desc: 'DAT, DDD, Résilience & Cloud',
+  },
+  {
+    value: 'Ingénierie Web Full-Stack',
+    label: "Développement d'application web critique sur-mesure",
+    shortLabel: 'Dév Web Critique',
+    desc: 'Applications web sur-mesure',
+  },
+  {
+    value: 'Audit & Performance',
+    label: 'Audit technique, Refactorisation & Élimination de dette',
+    shortLabel: 'Audit & Dette Tech',
+    desc: 'Refactoring & Élimination de dette',
+  },
+  {
+    value: 'Consultation ponctuelle',
+    label: "Revue de code & cadrage d'infrastructure",
+    shortLabel: 'Cadrage Ponctuel',
+    desc: 'Revue de code & Expertise',
+  },
+];
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) => {
   const { sectionTag, headline, subheadline, directContact, email } = siteContent.contact;
@@ -20,11 +66,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
     message: '',
   });
 
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+  });
+
   const [rgpdConsent, setRgpdConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const contactEmail = email || 'contact@lsr-digital-architecture.com';
+
+  const isNameValid = formData.name.trim().length >= 2;
+  const isEmailValid = EMAIL_REGEX.test(formData.email.trim());
+  const canSubmit = isNameValid && isEmailValid && rgpdConsent && !isSubmitting;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(contactEmail);
@@ -34,8 +90,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !rgpdConsent) return;
-    setSubmitted(true);
+    setTouched({ name: true, email: true });
+
+    if (!canSubmit) return;
+
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }, 600);
   };
 
   return (
@@ -132,13 +195,24 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                     type="button"
                     variant="secondary"
                     size="sm"
-                    onClick={() => setSubmitted(false)}
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData({
+                        name: '',
+                        email: '',
+                        company: '',
+                        projectType: 'Architecture & Conception Système',
+                        message: '',
+                      });
+                      setTouched({ name: false, email: false });
+                      setRgpdConsent(false);
+                    }}
                   >
                     Envoyer un autre message
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                   <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
                     <span className="font-mono text-xs text-[#38BDF8] tracking-wider uppercase flex items-center gap-2">
                       <Terminal className="w-3.5 h-3.5" />
@@ -147,128 +221,292 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                     <span className="text-[11px] font-mono text-[#64748B]">RÉPONSE SOUS 48H</span>
                   </div>
 
+                  {/* Nom & Email en grille 2 colonnes */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase tracking-wider">
-                        Nom & Rôle *
+                    {/* Nom & Rôle */}
+                    <div className="form-group">
+                      <div className="form-label-row">
+                        <label htmlFor="form-name" className="form-label">
+                          <span className="form-label__prefix">//</span>
+                          <span className="form-label__text">Nom & Rôle</span>
+                          <span className="form-label__required">*</span>
+                        </label>
+                        <span className="form-badge form-badge--required">Requis</span>
+                      </div>
+                      <div className="form-control-wrapper">
+                        <span className="form-control-icon">
+                          <User className="w-4 h-4" />
+                        </span>
+                        <input
+                          id="form-name"
+                          type="text"
+                          required
+                          autoComplete="name"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          onBlur={() => setTouched((prev) => ({ ...prev, name: true }))}
+                          placeholder="Jean Dupont (CTO)"
+                          className={`form-input ${
+                            touched.name && !isNameValid
+                              ? 'is-invalid'
+                              : isNameValid
+                                ? 'is-valid'
+                                : ''
+                          }`}
+                          aria-invalid={touched.name && !isNameValid}
+                        />
+                        {isNameValid && (
+                          <span className="form-control-status form-control-status--valid">
+                            <Check className="w-4 h-4" strokeWidth={2.5} />
+                          </span>
+                        )}
+                        {touched.name && !isNameValid && (
+                          <span className="form-control-status form-control-status--invalid">
+                            <AlertCircle className="w-4 h-4" />
+                          </span>
+                        )}
+                      </div>
+                      {touched.name && !isNameValid && (
+                        <div className="form-error-msg">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>Veuillez renseigner votre nom (min. 2 caractères).</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Email professionnel */}
+                    <div className="form-group">
+                      <div className="form-label-row">
+                        <label htmlFor="form-email" className="form-label">
+                          <span className="form-label__prefix">//</span>
+                          <span className="form-label__text">Email professionnel</span>
+                          <span className="form-label__required">*</span>
+                        </label>
+                        <span className="form-badge form-badge--required">Requis</span>
+                      </div>
+                      <div className="form-control-wrapper">
+                        <span className="form-control-icon">
+                          <Mail className="w-4 h-4" />
+                        </span>
+                        <input
+                          id="form-email"
+                          type="email"
+                          required
+                          autoComplete="email"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          onBlur={() => setTouched((prev) => ({ ...prev, email: true }))}
+                          placeholder="jean@entreprise.com"
+                          className={`form-input ${
+                            touched.email && !isEmailValid
+                              ? 'is-invalid'
+                              : isEmailValid
+                                ? 'is-valid'
+                                : ''
+                          }`}
+                          aria-invalid={touched.email && !isEmailValid}
+                        />
+                        {isEmailValid && (
+                          <span className="form-control-status form-control-status--valid">
+                            <Check className="w-4 h-4" strokeWidth={2.5} />
+                          </span>
+                        )}
+                        {touched.email && !isEmailValid && (
+                          <span className="form-control-status form-control-status--invalid">
+                            <AlertCircle className="w-4 h-4" />
+                          </span>
+                        )}
+                      </div>
+                      {touched.email && !isEmailValid && (
+                        <div className="form-error-msg">
+                          <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                          <span>Format d'email professionnel valide requis.</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Entreprise */}
+                  <div className="form-group">
+                    <div className="form-label-row">
+                      <label htmlFor="form-company" className="form-label">
+                        <span className="form-label__prefix">//</span>
+                        <span className="form-label__text">Entreprise / Organisation</span>
                       </label>
+                      <span className="form-badge form-badge--optional">Optionnel</span>
+                    </div>
+                    <div className="form-control-wrapper">
+                      <span className="form-control-icon">
+                        <Building2 className="w-4 h-4" />
+                      </span>
                       <input
+                        id="form-company"
                         type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="Jean Dupont (CTO)"
-                        className="w-full bg-[#131926] border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#64748B] focus:border-[#38BDF8] focus:outline-none transition-colors"
+                        autoComplete="organization"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        placeholder="Nom de l'entreprise, startup ou institution"
+                        className={`form-input ${formData.company.trim().length > 0 ? 'is-valid' : ''}`}
                       />
+                      {formData.company.trim().length > 0 && (
+                        <span className="form-control-status form-control-status--valid">
+                          <Check className="w-4 h-4" strokeWidth={2.5} />
+                        </span>
+                      )}
                     </div>
+                  </div>
 
-                    <div>
-                      <label className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase tracking-wider">
-                        Email professionnel *
+                  {/* Type d'intervention avec dropdown + chips rapides */}
+                  <div className="form-group">
+                    <div className="form-label-row">
+                      <label htmlFor="form-project-type" className="form-label">
+                        <span className="form-label__prefix">//</span>
+                        <span className="form-label__text">Type d'intervention ciblée</span>
+                        <span className="form-label__required">*</span>
                       </label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="jean@entreprise.com"
-                        className="w-full bg-[#131926] border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#64748B] focus:border-[#38BDF8] focus:outline-none transition-colors"
-                      />
+                      <span className="form-badge form-badge--required">Requis</span>
+                    </div>
+                    <div className="form-control-wrapper">
+                      <span className="form-control-icon">
+                        <Layers className="w-4 h-4" />
+                      </span>
+                      <select
+                        id="form-project-type"
+                        value={formData.projectType}
+                        onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                        className="form-select is-valid"
+                      >
+                        {PROJECT_TYPE_OPTIONS.map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                      <span className="form-select-chevron">
+                        <ChevronDown className="w-4 h-4" />
+                      </span>
+                    </div>
+
+                    {/* Quick selection chips for fast technical engagement */}
+                    <div
+                      className="form-pills-grid"
+                      role="group"
+                      aria-label="Sélection rapide du type de projet"
+                    >
+                      {PROJECT_TYPE_OPTIONS.map((opt) => {
+                        const isActive = formData.projectType === opt.value;
+                        return (
+                          <button
+                            key={opt.value}
+                            type="button"
+                            onClick={() => setFormData({ ...formData, projectType: opt.value })}
+                            className={`form-pill-button ${isActive ? 'is-active' : ''}`}
+                            title={opt.desc}
+                          >
+                            <span className="form-pill-dot" />
+                            <span className="truncate">{opt.shortLabel}</span>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase tracking-wider">
-                      Entreprise
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      placeholder="Nom de l'entreprise ou projet"
-                      className="w-full bg-[#131926] border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#64748B] focus:border-[#38BDF8] focus:outline-none transition-colors"
-                    />
+                  {/* Message / Périmètre */}
+                  <div className="form-group">
+                    <div className="form-label-row">
+                      <label htmlFor="form-message" className="form-label">
+                        <span className="form-label__prefix">//</span>
+                        <span className="form-label__text">Votre projet en quelques mots</span>
+                      </label>
+                      <span className="form-badge form-badge--optional">Optionnel</span>
+                    </div>
+                    <div className="form-control-wrapper">
+                      <span className="form-control-icon form-control-icon--textarea">
+                        <MessageSquare className="w-4 h-4" />
+                      </span>
+                      <textarea
+                        id="form-message"
+                        rows={3}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder="Contexte technique, enjeux de charge, délais d'intervention, volumétrie..."
+                        className="form-textarea"
+                      />
+                    </div>
+                    <div className="form-footer-meta">
+                      <span className="text-[#64748B]">
+                        Détails techniques et volumétries bienvenus
+                      </span>
+                      <span>{formData.message.length} caractères</span>
+                    </div>
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase tracking-wider">
-                      Type d'intervention
-                    </label>
-                    <select
-                      value={formData.projectType}
-                      onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                      className="w-full bg-[#131926] border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-[#F8FAFC] focus:border-[#38BDF8] focus:outline-none transition-colors"
-                    >
-                      <option value="Architecture & Conception Système">
-                        Conception & Architecture Système (DAT, DDD, Résilience)
-                      </option>
-                      <option value="Ingénierie Web Full-Stack">
-                        Développement d'application web critique sur-mesure
-                      </option>
-                      <option value="Audit & Performance">
-                        Audit technique, Refactorisation & Élimination de dette
-                      </option>
-                      <option value="Consultation ponctuelle">
-                        Revue de code & cadrage d'infrastructure
-                      </option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase tracking-wider">
-                      Votre projet en quelques mots
-                    </label>
-                    <textarea
-                      rows={3}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Contexte technique, enjeux de charge, délais..."
-                      className="w-full bg-[#131926] border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#64748B] focus:border-[#38BDF8] focus:outline-none transition-colors resize-none"
-                    />
-                  </div>
-
-                  {/* RGPD Mandatory Consent */}
-                  <div className="flex items-start gap-2.5 pt-1">
-                    <input
-                      id="rgpd-consent"
-                      type="checkbox"
-                      required
-                      checked={rgpdConsent}
-                      onChange={(e) => setRgpdConsent(e.target.checked)}
-                      className="mt-0.5 w-4 h-4 rounded border-white/20 bg-[#131926] text-[#38BDF8] focus:ring-[#38BDF8] focus:ring-offset-0 cursor-pointer"
-                    />
+                  {/* RGPD Consent Checkbox customisée & accessible */}
+                  <div className="pt-1">
                     <label
                       htmlFor="rgpd-consent"
-                      className="text-xs text-[#94A3B8] leading-relaxed cursor-pointer select-none"
+                      className={`form-checkbox-container ${rgpdConsent ? 'is-checked' : ''}`}
                     >
-                      J'accepte que les données saisies soient exploitées par LSR Digital
-                      Architecture afin de répondre à ma demande technique, conformément à la{' '}
-                      <button
-                        type="button"
-                        onClick={() => onOpenLegal?.('privacy')}
-                        className="text-[#38BDF8] hover:underline inline font-mono"
+                      <input
+                        id="rgpd-consent"
+                        type="checkbox"
+                        required
+                        checked={rgpdConsent}
+                        onChange={(e) => setRgpdConsent(e.target.checked)}
+                        className="form-hidden-checkbox"
+                        aria-required="true"
+                      />
+                      <div
+                        className={`form-custom-checkbox ${rgpdConsent ? 'is-checked' : ''}`}
+                        aria-hidden="true"
                       >
-                        politique de confidentialité (RGPD)
-                      </button>
-                      . *
+                        {rgpdConsent && (
+                          <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                        )}
+                      </div>
+                      <span className="form-checkbox-label">
+                        J'accepte que les données saisies soient exploitées par LSR Digital
+                        Architecture afin de répondre à ma demande technique, conformément à la{' '}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            onOpenLegal?.('privacy');
+                          }}
+                          className="text-[#38BDF8] hover:underline inline font-medium"
+                        >
+                          politique de confidentialité (RGPD)
+                        </button>
+                        . <span className="text-[#38BDF8]">*</span>
+                      </span>
                     </label>
                   </div>
 
+                  {/* Bouton de soumission */}
                   <Button
                     type="submit"
                     variant="primary"
                     size="lg"
                     fullWidth
-                    disabled={!rgpdConsent}
-                    icon={<Send className="w-4 h-4" />}
+                    disabled={!canSubmit}
+                    icon={
+                      isSubmitting ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <Send className="w-4 h-4" />
+                      )
+                    }
                     iconPosition="right"
                   >
-                    Initier la prise de contact
+                    {isSubmitting ? 'Transmission sécurisée...' : 'Initier la prise de contact'}
                   </Button>
 
-                  <p className="text-[11px] font-mono text-[#64748B] text-center pt-1">
-                    Vos données restent strictement confidentielles. Zéro démarchage intempestif.
-                  </p>
+                  {/* Reassurance de sécurité technique */}
+                  <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-[#64748B] pt-1">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#38BDF8]/80 shrink-0" />
+                    <span>Confidentialité stricte · Chiffrement en transit · Zéro démarchage</span>
+                  </div>
                 </form>
               )}
             </BentoCard>
