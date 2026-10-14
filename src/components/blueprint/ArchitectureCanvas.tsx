@@ -204,8 +204,18 @@ export const ArchitectureCanvas: React.FC = () => {
                 <g
                   key={node.id}
                   transform={`translate(${node.x}, ${node.y})`}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Composant ${node.name} (${node.tag}) : ${node.role}. Cliquez pour afficher les détails.`}
+                  aria-pressed={isSelected}
                   onClick={() => setActiveNode(node)}
-                  className="cursor-pointer transition-all duration-300"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActiveNode(node);
+                    }
+                  }}
+                  className="cursor-pointer transition-all duration-300 focus:outline-none"
                   style={{ opacity: isHighlighted ? 1 : 0.25 }}
                 >
                   {/* Halo Luminous Aura */}

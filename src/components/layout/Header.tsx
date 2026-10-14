@@ -32,6 +32,18 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [navigation]);
 
+  // Accessibility: close mobile menu with Escape key
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -123,7 +135,9 @@ export const Header: React.FC = () => {
               size="sm"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2"
-              aria-label={mobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-label={mobileMenuOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-drawer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
@@ -133,13 +147,13 @@ export const Header: React.FC = () => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0D111A] border-b border-white/[0.08] px-4 pt-4 pb-6 mt-3 space-y-4 shadow-2xl">
-          <div className="flex items-center justify-between gap-2 px-3 py-1.5 rounded bg-black/10 border border-white/10 mb-2">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
-              <span className="font-mono text-[10px] text-[#94A3B8]">{statusBadge}</span>
-            </div>
-            <ThemeToggle />
+        <div
+          id="mobile-nav-drawer"
+          className="lg:hidden bg-[#0D111A] border-b border-white/[0.08] px-4 pt-4 pb-6 mt-3 space-y-4 shadow-2xl"
+        >
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-black/10 border border-white/10 mb-2">
+            <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
+            <span className="font-mono text-[10px] text-[#94A3B8]">{statusBadge}</span>
           </div>
 
           <nav className="flex flex-col space-y-3" aria-label="Navigation mobile">

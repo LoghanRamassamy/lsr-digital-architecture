@@ -22,11 +22,16 @@ export const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#090A0F] text-[#F8FAFC] relative flex flex-col font-sans transition-colors duration-300">
+      {/* WCAG 2.1 AA / RGAA Accessible Skip Link */}
+      <a href="#main-content" className="skip-link">
+        Aller au contenu principal
+      </a>
+
       {/* Top Header */}
       <Header />
 
       {/* Main Semantic Page Content */}
-      <main className="flex-1">
+      <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
         <HeroSection />
         <ServicesSection />
         <MethodologySection />

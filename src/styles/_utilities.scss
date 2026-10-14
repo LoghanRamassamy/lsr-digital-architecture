@@ -40,7 +40,49 @@
   display: inline-block;
 }
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+// --- Accessibility Primitives (WCAG 2.1 AA/AAA) ---
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: $radius-md;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.4);
+  border: 1px solid var(--accent-cyan);
+  text-decoration: none;
+  transition: top 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:focus,
+  &:focus-visible {
+    top: 1rem;
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 3px;
+  }
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 .relative {
   position: relative;
@@ -1150,6 +1192,24 @@
 
 // --- Responsive Breakpoints Utilities ---
 @include respond-to(sm) {
+  .sm\:inline-flex {
+    display: inline-flex !important;
+  }
+  .sm\:hidden {
+    display: none !important;
+  }
+  .sm\:flex {
+    display: flex !important;
+  }
+  .sm\:block {
+    display: block !important;
+  }
+  .sm\:items-center {
+    align-items: center;
+  }
+  .sm\:whitespace-normal {
+    white-space: normal;
+  }
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -1163,6 +1223,10 @@
   }
   .sm\:flex-row {
     flex-direction: row;
+  }
+  .sm\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
   .sm\:text-sm {
     font-size: 0.875rem;
@@ -1197,13 +1261,16 @@
 
 @include respond-to(md) {
   .md\:flex {
-    display: flex;
+    display: flex !important;
   }
   .md\:inline-block {
     display: inline-block;
   }
+  .md\:inline-flex {
+    display: inline-flex !important;
+  }
   .md\:hidden {
-    display: none;
+    display: none !important;
   }
   .md\:pt-40 {
     padding-top: 10rem;
@@ -1244,6 +1311,12 @@
 }
 
 @include respond-to(lg) {
+  .lg\:flex {
+    display: flex !important;
+  }
+  .lg\:hidden {
+    display: none !important;
+  }
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;

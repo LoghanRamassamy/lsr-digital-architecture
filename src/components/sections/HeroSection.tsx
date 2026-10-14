@@ -23,7 +23,7 @@ export const HeroSection: React.FC = () => {
           {/* Monospace System Tag */}
           <div className="inline-flex items-center gap-2 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-            <span className="font-mono text-xs uppercase tracking-[0.15em] text-[#38BDF8] px-3 py-1 rounded bg-[#38BDF8]/10 border border-[#38BDF8]/30 shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-[0.15em] whitespace-nowrap text-[#38BDF8] px-2.5 sm:px-3 py-1 rounded bg-[#38BDF8]/10 border border-[#38BDF8]/30 shadow-[0_0_15px_rgba(56,189,248,0.2)]">
               {systemTag}
             </span>
           </div>

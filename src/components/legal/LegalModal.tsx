@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X, Shield, FileText, Cookie, ExternalLink, Lock } from 'lucide-react';
 import { Button } from '../common/Button';
 
@@ -17,23 +17,67 @@ export const LegalModal: React.FC<LegalModalProps> = ({
   onClose,
   onTabChange,
 }) => {
-  // Close on Escape key
+  const modalCardRef = useRef<HTMLDivElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
+
+  // Focus trap, Escape key, and focus restoration
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
     if (isOpen) {
+      previousFocusRef.current = document.activeElement as HTMLElement | null;
       document.body.style.overflow = 'hidden';
+
+      const timer = setTimeout(() => {
+        if (modalCardRef.current) {
+          const focusable = modalCardRef.current.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          if (focusable.length > 0) {
+            focusable[0].focus();
+          }
+        }
+      }, 50);
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          onClose();
+          return;
+        }
+
+        if (e.key === 'Tab' && modalCardRef.current) {
+          const focusable = modalCardRef.current.querySelectorAll<HTMLElement>(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          if (focusable.length === 0) return;
+
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        }
+      };
+
       window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = 'auto';
+        window.removeEventListener('keydown', handleKeyDown);
+        if (previousFocusRef.current) {
+          previousFocusRef.current.focus();
+        }
+      };
     } else {
       document.body.style.overflow = 'auto';
     }
-    return () => {
-      document.body.style.overflow = 'auto';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -63,7 +107,10 @@ export const LegalModal: React.FC<LegalModalProps> = ({
       />
 
       {/* Modal Card */}
-      <div className="relative w-full max-w-4xl max-h-[90vh] bg-[#0D111A] border border-white/10 rounded-[12px] shadow-2xl flex flex-col overflow-hidden z-10 text-[#F8FAFC]">
+      <div
+        ref={modalCardRef}
+        className="relative w-full max-w-4xl max-h-[90vh] bg-[#0D111A] border border-white/10 rounded-[12px] shadow-2xl flex flex-col overflow-hidden z-10 text-[#F8FAFC]"
+      >
         {/* Top Header */}
         <div className="flex items-center justify-between border-b border-white/[0.08] px-6 py-4 bg-[#090A0F]/80">
           <div className="flex items-center gap-3">

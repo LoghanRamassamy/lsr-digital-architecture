@@ -72,6 +72,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
   });
 
   const [rgpdConsent, setRgpdConsent] = useState(false);
+  const [rgpdError, setRgpdError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -80,7 +81,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
 
   const isNameValid = formData.name.trim().length >= 2;
   const isEmailValid = EMAIL_REGEX.test(formData.email.trim());
-  const canSubmit = isNameValid && isEmailValid && rgpdConsent && !isSubmitting;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(contactEmail);
@@ -92,8 +92,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
     e.preventDefault();
     setTouched({ name: true, email: true });
 
-    if (!canSubmit) return;
+    if (!isNameValid) {
+      document.getElementById('form-name')?.focus();
+      return;
+    }
 
+    if (!isEmailValid) {
+      document.getElementById('form-email')?.focus();
+      return;
+    }
+
+    if (!rgpdConsent) {
+      setRgpdError(true);
+      document.getElementById('rgpd-consent')?.focus();
+      return;
+    }
+
+    setRgpdError(false);
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -445,16 +460,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                   <div className="pt-1">
                     <label
                       htmlFor="rgpd-consent"
-                      className={`form-checkbox-container ${rgpdConsent ? 'is-checked' : ''}`}
+                      className={`form-checkbox-container ${rgpdConsent ? 'is-checked' : ''} ${
+                        rgpdError && !rgpdConsent ? 'border-red-400/50 bg-red-500/5' : ''
+                      }`}
                     >
                       <input
                         id="rgpd-consent"
                         type="checkbox"
                         required
                         checked={rgpdConsent}
-                        onChange={(e) => setRgpdConsent(e.target.checked)}
+                        onChange={(e) => {
+                          setRgpdConsent(e.target.checked);
+                          if (e.target.checked) setRgpdError(false);
+                        }}
                         className="form-hidden-checkbox"
                         aria-required="true"
+                        aria-invalid={rgpdError && !rgpdConsent}
                       />
                       <div
                         className={`form-custom-checkbox ${rgpdConsent ? 'is-checked' : ''}`}
@@ -481,6 +502,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                         . <span className="text-[#38BDF8]">*</span>
                       </span>
                     </label>
+                    {rgpdError && !rgpdConsent && (
+                      <div className="form-error-msg mt-2" role="alert">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>Veuillez accepter la politique de confidentialité pour valider.</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Bouton de soumission */}
@@ -489,7 +516,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                     variant="primary"
                     size="lg"
                     fullWidth
-                    disabled={!canSubmit}
+                    disabled={isSubmitting}
                     icon={
                       isSubmitting ? (
                         <Loader2 className="w-4 h-4 animate-spin" />

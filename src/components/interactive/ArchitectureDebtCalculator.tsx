@@ -47,14 +47,14 @@ export const ArchitectureDebtCalculator: React.FC = () => {
                   const currentValue = metrics[def.id];
                   return (
                     <div key={def.id}>
-                      <div className="flex justify-between items-center mb-2">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
                         <label
                           htmlFor={`metric-${def.id}`}
                           className="text-xs font-mono text-[#F8FAFC] uppercase tracking-wider"
                         >
                           {def.title}
                         </label>
-                        <span className="text-xs font-mono text-[#38BDF8]">
+                        <span className="text-xs font-mono text-[#38BDF8] shrink-0 font-medium">
                           {def.stepLabels[currentValue]}
                         </span>
                       </div>
