@@ -1,7 +1,6 @@
 import React from 'react';
 import { siteContent } from '../../constants/siteContent';
 import { SectionTag } from '../common/SectionTag';
-import { ArchitectureCanvas } from '../blueprint/ArchitectureCanvas';
 import { BentoCard } from '../common/BentoCard';
 import { Compass, FileCode, CheckCheck, Rocket } from 'lucide-react';
 
@@ -26,7 +25,7 @@ export const MethodologySection: React.FC = () => {
         </div>
 
         {/* 4 Steps Timeline Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {steps.map((item, idx) => {
             const Icon = stepIcons[idx % stepIcons.length];
             return (
@@ -55,21 +54,6 @@ export const MethodologySection: React.FC = () => {
               </BentoCard>
             );
           })}
-        </div>
-
-        {/* Interactive Architecture Blueprint Live Visualizer */}
-        <div className="mt-8">
-          <div className="mb-4 flex items-center justify-between">
-            <div>
-              <span className="font-mono text-xs uppercase tracking-wider text-[#38BDF8] block">
-                SCHÉMA D'ARCHITECTURE INTERACTIF
-              </span>
-              <p className="text-xs text-[#94A3B8]">
-                Sélectionnez un composant pour inspecter ses garanties architecturales.
-              </p>
-            </div>
-          </div>
-          <ArchitectureCanvas />
         </div>
       </div>
     </section>
