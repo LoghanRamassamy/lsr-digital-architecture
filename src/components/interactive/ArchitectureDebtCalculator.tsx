@@ -3,67 +3,26 @@ import { BentoCard } from '../common/BentoCard';
 import { SectionTag } from '../common/SectionTag';
 import { Button } from '../common/Button';
 import { ArrowRight } from 'lucide-react';
-
-interface MetricState {
-  architectureCoupling: number; // 1 (couplé) to 5 (découplé DDD)
-  testCoverage: number; // 1 (<20%) to 5 (>85%)
-  scalabilityTolerance: number; // 1 (SPOF) to 5 (Multi-AZ / Auto-healing)
-  observabilityLevel: number; // 1 (Logs) to 5 (Distributed Tracing / SLO)
-}
+import {
+  DEFAULT_METRICS,
+  METRIC_DEFINITIONS,
+  calculateResilienceScore,
+  getResilienceProfile,
+  type MetricState,
+} from '../../domain/resilience/resilienceCalculator';
 
 export const ArchitectureDebtCalculator: React.FC = () => {
-  const [metrics, setMetrics] = useState<MetricState>({
-    architectureCoupling: 3,
-    testCoverage: 2,
-    scalabilityTolerance: 3,
-    observabilityLevel: 2,
-  });
+  const [metrics, setMetrics] = useState<MetricState>(DEFAULT_METRICS);
 
-  // Calculate scores
-  const totalScore = Math.round(
-    ((metrics.architectureCoupling +
-      metrics.testCoverage +
-      metrics.scalabilityTolerance +
-      metrics.observabilityLevel) /
-      20) *
-      100
-  );
+  const totalScore = calculateResilienceScore(metrics);
+  const profile = getResilienceProfile(totalScore);
 
-  const getScoreProfile = (score: number) => {
-    if (score >= 80) {
-      return {
-        level: 'Socle Résilient & Mature',
-        color: 'text-emerald-400',
-        bgColor: 'bg-emerald-400/10',
-        borderColor: 'border-emerald-400/30',
-        risk: 'Faible risque de régression lors des montées en charge',
-        recommendation:
-          'Audit d’optimisation fine des coûts et accélération des cycles de release.',
-      };
-    } else if (score >= 50) {
-      return {
-        level: 'Fragilités Systémiques Modérées',
-        color: 'text-[#38BDF8]',
-        bgColor: 'bg-[#38BDF8]/10',
-        borderColor: 'border-[#38BDF8]/30',
-        risk: 'Goulets d’étranglement identifiés lors des pics de trafic',
-        recommendation:
-          'Mise en place d’un DAT, découplage asynchrone et introduction de Clean Architecture.',
-      };
-    } else {
-      return {
-        level: 'Dette Technique Critique',
-        color: 'text-amber-400',
-        bgColor: 'bg-amber-400/10',
-        borderColor: 'border-amber-400/30',
-        risk: 'Vulnérabilité aux pannes en cascade et vélocité d’équipe bridée',
-        recommendation:
-          'Audit d’urgence prioritaire et refonte ciblée du domaine sans interruption de service.',
-      };
-    }
+  const handleMetricChange = (metricId: keyof MetricState, value: number) => {
+    setMetrics((prev) => ({
+      ...prev,
+      [metricId]: value,
+    }));
   };
-
-  const profile = getScoreProfile(totalScore);
 
   return (
     <section className="py-20 relative bg-[#090A0F] border-t border-white/[0.08]">
@@ -84,113 +43,38 @@ export const ArchitectureDebtCalculator: React.FC = () => {
           <div className="lg:col-span-7 space-y-5">
             <BentoCard className="p-6">
               <div className="space-y-6">
-                {/* 1. Couplage */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <label className="text-xs font-mono text-[#F8FAFC] uppercase tracking-wider">
-                      1. Découpage & Domaine
-                    </label>
-                    <span className="text-xs font-mono text-[#38BDF8]">
-                      {metrics.architectureCoupling === 1 && 'Monolithe couplé'}
-                      {metrics.architectureCoupling === 2 && 'Couplage BDD direct'}
-                      {metrics.architectureCoupling === 3 && 'Modulaire partiel'}
-                      {metrics.architectureCoupling === 4 && 'Clean Architecture'}
-                      {metrics.architectureCoupling === 5 && 'DDD strict & Hexagonal'}
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min="1"
-                    max="5"
-                    step="1"
-                    value={metrics.architectureCoupling}
-                    onChange={(e) =>
-                      setMetrics({ ...metrics, architectureCoupling: Number(e.target.value) })
-                    }
-                    className="w-full accent-[#38BDF8] bg-[#131926] h-2 rounded cursor-pointer"
-                  />
-                </div>
-
-                {/* 2. Tests */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <label className="text-xs font-mono text-[#F8FAFC] uppercase tracking-wider">
-                      2. Tests & Typage
-                    </label>
-                    <span className="text-xs font-mono text-[#38BDF8]">
-                      {metrics.testCoverage === 1 && 'Tests manuels'}
-                      {metrics.testCoverage === 2 && 'Unitaires épars (< 30%)'}
-                      {metrics.testCoverage === 3 && 'Couverture ~50%'}
-                      {metrics.testCoverage === 4 && 'Intégration & Typage strict (> 75%)'}
-                      {metrics.testCoverage === 5 && 'E2E & CI bloquante (100%)'}
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min="1"
-                    max="5"
-                    step="1"
-                    value={metrics.testCoverage}
-                    onChange={(e) =>
-                      setMetrics({ ...metrics, testCoverage: Number(e.target.value) })
-                    }
-                    className="w-full accent-[#38BDF8] bg-[#131926] h-2 rounded cursor-pointer"
-                  />
-                </div>
-
-                {/* 3. Résilience */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <label className="text-xs font-mono text-[#F8FAFC] uppercase tracking-wider">
-                      3. Tolérance aux Pannes
-                    </label>
-                    <span className="text-xs font-mono text-[#38BDF8]">
-                      {metrics.scalabilityTolerance === 1 && 'Point unique de panne (SPOF)'}
-                      {metrics.scalabilityTolerance === 2 && 'Redémarrage manuel'}
-                      {metrics.scalabilityTolerance === 3 && 'Réplication basique'}
-                      {metrics.scalabilityTolerance === 4 && 'Failover auto & Circuit Breakers'}
-                      {metrics.scalabilityTolerance === 5 && 'Multi-AZ & Zero-Downtime'}
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min="1"
-                    max="5"
-                    step="1"
-                    value={metrics.scalabilityTolerance}
-                    onChange={(e) =>
-                      setMetrics({ ...metrics, scalabilityTolerance: Number(e.target.value) })
-                    }
-                    className="w-full accent-[#38BDF8] bg-[#131926] h-2 rounded cursor-pointer"
-                  />
-                </div>
-
-                {/* 4. Observabilité */}
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <label className="text-xs font-mono text-[#F8FAFC] uppercase tracking-wider">
-                      4. Observabilité & Alerting
-                    </label>
-                    <span className="text-xs font-mono text-[#38BDF8]">
-                      {metrics.observabilityLevel === 1 && 'Logs locaux basiques'}
-                      {metrics.observabilityLevel === 2 && 'Agrégation de logs'}
-                      {metrics.observabilityLevel === 3 && 'Métriques CPU / RAM'}
-                      {metrics.observabilityLevel === 4 && 'Tracing OpenTelemetry'}
-                      {metrics.observabilityLevel === 5 && 'SLO/SLI & Alerting p99'}
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min="1"
-                    max="5"
-                    step="1"
-                    value={metrics.observabilityLevel}
-                    onChange={(e) =>
-                      setMetrics({ ...metrics, observabilityLevel: Number(e.target.value) })
-                    }
-                    className="w-full accent-[#38BDF8] bg-[#131926] h-2 rounded cursor-pointer"
-                  />
-                </div>
+                {METRIC_DEFINITIONS.map((def) => {
+                  const currentValue = metrics[def.id];
+                  return (
+                    <div key={def.id}>
+                      <div className="flex justify-between items-center mb-2">
+                        <label
+                          htmlFor={`metric-${def.id}`}
+                          className="text-xs font-mono text-[#F8FAFC] uppercase tracking-wider"
+                        >
+                          {def.title}
+                        </label>
+                        <span className="text-xs font-mono text-[#38BDF8]">
+                          {def.stepLabels[currentValue]}
+                        </span>
+                      </div>
+                      <input
+                        id={`metric-${def.id}`}
+                        type="range"
+                        min="1"
+                        max="5"
+                        step="1"
+                        value={currentValue}
+                        onChange={(e) => handleMetricChange(def.id, Number(e.target.value))}
+                        className="debt-calculator__slider w-full accent-[#38BDF8] bg-[#131926] h-2 rounded cursor-pointer"
+                        aria-valuemin={1}
+                        aria-valuemax={5}
+                        aria-valuenow={currentValue}
+                        aria-valuetext={def.stepLabels[currentValue]}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </BentoCard>
           </div>

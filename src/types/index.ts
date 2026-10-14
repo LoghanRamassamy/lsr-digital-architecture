@@ -84,13 +84,16 @@ export interface SiteContent {
   };
 }
 
-export interface ArchitectureNode {
-  id: string;
-  name: string;
-  layer: 'client' | 'gateway' | 'domain' | 'persistence' | 'observability';
-  x: number;
-  y: number;
-  status: 'active' | 'redundant' | 'secured';
-  details: string;
-  tech: string[];
-}
+// Re-export canonical domain types
+export type {
+  BlueprintNode,
+  BlueprintNodeType,
+  BlueprintLayer,
+  NodeMetrics,
+} from '../domain/blueprint/blueprintModel';
+
+export type {
+  MetricState,
+  ResilienceProfile,
+  MetricDefinition,
+} from '../domain/resilience/resilienceCalculator';

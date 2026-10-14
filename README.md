@@ -70,6 +70,11 @@ lsr-digital-architecture/
 │   │       ├── MethodologySection.tsx        # Pipeline des 4 jalons d'ingénierie
 │   │       ├── ManifestoSection.tsx          # Citation d'architecte et principes clés
 │   │       └── ContactSection.tsx            # Formulaire d'initialisation de projet & contact direct
+│   ├── domain/
+│   │   ├── blueprint/
+│   │   │   └── blueprintModel.ts             # Modèle de domaine, nœuds et prédicats de filtrage
+│   │   └── resilience/
+│   │       └── resilienceCalculator.ts       # Règles métier pures & calcul d'indice de résilience
 │   ├── constants/
 │   │   └── siteContent.ts                    # Centralisation du contenu éditorial typé
 │   ├── styles/
