@@ -38,7 +38,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        'group relative rounded-[10px] bg-[#0D111A] border border-white/[0.08] transition-all duration-300',
+        'group relative rounded-[10px] overflow-hidden bg-[#0D111A] border border-white/[0.08] transition-all duration-300',
         interactive &&
           'hover:border-[#38BDF8]/40 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.6)]',
         className
@@ -47,30 +47,12 @@ export const BentoCard: React.FC<BentoCardProps> = ({
       {/* Dynamic Cursor Spotlight Radial Glow */}
       {interactive && isHovered && (
         <div
-          className="pointer-events-none absolute -inset-px rounded-[10px] opacity-100 transition-opacity duration-300"
+          className="pointer-events-none absolute inset-0 rounded-[10px] opacity-100 transition-opacity duration-300"
           style={{
             background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, ${glowStyles[glowColor]}, transparent 70%)`,
           }}
         />
       )}
-
-      {/* Blueprint corner cross ticks */}
-      <div className="absolute top-0 left-0 w-2 h-2 pointer-events-none">
-        <span className="absolute top-0 left-0 w-2 h-px bg-white/20 group-hover:bg-[#38BDF8]/60 transition-colors" />
-        <span className="absolute top-0 left-0 h-2 w-px bg-white/20 group-hover:bg-[#38BDF8]/60 transition-colors" />
-      </div>
-      <div className="absolute top-0 right-0 w-2 h-2 pointer-events-none">
-        <span className="absolute top-0 right-0 w-2 h-px bg-white/20 group-hover:bg-[#38BDF8]/60 transition-colors" />
-        <span className="absolute top-0 right-0 h-2 w-px bg-white/20 group-hover:bg-[#38BDF8]/60 transition-colors" />
-      </div>
-      <div className="absolute bottom-0 left-0 w-2 h-2 pointer-events-none">
-        <span className="absolute bottom-0 left-0 w-2 h-px bg-white/20 group-hover:bg-[#38BDF8]/60 transition-colors" />
-        <span className="absolute bottom-0 left-0 h-2 w-px bg-white/20 group-hover:bg-[#38BDF8]/60 transition-colors" />
-      </div>
-      <div className="absolute bottom-0 right-0 w-2 h-2 pointer-events-none">
-        <span className="absolute bottom-0 right-0 w-2 h-px bg-white/20 group-hover:bg-[#38BDF8]/60 transition-colors" />
-        <span className="absolute bottom-0 right-0 h-2 w-px bg-white/20 group-hover:bg-[#38BDF8]/60 transition-colors" />
-      </div>
 
       {/* Content wrapper */}
       <div className="relative z-10 h-full">{children}</div>
