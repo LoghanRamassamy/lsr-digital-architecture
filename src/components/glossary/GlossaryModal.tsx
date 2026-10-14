@@ -3,6 +3,7 @@ import { X, Search, BookOpen, Copy, Check, ExternalLink, RotateCcw } from 'lucid
 import { Button } from '../common/Button';
 import { GLOSSARY_ITEMS, GLOSSARY_CATEGORIES } from '../../constants/glossaryData';
 import { GlossaryCategory, TermKind } from '../../types';
+import { useModalA11y } from '../../hooks/useModalA11y';
 
 interface GlossaryModalProps {
   isOpen: boolean;
@@ -20,7 +21,6 @@ export const GlossaryModal: React.FC<GlossaryModalProps> = ({
   const modalCardRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<GlossaryCategory>('all');
@@ -40,65 +40,13 @@ export const GlossaryModal: React.FC<GlossaryModalProps> = ({
     }
   }, [isOpen, initialTermId]);
 
-  // Accessibility: Focus trap & Escape key
-  useEffect(() => {
-    if (isOpen) {
-      previousFocusRef.current = document.activeElement as HTMLElement | null;
-      document.body.style.overflow = 'hidden';
-
-      const timer = setTimeout(() => {
-        if (searchInputRef.current) {
-          searchInputRef.current.focus();
-        } else if (modalCardRef.current) {
-          const focusable = modalCardRef.current.querySelectorAll<HTMLElement>(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-          );
-          if (focusable.length > 0) focusable[0].focus();
-        }
-      }, 50);
-
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-          onClose();
-          return;
-        }
-
-        if (e.key === 'Tab' && modalCardRef.current) {
-          const focusable = modalCardRef.current.querySelectorAll<HTMLElement>(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-          );
-          if (focusable.length === 0) return;
-
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-
-          if (e.shiftKey) {
-            if (document.activeElement === first) {
-              e.preventDefault();
-              last.focus();
-            }
-          } else {
-            if (document.activeElement === last) {
-              e.preventDefault();
-              first.focus();
-            }
-          }
-        }
-      };
-
-      window.addEventListener('keydown', handleKeyDown);
-      return () => {
-        clearTimeout(timer);
-        document.body.style.overflow = 'auto';
-        window.removeEventListener('keydown', handleKeyDown);
-        if (previousFocusRef.current) {
-          previousFocusRef.current.focus();
-        }
-      };
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isOpen, onClose]);
+  // Comprehensive modal accessibility (focus trap, escape key, body scroll lock, focus restoration)
+  useModalA11y({
+    isOpen,
+    onClose,
+    containerRef: modalCardRef,
+    initialFocusRef: searchInputRef,
+  });
 
   // Compute available letters from glossary
   const availableLetters = useMemo(() => {

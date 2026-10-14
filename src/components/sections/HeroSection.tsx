@@ -39,9 +39,7 @@ export const HeroSection: React.FC = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold tracking-tight text-[#F8FAFC] leading-[1.18] mb-6">
             <span>{headline}</span>
             {headlineAccent && (
-              <span className="block text-[#38BDF8] mt-1 sm:mt-2">
-                {headlineAccent}
-              </span>
+              <span className="block text-[#38BDF8] mt-1 sm:mt-2">{headlineAccent}</span>
             )}
           </h1>
 

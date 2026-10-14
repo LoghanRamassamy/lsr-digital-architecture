@@ -268,6 +268,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                                 : ''
                           }`}
                           aria-invalid={touched.name && !isNameValid}
+                          aria-describedby={
+                            touched.name && !isNameValid ? 'form-name-error' : undefined
+                          }
                         />
                         {isNameValid && (
                           <span className="form-control-status form-control-status--valid">
@@ -281,7 +284,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                         )}
                       </div>
                       {touched.name && !isNameValid && (
-                        <div className="form-error-msg">
+                        <div id="form-name-error" className="form-error-msg" role="alert">
                           <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                           <span>Veuillez renseigner votre nom (min. 2 caractères).</span>
                         </div>
@@ -318,6 +321,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                                 : ''
                           }`}
                           aria-invalid={touched.email && !isEmailValid}
+                          aria-describedby={
+                            touched.email && !isEmailValid ? 'form-email-error' : undefined
+                          }
                         />
                         {isEmailValid && (
                           <span className="form-control-status form-control-status--valid">
@@ -331,7 +337,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                         )}
                       </div>
                       {touched.email && !isEmailValid && (
-                        <div className="form-error-msg">
+                        <div id="form-email-error" className="form-error-msg" role="alert">
                           <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                           <span>Format d'email valide requis.</span>
                         </div>
@@ -457,6 +463,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                         className="form-hidden-checkbox"
                         aria-required="true"
                         aria-invalid={rgpdError && !rgpdConsent}
+                        aria-describedby={
+                          rgpdError && !rgpdConsent ? 'rgpd-consent-error' : undefined
+                        }
                       />
                       <div
                         className={`form-custom-checkbox ${rgpdConsent ? 'is-checked' : ''}`}
@@ -484,7 +493,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                       </span>
                     </label>
                     {rgpdError && !rgpdConsent && (
-                      <div className="form-error-msg mt-2" role="alert">
+                      <div id="rgpd-consent-error" className="form-error-msg mt-2" role="alert">
                         <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                         <span>Veuillez accepter la politique de confidentialité pour valider.</span>
                       </div>

@@ -57,6 +57,17 @@ export const Button: React.FC<ButtonProps> = ({
   );
 
   if (href) {
+    const handleAnchorKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>) => {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+      if (e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        (e.currentTarget as HTMLElement).click();
+      }
+    };
+
     return (
       <a
         href={disabled ? undefined : href}
@@ -68,7 +79,9 @@ export const Button: React.FC<ButtonProps> = ({
             ? (e) => e.preventDefault()
             : (onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>)
         }
+        onKeyDown={handleAnchorKeyDown}
         aria-disabled={disabled}
+        tabIndex={disabled ? -1 : undefined}
         role="button"
       >
         {content}

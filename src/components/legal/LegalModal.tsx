@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { X, Shield, FileText, Cookie, ExternalLink, Lock } from 'lucide-react';
 import { Button } from '../common/Button';
+import { useModalA11y } from '../../hooks/useModalA11y';
 
 export type LegalTab = 'legal' | 'privacy' | 'cookies';
 
@@ -19,7 +20,6 @@ export const LegalModal: React.FC<LegalModalProps> = ({
 }) => {
   const modalCardRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   // Reset scroll to top when switching tabs
   useEffect(() => {
@@ -28,65 +28,12 @@ export const LegalModal: React.FC<LegalModalProps> = ({
     }
   }, [activeTab]);
 
-  // Focus trap, Escape key, and focus restoration
-  useEffect(() => {
-    if (isOpen) {
-      previousFocusRef.current = document.activeElement as HTMLElement | null;
-      document.body.style.overflow = 'hidden';
-
-      const timer = setTimeout(() => {
-        if (modalCardRef.current) {
-          const focusable = modalCardRef.current.querySelectorAll<HTMLElement>(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-          );
-          if (focusable.length > 0) {
-            focusable[0].focus();
-          }
-        }
-      }, 50);
-
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Escape') {
-          onClose();
-          return;
-        }
-
-        if (e.key === 'Tab' && modalCardRef.current) {
-          const focusable = modalCardRef.current.querySelectorAll<HTMLElement>(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-          );
-          if (focusable.length === 0) return;
-
-          const first = focusable[0];
-          const last = focusable[focusable.length - 1];
-
-          if (e.shiftKey) {
-            if (document.activeElement === first) {
-              e.preventDefault();
-              last.focus();
-            }
-          } else {
-            if (document.activeElement === last) {
-              e.preventDefault();
-              first.focus();
-            }
-          }
-        }
-      };
-
-      window.addEventListener('keydown', handleKeyDown);
-      return () => {
-        clearTimeout(timer);
-        document.body.style.overflow = 'auto';
-        window.removeEventListener('keydown', handleKeyDown);
-        if (previousFocusRef.current) {
-          previousFocusRef.current.focus();
-        }
-      };
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [isOpen, onClose]);
+  // Comprehensive modal accessibility (focus trap, escape key, body scroll lock, focus restoration)
+  useModalA11y({
+    isOpen,
+    onClose,
+    containerRef: modalCardRef,
+  });
 
   if (!isOpen) return null;
 
