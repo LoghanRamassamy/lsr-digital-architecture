@@ -133,36 +133,36 @@ export const ContactSection: React.FC = () => {
                   <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
                     <span className="font-mono text-xs text-[#38BDF8] tracking-wider uppercase flex items-center gap-2">
                       <Terminal className="w-3.5 h-3.5" />
-                      FORMULAIRE D'INITIALISATION TECHNIQUE
+                      DEMANDE D'ÉCHANGE TECHNIQUE
                     </span>
-                    <span className="text-[11px] font-mono text-[#64748B]">CONFIDENTIEL</span>
+                    <span className="text-[11px] font-mono text-[#64748B]">RÉPONSE SOUS 48H</span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase tracking-wider">
-                        Votre Nom & Rôle *
+                        Nom & Rôle *
                       </label>
                       <input
                         type="text"
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="Ex: Jean Dupont (CTO / Lead Arch)"
+                        placeholder="Jean Dupont (CTO)"
                         className="w-full bg-[#131926] border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#64748B] focus:border-[#38BDF8] focus:outline-none transition-colors"
                       />
                     </div>
 
                     <div>
                       <label className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase tracking-wider">
-                        Email Professionnel *
+                        Email professionnel *
                       </label>
                       <input
                         type="email"
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="nom@entreprise.com"
+                        placeholder="jean@entreprise.com"
                         className="w-full bg-[#131926] border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#64748B] focus:border-[#38BDF8] focus:outline-none transition-colors"
                       />
                     </div>
@@ -170,20 +170,20 @@ export const ContactSection: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase tracking-wider">
-                      Entreprise / Organisation
+                      Entreprise
                     </label>
                     <input
                       type="text"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      placeholder="Ex: FinTech, SaaS Scale-up, Grand Compte..."
+                      placeholder="Nom de l'entreprise ou projet"
                       className="w-full bg-[#131926] border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#64748B] focus:border-[#38BDF8] focus:outline-none transition-colors"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase tracking-wider">
-                      Nature du besoin principal
+                      Type d'intervention
                     </label>
                     <select
                       value={formData.projectType}
@@ -207,13 +207,13 @@ export const ContactSection: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-mono text-[#94A3B8] mb-1.5 uppercase tracking-wider">
-                      Détails de votre contexte & Enjeux
+                      Votre projet en quelques mots
                     </label>
                     <textarea
-                      rows={4}
+                      rows={3}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Décrivez votre problématique technique, volumétrie estimée, délais envisagés..."
+                      placeholder="Contexte technique, enjeux de charge, délais..."
                       className="w-full bg-[#131926] border border-white/10 rounded-[6px] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#64748B] focus:border-[#38BDF8] focus:outline-none transition-colors resize-none"
                     />
                   </div>
@@ -222,7 +222,7 @@ export const ContactSection: React.FC = () => {
                     type="submit"
                     className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-[8px] bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-mono text-sm font-semibold tracking-wider shadow-[0_0_20px_rgba(37,99,235,0.3)] border border-[#38BDF8]/40 transition-all hover:scale-[1.01]"
                   >
-                    <span>Transmettre le brief technique</span>
+                    <span>Initier la prise de contact</span>
                     <Send className="w-4 h-4" />
                   </button>
                 </form>

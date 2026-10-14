@@ -34,9 +34,8 @@ const NODES: NodeInfo[] = [
       pattern: 'Edge CDN / HTTP/3',
     },
     details: [
-      'BFF (Backend for Frontend) typé en TypeScript strict',
-      'Terminaison TLS 1.3 & validation stricte des headers',
-      'Politique de cache granulaire et réplication multi-régions',
+      'BFF typé en TypeScript strict & terminaison TLS 1.3',
+      'Politique de cache granulaire & CDN multi-régions',
     ],
   },
   {
@@ -54,9 +53,8 @@ const NODES: NodeInfo[] = [
       pattern: 'Envoy / Zero-Trust',
     },
     details: [
-      'Filtrage cryptographique mTLS & authentification OIDC/JWT',
-      'Algorithme Token Bucket pour lissage des pics de charge',
-      'Validation de schémas OpenAPI à la volée avant transmission',
+      'Filtrage cryptographique mTLS & validation OpenAPI',
+      'Rate limiting Token Bucket contre les pics de charge',
     ],
   },
   {
@@ -74,9 +72,8 @@ const NODES: NodeInfo[] = [
       pattern: 'Hexagonal / DDD',
     },
     details: [
-      'Entités pures et value objects sans dépendances framework',
-      'Inversion de dépendance stricte (Ports & Adapters)',
-      'Couverture de tests unitaires et mutation testing > 92%',
+      'Clean Architecture : zéro dépendance framework',
+      'Inversion de dépendance stricte & tests unitaires > 90%',
     ],
   },
   {
@@ -94,8 +91,7 @@ const NODES: NodeInfo[] = [
       pattern: 'Transactional Outbox',
     },
     details: [
-      'Garantie de livraison At-Least-Once avec déduplication idempotente',
-      'Sérialisation binaire optimisée via Protobuf / Avro',
+      'Transactional Outbox : garantie zéro perte d’événement',
       'Découplage temporel asynchrone des flux critiques',
     ],
   },
@@ -114,9 +110,8 @@ const NODES: NodeInfo[] = [
       pattern: 'Primary-Replica + WAL',
     },
     details: [
-      'Isolation stricte des transactions et clés étrangères invariantes',
-      'Failover automatique N+1 avec split-brain prevention',
-      'Stratégie de partitionnement temporel et indexation couvrante',
+      'Isolation ACID stricte & réplication synchrone',
+      'Failover automatique N+1 avec tolérance aux pannes',
     ],
   },
   {
@@ -134,9 +129,8 @@ const NODES: NodeInfo[] = [
       pattern: 'OpenTelemetry / Prometheus',
     },
     details: [
-      'Propagation contextuelle TraceID/SpanID de bout en bout',
-      'Alerting proactif basé sur les SLO/SLA et dérive de latence p99',
-      'Journalisation d’audit inviolable pour conformité réglementaire',
+      'Tracing distribué OpenTelemetry de bout en bout',
+      'Alerting proactif basé sur les dérives de latence p99',
     ],
   },
 ];

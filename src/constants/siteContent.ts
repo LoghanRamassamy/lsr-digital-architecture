@@ -21,135 +21,125 @@ export const siteContent: SiteContent = {
   },
   hero: {
     systemTag: '[ ARCHITECTURE LOGICIELLE & INGÉNIERIE SYSTÈME ]',
-    headline:
-      'Façonner des architectures web robustes, pensées pour durer et évoluer sans friction.',
+    headline: 'Façonner des architectures web robustes, conçues pour durer sans friction.',
     subheadline:
-      "Nous concevons des fondations techniques pérennes pour les entreprises exigeantes. De la modélisation de systèmes distribués au développement d'applications web critiques, chaque ligne de code répond à une exigence chirurgicale de performance, de clarté et de résilience.",
+      'Conception de socles techniques critiques et de systèmes distribués. Alliez Clean Architecture, haute performance et zéro dette technique.',
     ctaPrimary: 'Explorer nos expertises',
     ctaSecondary: 'Consulter un architecte',
     metricsBanner: [
       {
-        index: '01',
-        title: 'Robustesse native',
-        description:
-          'Architectures tolérantes aux pannes conçues pour encaisser les montées en charge sans faillir.',
+        value: '99.99%',
+        title: 'Haute Résilience',
+        description: 'Tolérance aux pannes native et reprise automatique sans interruption.',
       },
       {
-        index: '02',
-        title: 'Précision chirurgicale',
-        description:
-          'Typage strict, Clean Architecture, découpage modulaire et couverture de tests exhaustive.',
+        value: '< 50ms',
+        title: 'Latence Maîtrisée',
+        description: 'Profilage p99 chirurgical, découplage et flux asynchrones.',
       },
       {
-        index: '03',
-        title: 'Pérennité du code',
-        description:
-          "Zéro dette technique silencieuse, documentation limpide et transfert d'ingénierie fluide.",
+        value: '0 Dette',
+        title: 'Pérennité du Code',
+        description: 'Clean Architecture, typage strict et couverture de tests exhaustive.',
       },
     ],
   },
   services: {
-    sectionTag: 'SERVICES & CAPACITÉS',
-    sectionTitle: "Un savoir-faire d'ingénierie taillé pour les environnements complexes",
+    sectionTag: 'SERVICES & EXPERTISES',
+    sectionTitle: "Des solutions d'ingénierie ciblées pour les systèmes critiques",
     sectionDescription:
-      'Une approche globale alliant vision macroscopique du système et maîtrise microscopique du code.',
+      'Une approche pragmatique alliant vision globale du système et rigueur microscopique du code.',
     cards: [
       {
         code: 'SEC_01 // ARCHITECTURE',
         title: 'Conception & Architecture Système',
-        pitch:
-          'Modélisation de socles applicatifs résilients, modulaires et extensibles dès le premier jour.',
+        pitch: 'Socles applicatifs modulaires et évolutifs.',
         description:
-          'Plans directeurs, choix de patterns (modulaire, événementiel, microservices ciblés), cartographie des flux et découpage de domaine (DDD) pour garantir une isolation stricte des responsabilités.',
+          "Plans directeurs (DAT), cartographie DDD et flux de données résilients pour garantir l'isolation des responsabilités.",
         deliverables: [
-          "Dossier d'architecture technique (DAT) & cartographie",
-          'Modélisation de domaines & flux de données',
-          'Stratégie de scalabilité et de haute disponibilité',
+          "Dossier d'Architecture Technique (DAT)",
+          'Cartographie DDD & flux de données',
+          'Stratégie de scalabilité & haute disponibilité',
         ],
-        tags: ['Clean Architecture', 'DDD', 'Cloud Native', 'APIs & Flux'],
+        tags: ['Clean Arch', 'DDD', 'Cloud Native', 'Event-Driven'],
       },
       {
         code: 'SEC_02 // CRAFTSMANSHIP',
-        title: 'Ingénierie Web Full-Stack & Applications Métier',
-        pitch:
-          "Développement sur-mesure d'outils critiques où chaque milliseconde et interaction compte.",
+        title: 'Ingénierie Web Full-Stack',
+        pitch: 'Applications métier et APIs haute performance.',
         description:
-          "Conception d'applications métier complètes, d'APIs transactionnelles et d'interfaces web haute performance. Fluidité, sécurité et maintenabilité pérenne.",
+          "Conception sur-mesure d'applications critiques, du back-end transactionnel aux interfaces réactives.",
         deliverables: [
           'Applications web sur-mesure & portails complexes',
           'Back-ends transactionnels & APIs scalables',
-          "Composants d'interface modulaires et testés",
+          'Composants modulaires typés et testés',
         ],
-        tags: ['Java / Spring', 'TypeScript', 'Angular / React', 'PostgreSQL'],
+        tags: ['TypeScript', 'Java / Spring', 'React / Next', 'PostgreSQL'],
       },
       {
         code: 'SEC_03 // RESILIENCE',
-        title: 'Audit Technique, Refactorisation & Performance',
-        pitch:
-          "Éliminer la dette technique, accélérer les temps de réponse et consolider l'existant.",
+        title: 'Audit Technique & Refactorisation',
+        pitch: 'Élimination de dette et consolidation.',
         description:
-          "Diagnostic en profondeur de bases de code historiques. Élimination des goulets d'étranglement et restructuration sans interruption de service.",
+          "Diagnostic en profondeur, élimination des goulets d'étranglement et restructuration sans coupure de service.",
         deliverables: [
           'Audit de code, performance et couverture',
           'Plan de refactorisation étape par étape',
           'Optimisation des requêtes & pipelines CI/CD',
         ],
-        tags: ['Code Review', 'Profiling & Benchmarking', 'DevOps & CI/CD', 'Sécurité'],
+        tags: ['Code Review', 'Profiling p99', 'DevOps & CI/CD', 'Sécurité'],
       },
     ],
   },
   methodology: {
-    sectionTag: "MÉTHODOLOGIE D'INGÉNIERIE",
+    sectionTag: "MÉTHODE D'INGÉNIERIE",
     sectionTitle: "L'exigence du plan, la rigueur de l'exécution",
     steps: [
       {
         step: '01',
         name: 'Audit & Cartographie',
-        description:
-          'Immersion dans les règles métier, analyse des flux opérationnels et contraintes de charge.',
+        description: 'Analyse des flux opérationnels, contraintes de charge et dette existante.',
       },
       {
         step: '02',
-        name: 'Élaboration du Blueprint',
-        description:
-          "Conception du schéma d'architecture cible, validation des interfaces contractuelles (APIs).",
+        name: 'Blueprint Cible',
+        description: "Schéma directeur, découpage de domaine et validation des contrats d'APIs.",
       },
       {
         step: '03',
         name: 'Façonnage & Tests',
-        description:
-          'Développement itératif avec tests automatisés stricts, typage fort et revues de code systématiques.',
+        description: 'Développement Clean Architecture, typage strict et tests automatisés.',
       },
       {
         step: '04',
-        name: 'Déploiement & Pérennisation',
-        description: 'Mise en production orchestrée, observabilité et passation documentée.',
+        name: 'Déploiement & PRA',
+        description: 'Mise en production sécurisée, observabilité continue et passation.',
       },
     ],
   },
   manifesto: {
-    sectionTag: 'PHILOSOPHIE & ENGAGEMENT',
+    sectionTag: 'PHILOSOPHIE',
     quote:
-      "« Construire une application logicielle ne consiste pas seulement à faire fonctionner du code aujourd'hui. C'est l'art de concevoir un système qui demeurera lisible, robuste et élégant face aux défis de demain. »",
+      "« L'art de l'architecture logicielle consiste à concevoir un système qui demeurera lisible, robuste et élégant face aux défis de demain. »",
     principles: [
       {
         title: 'Sobriété & Justesse',
-        text: 'Refus systématique de la sur-ingénierie. La simplicité maîtrisée reste le summum de la robustesse.',
+        text: 'Refus de la sur-ingénierie : la simplicité maîtrisée reste le garant ultime de la robustesse.',
       },
       {
-        title: "Tolérance zéro à l'imprécision",
-        text: "Chaque contrat d'interface, chaque schéma de base de données fait l'objet d'un contrôle rigoureux.",
+        title: 'Rigueur des Contrats',
+        text: 'Typage strict et schémas immuables pour éliminer les régressions silencieuses.',
       },
       {
-        title: "Artisanat d'élite",
-        text: 'Une culture du logiciel où le code propre et la documentation claire sont indissociables du résultat final.',
+        title: 'Artisanat & Transmission',
+        text: 'Code propre, documenté et pensé pour être transmis sans friction.',
       },
     ],
   },
   contact: {
-    sectionTag: 'INITIALISATION DE PROJET',
-    headline: 'Prêt à bâtir des fondations inébranlables pour vos projets digitaux ?',
-    subheadline: "Échangeons sur vos enjeux d'ingénierie, d'audit ou de refonte d'architecture.",
+    sectionTag: 'INITIALISATION',
+    headline: 'Prêt à consolider votre socle technique ?',
+    subheadline: "Échangeons sur vos enjeux d'architecture, d'audit ou de développement critique.",
     directContact: {
       location: 'Conflans-Sainte-Honorine / Île-de-France & Remote',
       availability: 'Consultation technique sous 48h ouvrées',

@@ -52,12 +52,6 @@ export const MethodologySection: React.FC = () => {
                   {/* Step Description */}
                   <p className="text-xs text-[#94A3B8] leading-relaxed">{item.description}</p>
                 </div>
-
-                {/* Pipeline connector label */}
-                <div className="mt-6 pt-3 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-[#64748B]">
-                  <span>JALON 0{idx + 1}</span>
-                  <span className="text-[#38BDF8]">QUALITÉ GARANTIE</span>
-                </div>
               </BentoCard>
             );
           })}
@@ -68,11 +62,10 @@ export const MethodologySection: React.FC = () => {
           <div className="mb-4 flex items-center justify-between">
             <div>
               <span className="font-mono text-xs uppercase tracking-wider text-[#38BDF8] block">
-                ARTEFACT INTERACTIF :: BLUEPRINT TECHNIQUE
+                SCHÉMA D'ARCHITECTURE INTERACTIF
               </span>
               <p className="text-xs text-[#94A3B8]">
-                Explorez les couches logiques et les flux de résilience en manipulant les nœuds
-                ci-dessous.
+                Sélectionnez un composant pour inspecter ses garanties architecturales.
               </p>
             </div>
           </div>

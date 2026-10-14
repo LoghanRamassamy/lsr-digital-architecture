@@ -87,14 +87,14 @@ export const ArchitectureDebtCalculator: React.FC = () => {
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <label className="text-xs font-mono text-[#F8FAFC] uppercase tracking-wider">
-                      1. Découpage & Frontières de Domaine (DDD)
+                      1. Découpage & Domaine
                     </label>
                     <span className="text-xs font-mono text-[#38BDF8]">
-                      {metrics.architectureCoupling === 1 && 'Monolithe fortement couplé'}
-                      {metrics.architectureCoupling === 2 && 'Couplage base de données direct'}
+                      {metrics.architectureCoupling === 1 && 'Monolithe couplé'}
+                      {metrics.architectureCoupling === 2 && 'Couplage BDD direct'}
                       {metrics.architectureCoupling === 3 && 'Modulaire partiel'}
-                      {metrics.architectureCoupling === 4 && 'Clean Architecture / Ports'}
-                      {metrics.architectureCoupling === 5 && 'DDD strict & Découplage complet'}
+                      {metrics.architectureCoupling === 4 && 'Clean Architecture'}
+                      {metrics.architectureCoupling === 5 && 'DDD strict & Hexagonal'}
                     </span>
                   </div>
                   <input
@@ -114,14 +114,14 @@ export const ArchitectureDebtCalculator: React.FC = () => {
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <label className="text-xs font-mono text-[#F8FAFC] uppercase tracking-wider">
-                      2. Rigueur des Tests & Typage
+                      2. Tests & Typage
                     </label>
                     <span className="text-xs font-mono text-[#38BDF8]">
-                      {metrics.testCoverage === 1 && 'Tests manuels / typage lâche'}
-                      {metrics.testCoverage === 2 && 'Tests unitaires épars (< 30%)'}
-                      {metrics.testCoverage === 3 && 'Couverture ~50% standard'}
-                      {metrics.testCoverage === 4 && 'Typage strict & Intégration > 75%'}
-                      {metrics.testCoverage === 5 && 'E2E, Mutation testing & CI bloquante'}
+                      {metrics.testCoverage === 1 && 'Tests manuels'}
+                      {metrics.testCoverage === 2 && 'Unitaires épars (< 30%)'}
+                      {metrics.testCoverage === 3 && 'Couverture ~50%'}
+                      {metrics.testCoverage === 4 && 'Intégration & Typage strict (> 75%)'}
+                      {metrics.testCoverage === 5 && 'E2E & CI bloquante (100%)'}
                     </span>
                   </div>
                   <input
@@ -141,14 +141,14 @@ export const ArchitectureDebtCalculator: React.FC = () => {
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <label className="text-xs font-mono text-[#F8FAFC] uppercase tracking-wider">
-                      3. Tolérance aux Pannes & Haute Disponibilité
+                      3. Tolérance aux Pannes
                     </label>
                     <span className="text-xs font-mono text-[#38BDF8]">
-                      {metrics.scalabilityTolerance === 1 && 'SPOF (Point unique de panne)'}
+                      {metrics.scalabilityTolerance === 1 && 'Point unique de panne (SPOF)'}
                       {metrics.scalabilityTolerance === 2 && 'Redémarrage manuel'}
                       {metrics.scalabilityTolerance === 3 && 'Réplication basique'}
                       {metrics.scalabilityTolerance === 4 && 'Failover auto & Circuit Breakers'}
-                      {metrics.scalabilityTolerance === 5 && 'Multi-AZ, Zero-Downtime deploy'}
+                      {metrics.scalabilityTolerance === 5 && 'Multi-AZ & Zero-Downtime'}
                     </span>
                   </div>
                   <input
@@ -168,14 +168,14 @@ export const ArchitectureDebtCalculator: React.FC = () => {
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <label className="text-xs font-mono text-[#F8FAFC] uppercase tracking-wider">
-                      4. Observabilité & Détection d'Anomalies
+                      4. Observabilité & Alerting
                     </label>
                     <span className="text-xs font-mono text-[#38BDF8]">
-                      {metrics.observabilityLevel === 1 && 'Logs textuels locaux'}
-                      {metrics.observabilityLevel === 2 && 'Agrégation de logs basique'}
-                      {metrics.observabilityLevel === 3 && 'Métriques CPU/RAM'}
-                      {metrics.observabilityLevel === 4 && 'OpenTelemetry & Tracing'}
-                      {metrics.observabilityLevel === 5 && 'SLO/SLI & Alerting prédictif p99'}
+                      {metrics.observabilityLevel === 1 && 'Logs locaux basiques'}
+                      {metrics.observabilityLevel === 2 && 'Agrégation de logs'}
+                      {metrics.observabilityLevel === 3 && 'Métriques CPU / RAM'}
+                      {metrics.observabilityLevel === 4 && 'Tracing OpenTelemetry'}
+                      {metrics.observabilityLevel === 5 && 'SLO/SLI & Alerting p99'}
                     </span>
                   </div>
                   <input

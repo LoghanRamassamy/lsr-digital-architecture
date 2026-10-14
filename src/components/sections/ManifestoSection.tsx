@@ -48,24 +48,19 @@ export const ManifestoSection: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="font-mono text-xs text-[#F59E0B] font-bold">
-                      PRINCIPE_0{idx + 1}
+                    <span className="font-mono text-xs text-[#F59E0B] font-bold tracking-wider">
+                      PILIER // 0{idx + 1}
                     </span>
                     <div className="p-2 rounded bg-[#131926] text-[#F59E0B] border border-white/10">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-heading font-bold text-[#F8FAFC] mb-3 tracking-tight">
+                  <h3 className="text-lg font-heading font-bold text-[#F8FAFC] mb-2 tracking-tight">
                     {principle.title}
                   </h3>
 
                   <p className="text-sm text-[#94A3B8] leading-relaxed">{principle.text}</p>
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-white/[0.08] flex items-center justify-between text-[11px] font-mono text-[#64748B]">
-                  <span>CHARTE TECHNIQUE</span>
-                  <span className="text-emerald-400">INVIOLABLE</span>
                 </div>
               </BentoCard>
             );

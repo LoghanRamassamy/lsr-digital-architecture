@@ -63,21 +63,23 @@ export const HeroSection: React.FC = () => {
             const Icon = metricIcons[idx % metricIcons.length];
             return (
               <BentoCard
-                key={metric.index}
+                key={metric.title}
                 glowColor={idx === 1 ? 'cyan' : idx === 0 ? 'blue' : 'amber'}
               >
                 <div className="p-6 h-full flex flex-col justify-between">
                   <div>
-                    {/* Index & Icon */}
+                    {/* Icon and Value header */}
                     <div className="flex items-center justify-between mb-4">
-                      <span className="font-mono text-xs font-semibold tracking-widest text-[#38BDF8] bg-[#38BDF8]/10 px-2 py-0.5 rounded border border-[#38BDF8]/20">
-                        METRIC // {metric.index}
+                      <span className="text-3xl sm:text-4xl font-heading font-black tracking-tight text-[#F8FAFC] group-hover:text-[#38BDF8] transition-colors">
+                        {metric.value}
                       </span>
-                      <Icon className="w-5 h-5 text-[#94A3B8] group-hover:text-[#38BDF8] transition-colors" />
+                      <div className="p-2 rounded-lg bg-[#131926] border border-white/10 text-[#38BDF8]">
+                        <Icon className="w-5 h-5 text-[#94A3B8] group-hover:text-[#38BDF8] transition-colors" />
+                      </div>
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-lg font-heading font-semibold text-[#F8FAFC] mb-2 tracking-tight">
+                    <h2 className="text-base font-heading font-semibold text-[#F8FAFC] mb-1.5 tracking-tight">
                       {metric.title}
                     </h2>
 
@@ -85,12 +87,6 @@ export const HeroSection: React.FC = () => {
                     <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed">
                       {metric.description}
                     </p>
-                  </div>
-
-                  {/* Blueprint mini telemetry bar */}
-                  <div className="mt-6 pt-4 border-t border-white/[0.05] flex items-center justify-between text-[11px] font-mono text-[#64748B]">
-                    <span>STATUS: VERIFIED</span>
-                    <span className="text-[#38BDF8]">100% AUDITÉ</span>
                   </div>
                 </div>
               </BentoCard>

@@ -4,7 +4,8 @@ export interface NavigationItem {
 }
 
 export interface MetricItem {
-  index: string;
+  index?: string;
+  value: string;
   title: string;
   description: string;
 }

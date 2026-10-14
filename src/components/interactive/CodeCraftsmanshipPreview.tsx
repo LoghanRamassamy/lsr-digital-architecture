@@ -8,7 +8,7 @@ const SNIPPETS = [
     id: 'domain',
     name: 'DomainEntity.ts',
     desc: 'Cœur Métier pur sans aucune dépendance framework',
-    code: `// Domain Layer: Pure business invariant & Zero framework coupling
+    code: `// Domain Layer: Pure business invariants & strict encapsulation
 export class ResilientSystem {
   private constructor(
     readonly id: SystemId,
@@ -35,11 +35,9 @@ export class ResilientSystem {
     id: 'circuit-breaker',
     name: 'CircuitBreaker.ts',
     desc: 'Pattern de tolérance aux pannes & lissage de charge',
-    code: `// Resilience Port: Circuit Breaker with exponential backoff & Half-Open state
+    code: `// Resilience Port: Circuit Breaker with fail-fast & auto-recovery
 export class ResilientCircuitBreaker<TInput, TOutput> {
   private state: 'CLOSED' | 'OPEN' | 'HALF_OPEN' = 'CLOSED';
-  private failureThreshold = 3;
-  private consecutiveFailures = 0;
 
   async execute(command: () => Promise<TOutput>): Promise<TOutput> {
     if (this.state === 'OPEN') {
@@ -48,7 +46,7 @@ export class ResilientCircuitBreaker<TInput, TOutput> {
 
     try {
       const result = await command();
-      this.resetHealth();
+      this.state = 'CLOSED';
       return result;
     } catch (error) {
       this.recordFailure();
@@ -60,23 +58,22 @@ export class ResilientCircuitBreaker<TInput, TOutput> {
   {
     id: 'outbox',
     name: 'TransactionalOutbox.ts',
-    desc: 'Garantie de cohérence à terme et zéro perte d’événement',
+    desc: 'Garantie de cohérence ACID & zéro perte d’événement',
     code: `// Event-Driven: Outbox pattern for atomic DB write & message publication
 export async function executeOrderWithOutbox(
   db: TransactionalClient,
   order: OrderDomainModel
 ): Promise<void> {
   await db.transaction(async (tx) => {
-    // 1. Atomic domain persistence
+    // 1. Persistance atomique du domaine
     await tx.orders.insert(order.toPersistence());
 
-    // 2. Outbox event recording in the same ACID transaction
+    // 2. Événement enregistré dans la même transaction ACID
     await tx.outboxEvents.insert({
       aggregateId: order.id.toString(),
       eventType: "ORDER_FINALIZED",
       payload: order.toEventPayload(),
       occurredAt: new Date(),
-      status: "PENDING_DISPATCH"
     });
   });
 }`,
@@ -99,11 +96,11 @@ export const CodeCraftsmanshipPreview: React.FC = () => {
         <div className="max-w-3xl mb-12">
           <SectionTag variant="cyan">CRAFTSMANSHIP & RIGUEUR DE CODE</SectionTag>
           <h2 className="text-3xl sm:text-4xl font-heading font-bold text-[#F8FAFC] tracking-tight mb-3">
-            L'Excellence d'Ingénierie au Niveau Microscopique
+            L'Excellence au Niveau Microscopique
           </h2>
           <p className="text-sm sm:text-base text-[#94A3B8]">
-            Une architecture robuste ne se limite pas à des boîtes sur un schéma. Elle vit dans
-            chaque interface typée, chaque invariant et chaque gestion d'exception.
+            Une architecture robuste vit dans chaque interface typée, chaque invariant de domaine et
+            chaque gestion de panne.
           </p>
         </div>
 

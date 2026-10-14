@@ -61,28 +61,23 @@ export const ServicesSection: React.FC = () => {
                     </div>
 
                     {/* Card Title */}
-                    <h3 className="text-xl font-heading font-bold text-[#F8FAFC] mb-2 tracking-tight">
+                    <h3 className="text-xl font-heading font-bold text-[#F8FAFC] mb-3 tracking-tight">
                       {card.title}
                     </h3>
-
-                    {/* Pitch */}
-                    <p className="text-xs sm:text-sm font-mono text-[#38BDF8] mb-4 leading-relaxed font-medium">
-                      {card.pitch}
-                    </p>
 
                     {/* Description */}
                     <p className="text-sm text-[#94A3B8] leading-relaxed mb-6">
                       {card.description}
                     </p>
 
-                    {/* Deliverables Checklist */}
+                    {/* Key Deliverables */}
                     <div className="space-y-2.5 pt-4 border-t border-white/[0.08] mb-6">
-                      <span className="text-xs font-mono text-[#64748B] uppercase tracking-wider block mb-2">
-                        Livrables Contractuels :
+                      <span className="text-[11px] font-mono text-[#64748B] uppercase tracking-wider block mb-2">
+                        Périmètre & Livrables :
                       </span>
                       {card.deliverables.map((item, dIdx) => (
-                        <div key={dIdx} className="flex items-start gap-2.5 text-xs text-[#E2E8F0]">
-                          <CheckCircle className="w-4 h-4 text-[#38BDF8] shrink-0 mt-0.5" />
+                        <div key={dIdx} className="flex items-center gap-2 text-xs text-[#E2E8F0]">
+                          <CheckCircle className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
                           <span className="leading-snug">{item}</span>
                         </div>
                       ))}
@@ -99,13 +94,13 @@ export const ServicesSection: React.FC = () => {
                   {/* Footer action trigger */}
                   <div className="px-7 py-3 bg-[#090A0F]/60 border-t border-white/[0.05] flex items-center justify-between">
                     <span className="text-[11px] font-mono text-[#64748B]">
-                      ENGAGEMENT D'INGÉNIERIE
+                      INTERVENTION SUR-MESURE
                     </span>
                     <a
                       href="#contact"
-                      className="inline-flex items-center gap-1 text-xs font-mono text-[#38BDF8] hover:underline"
+                      className="inline-flex items-center gap-1 text-xs font-mono text-[#38BDF8] hover:text-white transition-colors"
                     >
-                      <span>Consulter</span>
+                      <span>Échanger</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </a>
                   </div>
