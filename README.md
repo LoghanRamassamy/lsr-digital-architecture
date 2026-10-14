@@ -88,25 +88,25 @@ lsr-digital-architecture/
 
 ```bash
 # Installation des dépendances
-npm install
+pnpm install
 
 # Démarrer le serveur de développement
-npm run dev
+pnpm dev
 
 # Vérification des types TypeScript
-npm run typecheck
+pnpm typecheck
 
 # Linter
-npm run lint
+pnpm lint
 
 # Formater le code avec Prettier
-npm run format
+pnpm format
 
 # Compiler le bundle de production optimisé
-npm run build
+pnpm build
 
 # Prévisualiser la version de production
-npm run preview
+pnpm preview
 ```
 
 ---
