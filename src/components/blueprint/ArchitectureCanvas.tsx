@@ -90,8 +90,8 @@ export const ArchitectureCanvas: React.FC = () => {
             <defs>
               {/* Gradient for wireframe connectors */}
               <linearGradient id="wireGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#2563EB" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#38BDF8" stopOpacity="0.8" />
+                <stop offset="0%" stopColor="var(--accent-blue)" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="var(--accent-cyan)" stopOpacity="0.8" />
               </linearGradient>
 
               {/* Luminous Glow Filter */}
@@ -115,7 +115,7 @@ export const ArchitectureCanvas: React.FC = () => {
               {/* Gateway -> Domain Core */}
               <path
                 d="M 330 190 C 380 190, 390 130, 420 130"
-                stroke={activeLayer === 'resilience' ? '#64748B' : 'url(#wireGradient)'}
+                stroke={activeLayer === 'resilience' ? 'var(--text-muted)' : 'url(#wireGradient)'}
                 strokeWidth="1.5"
                 strokeDasharray={activeLayer === 'resilience' ? '2 2' : '4 3'}
                 fill="none"
@@ -142,7 +142,7 @@ export const ArchitectureCanvas: React.FC = () => {
               {/* Domain Core -> Event Broker (Outbox sync) */}
               <path
                 d="M 480 165 L 480 235"
-                stroke="#38BDF8"
+                stroke="var(--accent-cyan)"
                 strokeWidth="1.5"
                 strokeDasharray="3 3"
                 strokeOpacity="0.6"
@@ -160,7 +160,7 @@ export const ArchitectureCanvas: React.FC = () => {
               {/* Database -> Telemetry Monitoring Line */}
               <path
                 d="M 710 165 L 710 235"
-                stroke="#2563EB"
+                stroke="var(--accent-blue)"
                 strokeWidth="1.5"
                 strokeDasharray="3 3"
                 strokeOpacity="0.4"
@@ -168,7 +168,7 @@ export const ArchitectureCanvas: React.FC = () => {
             </g>
 
             {/* Blueprint Coordinate Annotation Markings */}
-            <g className="text-[10px] font-mono fill-[#64748B]">
+            <g className="text-[10px] font-mono" fill="var(--text-muted)">
               <text x="30" y="30">
                 SYS_LAYOUT :: DISTRIBUTED_HEXAGONAL
               </text>
@@ -180,7 +180,7 @@ export const ArchitectureCanvas: React.FC = () => {
                 y1="40"
                 x2="770"
                 y2="40"
-                stroke="rgba(255,255,255,0.08)"
+                stroke="var(--border-subtle)"
                 strokeWidth="1"
                 strokeDasharray="2 4"
               />
@@ -189,7 +189,7 @@ export const ArchitectureCanvas: React.FC = () => {
                 y1="350"
                 x2="770"
                 y2="350"
-                stroke="rgba(255,255,255,0.08)"
+                stroke="var(--border-subtle)"
                 strokeWidth="1"
                 strokeDasharray="2 4"
               />
@@ -215,7 +215,7 @@ export const ArchitectureCanvas: React.FC = () => {
                       cy="0"
                       r="40"
                       fill="none"
-                      stroke="#38BDF8"
+                      stroke="var(--accent-cyan)"
                       strokeWidth="1"
                       strokeOpacity="0.3"
                       className="animate-ping"
@@ -228,8 +228,8 @@ export const ArchitectureCanvas: React.FC = () => {
                     cx="0"
                     cy="0"
                     r="28"
-                    fill="#0D111A"
-                    stroke={isSelected ? '#38BDF8' : 'rgba(255, 255, 255, 0.15)'}
+                    fill="var(--bg-surface)"
+                    stroke={isSelected ? 'var(--accent-cyan)' : 'var(--border-strong)'}
                     strokeWidth="1.5"
                     filter={isSelected ? 'url(#nodeGlow)' : undefined}
                     className="hover:stroke-[#38BDF8] transition-colors"
@@ -240,8 +240,8 @@ export const ArchitectureCanvas: React.FC = () => {
                     cx="0"
                     cy="0"
                     r="16"
-                    fill={isSelected ? '#131926' : '#090A0F'}
-                    stroke={isSelected ? '#2563EB' : 'rgba(56, 189, 248, 0.4)'}
+                    fill={isSelected ? 'var(--bg-surface-elevated)' : 'var(--bg-primary)'}
+                    stroke={isSelected ? 'var(--accent-blue)' : 'var(--accent-cyan-border-40)'}
                     strokeWidth="1"
                   />
 
@@ -250,7 +250,7 @@ export const ArchitectureCanvas: React.FC = () => {
                     cx="0"
                     cy="0"
                     r="3.5"
-                    fill={isSelected ? '#38BDF8' : '#2563EB'}
+                    fill={isSelected ? 'var(--accent-cyan)' : 'var(--accent-blue)'}
                     className={isSelected ? 'animate-pulse' : ''}
                   />
 
@@ -259,7 +259,8 @@ export const ArchitectureCanvas: React.FC = () => {
                     x="0"
                     y="42"
                     textAnchor="middle"
-                    className="fill-[#F8FAFC] text-[11px] font-mono font-medium tracking-tight"
+                    fill="var(--text-primary)"
+                    className="text-[11px] font-mono font-medium tracking-tight"
                   >
                     {node.name.split(' / ')[0]}
                   </text>
@@ -267,7 +268,8 @@ export const ArchitectureCanvas: React.FC = () => {
                     x="0"
                     y="54"
                     textAnchor="middle"
-                    className="fill-[#64748B] text-[9px] font-mono tracking-widest"
+                    fill="var(--text-muted)"
+                    className="text-[9px] font-mono tracking-widest"
                   >
                     {node.tag}
                   </text>

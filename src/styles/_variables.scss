@@ -1,34 +1,72 @@
 // ==========================================================================
 // LSR Digital Architecture — Variables & Design Tokens SCSS
-// High-Craft Engineering Aesthetic / Blueprint Theme
+// High-Craft Engineering Aesthetic / Blueprint Theme (Dark & Light)
 // ==========================================================================
 
-// --- Background Colors ---
-$bg-primary: #090a0f;
-$bg-surface: #0d111a;
-$bg-surface-elevated: #131926;
-$bg-deep: #07080c;
+// --- Background Colors (Dark) ---
+$bg-primary-dark: #090a0f;
+$bg-surface-dark: #0d111a;
+$bg-surface-elevated-dark: #131926;
+$bg-deep-dark: #07080c;
+
+// --- Background Colors (Light) ---
+$bg-primary-light: #f8fafc;
+$bg-surface-light: #ffffff;
+$bg-surface-elevated-light: #f1f5f9;
+$bg-deep-light: #e2e8f0;
+
+// Defaults for SCSS fallbacks
+$bg-primary: $bg-primary-dark;
+$bg-surface: $bg-surface-dark;
+$bg-surface-elevated: $bg-surface-elevated-dark;
+$bg-deep: $bg-deep-dark;
 
 // --- Accent & Signal Colors ---
 $accent-blue: #2563eb;
 $accent-blue-hover: #1d4ed8;
 $accent-cyan: #38bdf8;
+$accent-cyan-light: #0284c7; // High-contrast sky-600 for light backgrounds
 $accent-amber: #f59e0b;
+$accent-amber-light: #d97706; // High-contrast amber-600 for light backgrounds
 $accent-emerald: #34d399;
+$accent-emerald-light: #059669; // High-contrast emerald-600 for light backgrounds
 $accent-emerald-dark: #10b981;
 
-// --- Typography Colors ---
-$text-primary: #f8fafc;
-$text-secondary: #94a3b8;
-$text-muted: #64748b;
-$text-dim: #475569;
+// --- Typography Colors (Dark) ---
+$text-primary-dark: #f8fafc;
+$text-secondary-dark: #94a3b8;
+$text-muted-dark: #64748b;
+$text-dim-dark: #475569;
+
+// --- Typography Colors (Light) ---
+$text-primary-light: #0f172a;
+$text-secondary-light: #475569;
+$text-muted-light: #64748b;
+$text-dim-light: #94a3b8;
+
+// Typography Defaults
+$text-primary: $text-primary-dark;
+$text-secondary: $text-secondary-dark;
+$text-muted: $text-muted-dark;
+$text-dim: $text-dim-dark;
 $text-white: #ffffff;
 
-// --- Wireframe & Border Colors ---
-$border-subtle: rgba(255, 255, 255, 0.08);
-$border-medium: rgba(255, 255, 255, 0.12);
-$border-strong: rgba(255, 255, 255, 0.2);
-$border-active: rgba(56, 189, 248, 0.4);
+// --- Wireframe & Border Colors (Dark) ---
+$border-subtle-dark: rgba(255, 255, 255, 0.08);
+$border-medium-dark: rgba(255, 255, 255, 0.12);
+$border-strong-dark: rgba(255, 255, 255, 0.2);
+$border-active-dark: rgba(56, 189, 248, 0.4);
+
+// --- Wireframe & Border Colors (Light) ---
+$border-subtle-light: rgba(15, 23, 42, 0.08);
+$border-medium-light: rgba(15, 23, 42, 0.14);
+$border-strong-light: rgba(15, 23, 42, 0.22);
+$border-active-light: rgba(2, 132, 199, 0.45);
+
+$border-subtle: $border-subtle-dark;
+$border-medium: $border-medium-dark;
+$border-strong: $border-strong-dark;
+$border-active: $border-active-dark;
 $border-active-glow: rgba(56, 189, 248, 0.6);
 
 // --- Typography Stacks ---

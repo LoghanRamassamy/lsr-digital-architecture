@@ -1,27 +1,126 @@
 // ==========================================================================
-// LSR Digital Architecture — Base & Reset SCSS
+// LSR Digital Architecture — Base & Reset SCSS (Dark & Light Mode Engine)
 // ==========================================================================
 @use 'variables' as *;
 @use 'mixins' as *;
 
-:root {
-  --bg-primary: #{$bg-primary};
-  --bg-surface: #{$bg-surface};
-  --bg-surface-elevated: #{$bg-surface-elevated};
-  --bg-deep: #{$bg-deep};
+:root,
+html.dark,
+html[data-theme='dark'] {
+  color-scheme: dark;
 
-  --text-primary: #{$text-primary};
-  --text-secondary: #{$text-secondary};
-  --text-muted: #{$text-muted};
-  --text-dim: #{$text-dim};
+  // Backgrounds
+  --bg-primary: #{$bg-primary-dark};
+  --bg-primary-60: rgba(9, 10, 15, 0.6);
+  --bg-primary-80: rgba(9, 10, 15, 0.8);
+  --bg-primary-90: rgba(9, 10, 15, 0.9);
+  --bg-surface: #{$bg-surface-dark};
+  --bg-surface-elevated: #{$bg-surface-elevated-dark};
+  --bg-deep: #{$bg-deep-dark};
 
+  // Typography
+  --text-primary: #{$text-primary-dark};
+  --text-secondary: #{$text-secondary-dark};
+  --text-muted: #{$text-muted-dark};
+  --text-dim: #{$text-dim-dark};
+  --text-secondary-elevated: #e2e8f0;
+
+  // Accent & Signal Colors
   --accent-blue: #{$accent-blue};
+  --accent-blue-hover: #{$accent-blue-hover};
   --accent-cyan: #{$accent-cyan};
+  --accent-cyan-bg-10: rgba(56, 189, 248, 0.1);
+  --accent-cyan-bg-20: rgba(56, 189, 248, 0.2);
+  --accent-cyan-border-20: rgba(56, 189, 248, 0.2);
+  --accent-cyan-border-30: rgba(56, 189, 248, 0.3);
+  --accent-cyan-border-40: rgba(56, 189, 248, 0.4);
   --accent-amber: #{$accent-amber};
+  --accent-amber-bg-10: rgba(245, 158, 11, 0.1);
+  --accent-amber-border-30: rgba(245, 158, 11, 0.3);
   --accent-emerald: #{$accent-emerald};
+  --accent-emerald-bg-10: rgba(52, 211, 153, 0.1);
+  --accent-emerald-border-30: rgba(52, 211, 153, 0.3);
 
-  --border-subtle: #{$border-subtle};
-  --border-active: #{$border-active};
+  // Wireframe & Borders
+  --border-subtle: #{$border-subtle-dark};
+  --border-subtle-05: rgba(255, 255, 255, 0.05);
+  --border-medium: #{$border-medium-dark};
+  --border-strong: #{$border-strong-dark};
+  --border-active: #{$border-active-dark};
+
+  // Shadows
+  --shadow-bento: 0 4px 24px -2px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  --shadow-bento-hover: 0 12px 32px -4px rgba(0, 0, 0, 0.6), 0 0 24px -4px rgba(56, 189, 248, 0.15);
+
+  // Blueprint Graphics
+  --grid-line-color: rgba(255, 255, 255, 0.035);
+  --grid-dense-color: rgba(56, 189, 248, 0.04);
+  --dot-pattern-color: rgba(255, 255, 255, 0.12);
+
+  // UI Micro-details
+  --selection-bg: rgba(56, 189, 248, 0.25);
+  --selection-color: #{$accent-cyan};
+  --scrollbar-track: #090a0f;
+  --scrollbar-thumb: #1e293b;
+}
+
+html.light,
+html[data-theme='light'] {
+  color-scheme: light;
+
+  // Backgrounds: Clean slate blueprint canvas
+  --bg-primary: #{$bg-primary-light};
+  --bg-primary-60: rgba(248, 250, 252, 0.6);
+  --bg-primary-80: rgba(248, 250, 252, 0.85);
+  --bg-primary-90: rgba(248, 250, 252, 0.95);
+  --bg-surface: #{$bg-surface-light};
+  --bg-surface-elevated: #{$bg-surface-elevated-light};
+  --bg-deep: #{$bg-deep-light};
+
+  // Typography: Dark slate high-legibility hierarchy
+  --text-primary: #{$text-primary-light};
+  --text-secondary: #{$text-secondary-light};
+  --text-muted: #{$text-muted-light};
+  --text-dim: #{$text-dim-light};
+  --text-secondary-elevated: #1e293b;
+
+  // Accent & Signal Colors: High contrast on white
+  --accent-blue: #{$accent-blue};
+  --accent-blue-hover: #{$accent-blue-hover};
+  --accent-cyan: #{$accent-cyan-light};
+  --accent-cyan-bg-10: rgba(2, 132, 199, 0.08);
+  --accent-cyan-bg-20: rgba(2, 132, 199, 0.14);
+  --accent-cyan-border-20: rgba(2, 132, 199, 0.25);
+  --accent-cyan-border-30: rgba(2, 132, 199, 0.35);
+  --accent-cyan-border-40: rgba(2, 132, 199, 0.5);
+  --accent-amber: #{$accent-amber-light};
+  --accent-amber-bg-10: rgba(217, 119, 6, 0.08);
+  --accent-amber-border-30: rgba(217, 119, 6, 0.35);
+  --accent-emerald: #{$accent-emerald-light};
+  --accent-emerald-bg-10: rgba(5, 150, 105, 0.08);
+  --accent-emerald-border-30: rgba(5, 150, 105, 0.35);
+
+  // Wireframe & Borders
+  --border-subtle: #{$border-subtle-light};
+  --border-subtle-05: rgba(15, 23, 42, 0.04);
+  --border-medium: #{$border-medium-light};
+  --border-strong: #{$border-strong-light};
+  --border-active: #{$border-active-light};
+
+  // Shadows: Refined architectural depth
+  --shadow-bento: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px -2px rgba(15, 23, 42, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+  --shadow-bento-hover: 0 14px 28px -4px rgba(15, 23, 42, 0.09), 0 0 20px -2px rgba(2, 132, 199, 0.12);
+
+  // Blueprint Graphics
+  --grid-line-color: rgba(15, 23, 42, 0.04);
+  --grid-dense-color: rgba(2, 132, 199, 0.05);
+  --dot-pattern-color: rgba(15, 23, 42, 0.1);
+
+  // UI Micro-details
+  --selection-bg: rgba(2, 132, 199, 0.2);
+  --selection-color: #{$accent-cyan-light};
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
 }
 
 *,
@@ -34,7 +133,6 @@
 }
 
 html {
-  color-scheme: dark;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: $font-sans;
@@ -42,6 +140,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+  transition: background-color $transition-smooth, color $transition-smooth;
 }
 
 body {
@@ -51,6 +150,7 @@ body {
   font-family: $font-sans;
   line-height: 1.5;
   overflow-x: hidden;
+  transition: background-color $transition-smooth, color $transition-smooth;
 }
 
 a {
@@ -75,8 +175,8 @@ select {
 
 // Text Selection
 ::selection {
-  background-color: rgba(56, 189, 248, 0.25);
-  color: $accent-cyan;
+  background-color: var(--selection-bg);
+  color: var(--selection-color);
 }
 
 // Accessible Focus Ring
@@ -91,15 +191,15 @@ select {
 }
 
 ::-webkit-scrollbar-track {
-  background: $bg-primary;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 
   &:hover {
-    background: $accent-cyan;
+    background: var(--accent-cyan);
   }
 }
 

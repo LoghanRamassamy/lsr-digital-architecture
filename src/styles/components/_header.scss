@@ -1,5 +1,6 @@
 // ==========================================================================
 // LSR Digital Architecture — Header Navigation SCSS Component
+// High-Craft Blueprint & Engineering Theme (Dark & Light Mode)
 // ==========================================================================
 @use '../variables' as *;
 @use '../mixins' as *;
@@ -13,7 +14,7 @@
   transition: all $transition-smooth;
 
   &--scrolled {
-    @include glassmorphism(16px, rgba(9, 10, 15, 0.92), rgba(255, 255, 255, 0.08));
+    @include glassmorphism(16px, var(--bg-primary-90), var(--border-subtle));
     border-top: none;
     border-left: none;
     border-right: none;
@@ -32,7 +33,7 @@
     position: relative;
     font-family: $font-mono;
     font-size: 0.8125rem;
-    color: $text-secondary;
+    color: var(--text-secondary);
     padding: 0.375rem 0.625rem;
     border-radius: $radius-sm;
     transition:
@@ -40,12 +41,12 @@
       background-color $transition-fast;
 
     &:hover {
-      color: $text-primary;
+      color: var(--text-primary);
     }
 
     &--active {
-      color: $accent-cyan !important;
-      background-color: rgba(56, 189, 248, 0.08);
+      color: var(--accent-cyan) !important;
+      background-color: var(--accent-cyan-bg-10);
 
       &::after {
         content: '';
@@ -54,8 +55,8 @@
         left: 20%;
         right: 20%;
         height: 1.5px;
-        background-color: $accent-cyan;
-        box-shadow: 0 0 8px $accent-cyan;
+        background-color: var(--accent-cyan);
+        box-shadow: 0 0 8px var(--accent-cyan);
       }
     }
   }
@@ -65,8 +66,8 @@
     width: 2.25rem;
     height: 2.25rem;
     border-radius: $radius-md;
-    background-color: $bg-surface;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-strong);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,7 +75,7 @@
     transition: border-color $transition-normal;
 
     &:hover {
-      border-color: $accent-cyan;
+      border-color: var(--accent-cyan);
     }
 
     .corner-cyan {
@@ -83,7 +84,7 @@
       right: 0;
       width: 6px;
       height: 6px;
-      background-color: $accent-cyan;
+      background-color: var(--accent-cyan);
     }
 
     .corner-blue {
@@ -92,7 +93,7 @@
       left: 0;
       width: 6px;
       height: 6px;
-      background-color: $accent-blue;
+      background-color: var(--accent-blue);
     }
   }
 }

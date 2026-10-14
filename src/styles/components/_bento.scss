@@ -1,5 +1,6 @@
 // ==========================================================================
 // LSR Digital Architecture — Bento Card SCSS Component
+// High-Craft Blueprint & Engineering Theme (Dark & Light Mode)
 // ==========================================================================
 @use '../variables' as *;
 @use '../mixins' as *;
@@ -33,7 +34,7 @@
 
     span {
       position: absolute;
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: var(--border-strong);
       transition: background-color $transition-normal;
     }
 
@@ -49,7 +50,7 @@
 
   &:hover {
     .bento-card__corner span {
-      background-color: rgba(56, 189, 248, 0.6);
+      background-color: var(--accent-cyan);
     }
   }
 

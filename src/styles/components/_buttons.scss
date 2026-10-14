@@ -86,64 +86,62 @@
     }
   }
 
-  // 2. Secondary: Dark Slate Surface with Blueprint Border
+  // 2. Secondary: Surface with Blueprint Border
   &--secondary {
-    background-color: $bg-surface;
-    color: $text-primary;
-    border-color: $border-medium;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border-color: var(--border-medium);
+    box-shadow: var(--shadow-bento);
 
     &:hover:not(:disabled) {
-      background-color: $bg-surface-elevated;
-      border-color: rgba($accent-cyan, 0.5);
-      color: $text-white;
-      box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.6),
-        0 0 16px rgba(56, 189, 248, 0.15);
+      background-color: var(--bg-surface-elevated);
+      border-color: var(--accent-cyan);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-bento-hover);
       transform: translateY(-1px) scale(1.015);
     }
 
     &:active:not(:disabled) {
       transform: translateY(0) scale(0.99);
-      background-color: $bg-surface;
+      background-color: var(--bg-surface);
     }
   }
 
   // 3. Ghost: Minimal sleek button
   &--ghost {
-    background-color: rgba(255, 255, 255, 0.04);
-    color: $text-secondary;
-    border-color: $border-subtle;
+    background-color: var(--border-subtle-05);
+    color: var(--text-secondary);
+    border-color: var(--border-subtle);
 
     &:hover:not(:disabled) {
-      background-color: rgba(255, 255, 255, 0.09);
-      color: $text-primary;
-      border-color: rgba(255, 255, 255, 0.18);
+      background-color: var(--border-medium);
+      color: var(--text-primary);
+      border-color: var(--border-strong);
     }
 
     &:active:not(:disabled) {
-      background-color: rgba(255, 255, 255, 0.05);
+      background-color: var(--border-subtle-05);
     }
   }
 
   // 4. Tab / Filter
   &--tab {
     background-color: transparent;
-    color: $text-secondary;
+    color: var(--text-secondary);
     border-color: transparent;
     border-radius: $radius-sm;
 
     &:hover:not(:disabled) {
-      color: $text-primary;
-      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--text-primary);
+      background-color: var(--border-subtle);
     }
 
     &.is-active,
     &--active {
-      background-color: rgba($accent-cyan, 0.15);
-      color: $accent-cyan;
-      border-color: rgba($accent-cyan, 0.4);
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+      background-color: var(--accent-cyan-bg-20);
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan-border-40);
+      box-shadow: 0 0 12px var(--accent-cyan-bg-20);
     }
   }
 

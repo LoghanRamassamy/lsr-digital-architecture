@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { siteContent } from '../../constants/siteContent';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Button } from '../common/Button';
+import { ThemeToggle } from '../common/ThemeToggle';
 
 export const Header: React.FC = () => {
   const { brandName, brandSuffix, statusBadge, navigation, cta } = siteContent.header;
@@ -101,8 +102,10 @@ export const Header: React.FC = () => {
             })}
           </nav>
 
-          {/* CTA & Mobile Toggle */}
-          <div className="flex items-center gap-3">
+          {/* CTA, Theme Toggle & Mobile Toggle */}
+          <div className="flex items-center gap-2.5">
+            <ThemeToggle />
+
             <Button
               href="#contact"
               variant="primary"
@@ -131,9 +134,12 @@ export const Header: React.FC = () => {
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#0D111A] border-b border-white/[0.08] px-4 pt-4 pb-6 mt-3 space-y-4 shadow-2xl">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded bg-black/40 border border-white/10 mb-2">
-            <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
-            <span className="font-mono text-[10px] text-[#94A3B8]">{statusBadge}</span>
+          <div className="flex items-center justify-between gap-2 px-3 py-1.5 rounded bg-black/10 border border-white/10 mb-2">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
+              <span className="font-mono text-[10px] text-[#94A3B8]">{statusBadge}</span>
+            </div>
+            <ThemeToggle />
           </div>
 
           <nav className="flex flex-col space-y-3" aria-label="Navigation mobile">

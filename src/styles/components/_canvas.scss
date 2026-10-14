@@ -1,24 +1,25 @@
 // ==========================================================================
 // LSR Digital Architecture — Architecture Canvas SCSS Component
+// High-Craft Blueprint & Engineering Theme (Dark & Light Mode)
 // ==========================================================================
 @use '../variables' as *;
 @use '../mixins' as *;
 
 .architecture-canvas {
   position: relative;
-  background-color: $bg-surface;
-  border: 1px solid $border-subtle;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   border-radius: $radius-bento;
   overflow: hidden;
-  box-shadow: $shadow-bento;
+  box-shadow: var(--shadow-bento);
 
   &__svg-wrapper {
     position: relative;
     overflow-x: auto;
-    background-color: $bg-primary;
+    background-color: var(--bg-primary);
     background-image:
-      linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+      linear-gradient(to right, var(--grid-dense-color) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-dense-color) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
@@ -33,7 +34,7 @@
     }
 
     &:hover circle.outer-ring {
-      stroke: $accent-cyan;
+      stroke: var(--accent-cyan);
     }
   }
 
@@ -42,8 +43,8 @@
   }
 
   &__inspector {
-    background-color: $bg-surface;
-    border-top: 1px solid $border-subtle;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
@@ -51,7 +52,7 @@
 
     @include respond-to(lg) {
       border-top: none;
-      border-left: 1px solid $border-subtle;
+      border-left: 1px solid var(--border-subtle);
     }
   }
 }

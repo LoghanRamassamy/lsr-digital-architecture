@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" class="dark scroll-smooth">
+<html lang="fr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -7,6 +7,17 @@
     <title>
       LSR Digital Architecture — Ingénierie logicielle & Architectures web haute résilience
     </title>
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('lsr_theme_preference');
+          var theme = saved || 'light';
+          document.documentElement.classList.remove('dark', 'light');
+          document.documentElement.classList.add(theme);
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
     <meta
       name="description"
       content="Société d'ingénierie et de conseil en architecture logicielle. Conception sur-mesure d'applications web robustes, scalables et taillées pour les environnements critiques."
@@ -17,8 +28,8 @@
     />
     <meta name="author" content="LSR Digital Architecture SAS" />
     <meta name="publisher" content="LSR Digital Architecture SAS" />
-    <meta name="theme-color" content="#090A0F" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#f8fafc" />
+    <meta name="color-scheme" content="light dark" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://lsr-digital-architecture.com/" />

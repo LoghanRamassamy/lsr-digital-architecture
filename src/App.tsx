@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/layout/Header';
 import { HeroSection } from './components/sections/HeroSection';
 import { ServicesSection } from './components/sections/ServicesSection';
@@ -10,7 +11,7 @@ import { Footer } from './components/layout/Footer';
 import { LegalModal, LegalTab } from './components/legal/LegalModal';
 import { CookieBanner } from './components/legal/CookieBanner';
 
-export const App: React.FC = () => {
+export const AppContent: React.FC = () => {
   const [legalModalOpen, setLegalModalOpen] = useState(false);
   const [activeLegalTab, setActiveLegalTab] = useState<LegalTab>('legal');
 
@@ -20,7 +21,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#090A0F] text-[#F8FAFC] selection:bg-[#38BDF8]/25 selection:text-[#38BDF8] relative flex flex-col font-sans">
+    <div className="min-h-screen bg-[#090A0F] text-[#F8FAFC] relative flex flex-col font-sans transition-colors duration-300">
       {/* Top Header */}
       <Header />
 
@@ -48,6 +49,14 @@ export const App: React.FC = () => {
       {/* French / CNIL Compliance: Cookie & Privacy Banner */}
       <CookieBanner onOpenDetails={() => handleOpenLegal('cookies')} />
     </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 };
 

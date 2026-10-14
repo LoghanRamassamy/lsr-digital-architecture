@@ -51,7 +51,7 @@
 }
 
 // Glassmorphism Backdrop
-@mixin glassmorphism($blur: 16px, $bg: rgba(9, 10, 15, 0.85), $border: $border-subtle) {
+@mixin glassmorphism($blur: 16px, $bg: var(--bg-primary-90), $border: var(--border-subtle)) {
   background-color: $bg;
   backdrop-filter: blur($blur);
   -webkit-backdrop-filter: blur($blur);
@@ -61,18 +61,18 @@
 // Bento Box Styling
 @mixin bento-box($interactive: true) {
   position: relative;
-  background-color: $bg-surface;
-  border: 1px solid $border-subtle;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
   border-radius: $radius-bento;
   overflow: hidden;
-  box-shadow: $shadow-bento;
+  box-shadow: var(--shadow-bento);
   transition: all $transition-smooth;
 
   @if $interactive {
     &:hover {
-      border-color: $border-active;
+      border-color: var(--border-active);
       transform: translateY(-2px);
-      box-shadow: $shadow-bento-hover;
+      box-shadow: var(--shadow-bento-hover);
     }
   }
 }

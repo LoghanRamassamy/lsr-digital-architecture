@@ -27,9 +27,9 @@ export const BentoCard: React.FC<BentoCardProps> = ({
   };
 
   const glowStyles = {
-    cyan: 'rgba(56, 189, 248, 0.15)',
-    blue: 'rgba(37, 99, 235, 0.18)',
-    amber: 'rgba(245, 158, 11, 0.15)',
+    cyan: 'var(--accent-cyan-bg-20)',
+    blue: 'rgba(37, 99, 235, 0.12)',
+    amber: 'var(--accent-amber-bg-10)',
   };
 
   return (

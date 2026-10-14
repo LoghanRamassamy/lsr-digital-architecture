@@ -1,5 +1,6 @@
 // ==========================================================================
 // LSR Digital Architecture — Architecture Debt Calculator SCSS
+// High-Craft Blueprint & Engineering Theme (Dark & Light Mode)
 // ==========================================================================
 @use '../variables' as *;
 @use '../mixins' as *;
@@ -11,7 +12,7 @@
     width: 100%;
     height: 6px;
     border-radius: 3px;
-    background: #1e293b;
+    background: var(--border-medium);
     outline: none;
     transition: background $transition-fast;
 
@@ -21,10 +22,10 @@
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: $accent-cyan;
+      background: var(--accent-cyan);
       cursor: pointer;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-      border: 2px solid #090a0f;
+      box-shadow: 0 0 10px var(--accent-cyan-bg-20);
+      border: 2px solid var(--bg-surface);
       transition: transform $transition-fast;
 
       &:hover {
@@ -36,10 +37,10 @@
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: $accent-cyan;
+      background: var(--accent-cyan);
       cursor: pointer;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-      border: 2px solid #090a0f;
+      box-shadow: 0 0 10px var(--accent-cyan-bg-20);
+      border: 2px solid var(--bg-surface);
     }
   }
 

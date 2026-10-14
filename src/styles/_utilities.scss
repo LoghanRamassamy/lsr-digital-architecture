@@ -738,69 +738,83 @@
   color: #ffffff;
 }
 .text-\[\#F8FAFC\] {
-  color: $text-primary;
+  color: var(--text-primary);
 }
 .text-\[\#94A3B8\] {
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 .text-\[\#64748B\] {
-  color: $text-muted;
+  color: var(--text-muted);
 }
 .text-\[\#E2E8F0\] {
-  color: #e2e8f0;
+  color: var(--text-secondary-elevated);
 }
 .text-\[\#38BDF8\] {
-  color: $accent-cyan;
+  color: var(--accent-cyan);
+}
+.text-\[\#38BDF8\]\/30 {
+  color: var(--accent-cyan);
+  opacity: 0.3;
+}
+.text-\[\#38BDF8\]\/40 {
+  color: var(--accent-cyan);
+  opacity: 0.4;
 }
 .text-\[\#2563EB\] {
-  color: $accent-blue;
+  color: var(--accent-blue);
 }
 .text-\[\#60A5FA\] {
-  color: #60a5fa;
+  color: var(--accent-cyan);
 }
 .text-\[\#F59E0B\] {
-  color: $accent-amber;
+  color: var(--accent-amber);
 }
 .text-emerald-400 {
-  color: $accent-emerald;
+  color: var(--accent-emerald);
 }
 .text-amber-400 {
-  color: #fbbf24;
+  color: var(--accent-amber);
 }
 
 // Background Colors
 .bg-\[\#090A0F\] {
-  background-color: $bg-primary;
+  background-color: var(--bg-primary);
 }
 .bg-\[\#090A0F\]\/60 {
-  background-color: rgba(9, 10, 15, 0.6);
+  background-color: var(--bg-primary-60);
 }
 .bg-\[\#090A0F\]\/80 {
-  background-color: rgba(9, 10, 15, 0.8);
+  background-color: var(--bg-primary-80);
+}
+.bg-\[\#090A0F\]\/85 {
+  background-color: var(--bg-primary-80);
 }
 .bg-\[\#090A0F\]\/90 {
-  background-color: rgba(9, 10, 15, 0.9);
+  background-color: var(--bg-primary-90);
 }
 .bg-\[\#0D111A\] {
-  background-color: $bg-surface;
+  background-color: var(--bg-surface);
+}
+.bg-\[\#0D111A\]\/95 {
+  background-color: var(--bg-surface);
 }
 .bg-\[\#131926\] {
-  background-color: $bg-surface-elevated;
+  background-color: var(--bg-surface-elevated);
 }
 .bg-\[\#07080C\] {
-  background-color: $bg-deep;
+  background-color: var(--bg-deep);
 }
 .bg-\[\#38BDF8\] {
-  background-color: $accent-cyan;
+  background-color: var(--accent-cyan);
 }
 .bg-\[\#38BDF8\]\/10 {
-  background-color: rgba(56, 189, 248, 0.1);
+  background-color: var(--accent-cyan-bg-10);
 }
 .bg-\[\#38BDF8\]\/20 {
-  background-color: rgba(56, 189, 248, 0.2);
+  background-color: var(--accent-cyan-bg-20);
 }
 .bg-\[\#2563EB\] {
-  background-color: $accent-blue;
+  background-color: var(--accent-blue);
 }
 .bg-\[\#2563EB\]\/10 {
   background-color: rgba(37, 99, 235, 0.1);
@@ -809,19 +823,31 @@
   background-color: rgba(37, 99, 235, 0.15);
 }
 .bg-\[\#F59E0B\] {
-  background-color: $accent-amber;
+  background-color: var(--accent-amber);
 }
 .bg-\[\#F59E0B\]\/10 {
-  background-color: rgba(245, 158, 11, 0.1);
+  background-color: var(--accent-amber-bg-10);
 }
 .bg-emerald-400 {
-  background-color: $accent-emerald;
+  background-color: var(--accent-emerald);
 }
 .bg-emerald-400\/10 {
-  background-color: rgba(52, 211, 153, 0.1);
+  background-color: var(--accent-emerald-bg-10);
+}
+.bg-emerald-500\/10 {
+  background-color: var(--accent-emerald-bg-10);
 }
 .bg-amber-400\/10 {
-  background-color: rgba(251, 191, 36, 0.1);
+  background-color: var(--accent-amber-bg-10);
+}
+.bg-white\/5 {
+  background-color: var(--border-subtle-05);
+}
+.bg-white\/10 {
+  background-color: var(--border-subtle);
+}
+.bg-white\/20 {
+  background-color: var(--border-medium);
 }
 .bg-transparent {
   background-color: transparent;
@@ -853,25 +879,25 @@
 }
 
 .border-white\/\[0\.05\] {
-  border-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-subtle-05);
 }
 .border-white\/\[0\.08\] {
-  border-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-subtle);
 }
 .border-white\/10 {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--border-medium);
 }
 .border-white\/20 {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--border-strong);
 }
 .border-\[\#38BDF8\]\/20 {
-  border-color: rgba(56, 189, 248, 0.2);
+  border-color: var(--accent-cyan-border-20);
 }
 .border-\[\#38BDF8\]\/30 {
-  border-color: rgba(56, 189, 248, 0.3);
+  border-color: var(--accent-cyan-border-30);
 }
 .border-\[\#38BDF8\]\/40 {
-  border-color: rgba(56, 189, 248, 0.4);
+  border-color: var(--accent-cyan-border-40);
 }
 .border-\[\#2563EB\]\/30 {
   border-color: rgba(37, 99, 235, 0.3);
@@ -880,13 +906,14 @@
   border-color: rgba(37, 99, 235, 0.4);
 }
 .border-\[\#F59E0B\]\/30 {
-  border-color: rgba(245, 158, 11, 0.3);
+  border-color: var(--accent-amber-border-30);
 }
-.border-emerald-400\/30 {
-  border-color: rgba(52, 211, 153, 0.3);
+.border-emerald-400\/30,
+.border-emerald-500\/30 {
+  border-color: var(--accent-emerald-border-30);
 }
 .border-amber-400\/30 {
-  border-color: rgba(251, 191, 36, 0.3);
+  border-color: var(--accent-amber-border-30);
 }
 
 // Rounded
@@ -1004,28 +1031,28 @@
   transform: scale(1.02);
 }
 .hover\:bg-\[\#1d4ed8\]:hover {
-  background-color: $accent-blue-hover;
+  background-color: var(--accent-blue-hover);
 }
 .hover\:bg-\[\#131926\]:hover {
-  background-color: $bg-surface-elevated;
+  background-color: var(--bg-surface-elevated);
 }
 .hover\:text-white:hover {
   color: #ffffff;
 }
 .hover\:text-\[\#38BDF8\]:hover {
-  color: $accent-cyan;
+  color: var(--accent-cyan);
 }
 .hover\:text-\[\#F8FAFC\]:hover {
-  color: $text-primary;
+  color: var(--text-primary);
 }
 .hover\:border-\[\#38BDF8\]:hover {
-  border-color: $accent-cyan;
+  border-color: var(--accent-cyan);
 }
 .hover\:border-\[\#38BDF8\]\/40:hover {
-  border-color: rgba(56, 189, 248, 0.4);
+  border-color: var(--accent-cyan-border-40);
 }
 .hover\:border-white\/30:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--border-strong);
 }
 .hover\:underline:hover {
   text-decoration: underline;
@@ -1034,13 +1061,13 @@
 // Group Hover
 .group:hover {
   .group-hover\:bg-\[\#38BDF8\]\/60 {
-    background-color: rgba(56, 189, 248, 0.6);
+    background-color: var(--accent-cyan);
   }
   .group-hover\:text-\[\#38BDF8\] {
-    color: $accent-cyan;
+    color: var(--accent-cyan);
   }
   .group-hover\:border-\[\#38BDF8\] {
-    border-color: $accent-cyan;
+    border-color: var(--accent-cyan);
   }
 }
 
@@ -1054,32 +1081,32 @@
 }
 .via-\[\#38BDF8\]\/10 {
   --tw-gradient-stops:
-    var(--tw-gradient-from), rgba(56, 189, 248, 0.1), var(--tw-gradient-to, rgba(56, 189, 248, 0));
+    var(--tw-gradient-from), var(--accent-cyan-bg-10), var(--tw-gradient-to, rgba(56, 189, 248, 0));
 }
 .to-transparent {
   --tw-gradient-to: transparent;
 }
 .bg-gradient-to-r {
-  background-image: linear-gradient(to right, #0d111a, #131926, #0d111a);
+  background-image: linear-gradient(to right, var(--bg-surface), var(--bg-surface-elevated), var(--bg-surface));
 }
 
 // --- Blueprint Graphic Helpers ---
 .blueprint-grid-bg {
   background-size: 32px 32px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
 }
 
 .blueprint-grid-dense {
   background-size: 16px 16px;
   background-image:
-    linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-dense-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-dense-color) 1px, transparent 1px);
 }
 
 .dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-image: radial-gradient(var(--dot-pattern-color) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
