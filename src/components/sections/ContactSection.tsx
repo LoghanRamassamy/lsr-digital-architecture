@@ -13,11 +13,9 @@ import {
   Terminal,
   User,
   Building2,
-  Layers,
   MessageSquare,
   Check,
   AlertCircle,
-  ChevronDown,
   ShieldCheck,
   Loader2,
 } from 'lucide-react';
@@ -29,27 +27,29 @@ interface ContactSectionProps {
 const PROJECT_TYPE_OPTIONS = [
   {
     value: 'Architecture & Conception Système',
-    label: 'Conception & Architecture Système (DAT, DDD, Résilience)',
-    shortLabel: 'Architecture & DAT',
+    label: 'Architecture & DAT',
     desc: 'DAT, DDD, Résilience & Cloud',
   },
   {
     value: 'Ingénierie Web Full-Stack',
-    label: "Développement d'application web critique sur-mesure",
-    shortLabel: 'Dév Web Critique',
-    desc: 'Applications web sur-mesure',
+    label: 'Dév Web Critique',
+    desc: 'Applications web sur-mesure & APIs transactionnelles',
   },
   {
     value: 'Audit & Performance',
-    label: 'Audit technique, Refactorisation & Élimination de dette',
-    shortLabel: 'Audit & Dette Tech',
-    desc: 'Refactoring & Élimination de dette',
+    label: 'Audit & Dette Tech',
+    desc: 'Refactorisation & Élimination de dette',
   },
   {
     value: 'Consultation ponctuelle',
-    label: "Revue de code & cadrage d'infrastructure",
-    shortLabel: 'Cadrage Ponctuel',
-    desc: 'Revue de code & Expertise',
+    label: 'Cadrage Ponctuel',
+    desc: "Revue de code & cadrage d'infrastructure",
+  },
+  {
+    value: 'Je ne sais pas mais je souhaite être accompagné sur mon projet',
+    label: 'Je ne sais pas mais je souhaite être accompagné sur mon projet',
+    desc: 'Cadrage initial, audit du besoin et orientation technique sur-mesure',
+    isFullWidth: true,
   },
 ];
 
@@ -371,56 +371,45 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                     </div>
                   </div>
 
-                  {/* Type d'intervention avec dropdown + chips rapides */}
+                  {/* Type d'intervention ciblée (Boutons radio) */}
                   <div className="form-group">
                     <div className="form-label-row">
-                      <label htmlFor="form-project-type" className="form-label">
+                      <span id="label-project-type" className="form-label">
                         <span className="form-label__prefix">//</span>
                         <span className="form-label__text">Type d'intervention ciblée</span>
                         <span className="form-label__required">*</span>
-                      </label>
+                      </span>
                       <span className="form-badge form-badge--required">Requis</span>
                     </div>
-                    <div className="form-control-wrapper">
-                      <span className="form-control-icon">
-                        <Layers className="w-4 h-4" />
-                      </span>
-                      <select
-                        id="form-project-type"
-                        value={formData.projectType}
-                        onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                        className="form-select is-valid"
-                      >
-                        {PROJECT_TYPE_OPTIONS.map((opt) => (
-                          <option key={opt.value} value={opt.value}>
-                            {opt.label}
-                          </option>
-                        ))}
-                      </select>
-                      <span className="form-select-chevron">
-                        <ChevronDown className="w-4 h-4" />
-                      </span>
-                    </div>
 
-                    {/* Quick selection chips for fast technical engagement */}
                     <div
-                      className="form-pills-grid"
-                      role="group"
-                      aria-label="Sélection rapide du type de projet"
+                      className="form-radio-grid"
+                      role="radiogroup"
+                      aria-labelledby="label-project-type"
                     >
                       {PROJECT_TYPE_OPTIONS.map((opt) => {
-                        const isActive = formData.projectType === opt.value;
+                        const isSelected = formData.projectType === opt.value;
                         return (
-                          <button
+                          <label
                             key={opt.value}
-                            type="button"
-                            onClick={() => setFormData({ ...formData, projectType: opt.value })}
-                            className={`form-pill-button ${isActive ? 'is-active' : ''}`}
+                            className={`form-radio-card ${isSelected ? 'is-selected' : ''} ${
+                              opt.isFullWidth ? 'form-radio-card--full' : ''
+                            }`}
                             title={opt.desc}
                           >
-                            <span className="form-pill-dot" />
-                            <span className="truncate">{opt.shortLabel}</span>
-                          </button>
+                            <input
+                              type="radio"
+                              name="projectType"
+                              value={opt.value}
+                              checked={isSelected}
+                              onChange={() => setFormData({ ...formData, projectType: opt.value })}
+                              className="form-radio-input"
+                            />
+                            <span className="form-radio-indicator" aria-hidden="true">
+                              <span className="form-radio-indicator__dot" />
+                            </span>
+                            <span className="form-radio-label">{opt.label}</span>
+                          </label>
                         );
                       })}
                     </div>
