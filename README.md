@@ -53,11 +53,14 @@ lsr-digital-architecture/
 │   │   │   └── ArchitectureCanvas.tsx        # Schéma blueprint interactif & télémétrie en direct
 │   │   ├── common/
 │   │   │   ├── BentoCard.tsx                 # Carte bento 10px avec curseur glow & repères
+│   │   │   ├── Button.tsx                    # Composant polymorphe de bouton unifié (primary, secondary, ghost, tab)
 │   │   │   ├── SectionTag.tsx                # Badges de section monospace
 │   │   │   └── TechBadge.tsx                 # Badges technologiques typés
 │   │   ├── interactive/
-│   │   │   ├── ArchitectureDebtCalculator.tsx # Simulateur de dette technique & score de résilience
-│   │   │   └── CodeCraftsmanshipPreview.tsx   # Visualiseur d'extraits de code Clean Arch
+│   │   │   └── ArchitectureDebtCalculator.tsx # Simulateur de dette technique & score de résilience
+│   │   ├── legal/
+│   │   │   ├── LegalModal.tsx                # Modale Mentions Légales (LCEN), RGPD et gestion cookies
+│   │   │   └── CookieBanner.tsx              # Bandeau informatif de sobriété et vie privée
 │   │   ├── layout/
 │   │   │   ├── Header.tsx                    # En-tête fixe avec badge statut et scrollspy
 │   │   │   └── Footer.tsx                    # Pied de page avec monitoring et mentions légales

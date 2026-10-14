@@ -3,6 +3,7 @@ import { siteContent } from '../../constants/siteContent';
 import { SectionTag } from '../common/SectionTag';
 import { BentoCard } from '../common/BentoCard';
 import { TechBadge } from '../common/TechBadge';
+import { Button } from '../common/Button';
 import { Layers, Code2, Cpu, CheckCircle, ChevronRight } from 'lucide-react';
 
 export const ServicesSection: React.FC = () => {
@@ -96,13 +97,15 @@ export const ServicesSection: React.FC = () => {
                     <span className="text-[11px] font-mono text-[#64748B]">
                       INTERVENTION SUR-MESURE
                     </span>
-                    <a
+                    <Button
                       href="#contact"
-                      className="inline-flex items-center gap-1 text-xs font-mono text-[#38BDF8] hover:text-white transition-colors"
+                      variant="ghost"
+                      size="sm"
+                      icon={<ChevronRight className="w-3.5 h-3.5" />}
+                      iconPosition="right"
                     >
-                      <span>Échanger</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </a>
+                      Échanger
+                    </Button>
                   </div>
                 </BentoCard>
               </div>

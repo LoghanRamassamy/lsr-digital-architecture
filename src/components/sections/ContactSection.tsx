@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import { siteContent } from '../../constants/siteContent';
 import { SectionTag } from '../common/SectionTag';
 import { BentoCard } from '../common/BentoCard';
+import { Button } from '../common/Button';
 import { MapPin, Clock, Send, CheckCircle, Copy, Mail, Terminal } from 'lucide-react';
 
-export const ContactSection: React.FC = () => {
-  const { sectionTag, headline, subheadline, directContact } = siteContent.contact;
+interface ContactSectionProps {
+  onOpenLegal?: (tab: 'legal' | 'privacy' | 'cookies') => void;
+}
+
+export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) => {
+  const { sectionTag, headline, subheadline, directContact, email } = siteContent.contact;
 
   const [formData, setFormData] = useState({
     name: '',
@@ -15,10 +20,11 @@ export const ContactSection: React.FC = () => {
     message: '',
   });
 
+  const [rgpdConsent, setRgpdConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  const contactEmail = 'contact@lsr-digital.fr';
+  const contactEmail = email || 'contact@lsr-digital-architecture.com';
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(contactEmail);
@@ -28,7 +34,7 @@ export const ContactSection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email) return;
+    if (!formData.name || !formData.email || !rgpdConsent) return;
     setSubmitted(true);
   };
 
@@ -85,24 +91,25 @@ export const ContactSection: React.FC = () => {
                 <Mail className="w-4 h-4 text-[#38BDF8]" />
                 <span className="font-mono text-xs text-[#E2E8F0]">{contactEmail}</span>
               </div>
-              <button
+              <Button
                 type="button"
+                variant="ghost"
+                size="sm"
                 onClick={handleCopyEmail}
-                className="px-2.5 py-1 text-xs font-mono rounded bg-white/5 hover:bg-white/10 text-[#38BDF8] border border-white/10 flex items-center gap-1.5 transition-colors"
                 title="Copier l'adresse email"
-              >
-                {copiedEmail ? (
-                  <>
+                icon={
+                  copiedEmail ? (
                     <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-emerald-400">Copié</span>
-                  </>
-                ) : (
-                  <>
+                  ) : (
                     <Copy className="w-3.5 h-3.5" />
-                    <span>Copier</span>
-                  </>
-                )}
-              </button>
+                  )
+                }
+                iconPosition="left"
+              >
+                <span className={copiedEmail ? 'text-emerald-400' : ''}>
+                  {copiedEmail ? 'Copié' : 'Copier'}
+                </span>
+              </Button>
             </div>
           </div>
 
@@ -121,12 +128,14 @@ export const ContactSection: React.FC = () => {
                     Merci {formData.name}. Votre brief a été transmis à notre équipe d'architecture.
                     Nous reviendrons vers vous sous 48h ouvrées.
                   </p>
-                  <button
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="sm"
                     onClick={() => setSubmitted(false)}
-                    className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono rounded bg-white/10 text-white hover:bg-white/15 transition-colors"
                   >
-                    <span>Envoyer un autre message</span>
-                  </button>
+                    Envoyer un autre message
+                  </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -218,13 +227,48 @@ export const ContactSection: React.FC = () => {
                     />
                   </div>
 
-                  <button
+                  {/* RGPD Mandatory Consent */}
+                  <div className="flex items-start gap-2.5 pt-1">
+                    <input
+                      id="rgpd-consent"
+                      type="checkbox"
+                      required
+                      checked={rgpdConsent}
+                      onChange={(e) => setRgpdConsent(e.target.checked)}
+                      className="mt-0.5 w-4 h-4 rounded border-white/20 bg-[#131926] text-[#38BDF8] focus:ring-[#38BDF8] focus:ring-offset-0 cursor-pointer"
+                    />
+                    <label
+                      htmlFor="rgpd-consent"
+                      className="text-xs text-[#94A3B8] leading-relaxed cursor-pointer select-none"
+                    >
+                      J'accepte que les données saisies soient exploitées par LSR Digital
+                      Architecture afin de répondre à ma demande technique, conformément à la{' '}
+                      <button
+                        type="button"
+                        onClick={() => onOpenLegal?.('privacy')}
+                        className="text-[#38BDF8] hover:underline inline font-mono"
+                      >
+                        politique de confidentialité (RGPD)
+                      </button>
+                      . *
+                    </label>
+                  </div>
+
+                  <Button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-[8px] bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-mono text-sm font-semibold tracking-wider shadow-[0_0_20px_rgba(37,99,235,0.3)] border border-[#38BDF8]/40 transition-all hover:scale-[1.01]"
+                    variant="primary"
+                    size="lg"
+                    fullWidth
+                    disabled={!rgpdConsent}
+                    icon={<Send className="w-4 h-4" />}
+                    iconPosition="right"
                   >
-                    <span>Initier la prise de contact</span>
-                    <Send className="w-4 h-4" />
-                  </button>
+                    Initier la prise de contact
+                  </Button>
+
+                  <p className="text-[11px] font-mono text-[#64748B] text-center pt-1">
+                    Vos données restent strictement confidentielles. Zéro démarchage intempestif.
+                  </p>
                 </form>
               )}
             </BentoCard>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowRight, Maximize2, Terminal } from 'lucide-react';
+import { Button } from '../common/Button';
 
 interface NodeInfo {
   id: string;
@@ -158,43 +159,40 @@ export const ArchitectureCanvas: React.FC = () => {
 
         {/* Layer Controls */}
         <div className="flex items-center gap-1.5 mt-2 sm:mt-0">
-          <button
+          <Button
+            variant="tab"
+            size="sm"
+            active={activeLayer === 'all'}
             onClick={() => setActiveLayer('all')}
-            className={`px-2.5 py-1 text-xs font-mono rounded transition-colors ${
-              activeLayer === 'all'
-                ? 'bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/40'
-                : 'text-[#94A3B8] hover:text-[#F8FAFC]'
-            }`}
           >
             Vue Globale
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="tab"
+            size="sm"
+            active={activeLayer === 'ddd'}
             onClick={() => setActiveLayer('ddd')}
-            className={`px-2.5 py-1 text-xs font-mono rounded transition-colors ${
-              activeLayer === 'ddd'
-                ? 'bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/40'
-                : 'text-[#94A3B8] hover:text-[#F8FAFC]'
-            }`}
           >
             Clean Arch / DDD
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="tab"
+            size="sm"
+            active={activeLayer === 'resilience'}
             onClick={() => setActiveLayer('resilience')}
-            className={`px-2.5 py-1 text-xs font-mono rounded transition-colors ${
-              activeLayer === 'resilience'
-                ? 'bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/40'
-                : 'text-[#94A3B8] hover:text-[#F8FAFC]'
-            }`}
           >
             Résilience & Flux
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={() => setShowGrid(!showGrid)}
             title="Activer/Désactiver le quadrillage blueprint"
-            className="p-1 rounded text-[#94A3B8] hover:text-[#38BDF8] transition-colors ml-1"
+            aria-label="Quadrillage blueprint"
+            className="p-1.5 ml-1"
           >
             <Maximize2 className="w-3.5 h-3.5" />
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -478,13 +476,16 @@ export const ArchitectureCanvas: React.FC = () => {
 
           {/* Action button */}
           <div className="pt-4 border-t border-white/[0.08]">
-            <a
+            <Button
               href="#contact"
-              className="w-full inline-flex items-center justify-center gap-2 px-3 py-2.5 rounded text-xs font-mono font-medium bg-[#38BDF8]/10 hover:bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/30 transition-all hover:border-[#38BDF8]"
+              variant="secondary"
+              size="md"
+              fullWidth
+              icon={<ArrowRight className="w-3.5 h-3.5" />}
+              iconPosition="right"
             >
-              <span>Exiger cette rigueur sur votre stack</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+              Exiger cette rigueur sur votre stack
+            </Button>
           </div>
         </div>
       </div>

@@ -140,6 +140,7 @@ export const siteContent: SiteContent = {
     sectionTag: 'INITIALISATION',
     headline: 'Prêt à consolider votre socle technique ?',
     subheadline: "Échangeons sur vos enjeux d'architecture, d'audit ou de développement critique.",
+    email: 'contact@lsr-digital-architecture.com',
     directContact: {
       location: 'Conflans-Sainte-Honorine / Île-de-France & Remote',
       availability: 'Consultation technique sous 48h ouvrées',
@@ -149,5 +150,6 @@ export const siteContent: SiteContent = {
     legalEntity: 'LSR Digital Architecture SAS',
     tagline: 'Conçu avec précision. Bâti pour la performance.',
     copyright: '© 2026 LSR Digital Architecture. Tous droits réservés.',
+    email: 'contact@lsr-digital-architecture.com',
   },
 };

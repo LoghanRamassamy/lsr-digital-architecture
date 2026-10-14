@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { siteContent } from '../../constants/siteContent';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Button } from '../common/Button';
 
 export const Header: React.FC = () => {
   const { brandName, brandSuffix, statusBadge, navigation, cta } = siteContent.header;
@@ -102,22 +103,27 @@ export const Header: React.FC = () => {
 
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-3">
-            <a
+            <Button
               href="#contact"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-[6px] text-xs font-mono font-medium tracking-wider bg-[#2563EB] hover:bg-[#1d4ed8] text-white shadow-[0_0_20px_rgba(37,99,235,0.35)] transition-all duration-200 border border-[#38BDF8]/40 hover:scale-[1.02]"
+              variant="primary"
+              size="sm"
+              icon={<ArrowUpRight className="w-3.5 h-3.5" />}
+              iconPosition="right"
+              className="hidden sm:inline-flex"
             >
-              <span>{cta}</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
+              {cta}
+            </Button>
 
             {/* Mobile menu trigger */}
-            <button
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-md bg-[#0D111A] border border-white/10 text-[#94A3B8] hover:text-[#F8FAFC]"
+              className="lg:hidden p-2"
               aria-label={mobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -144,14 +150,17 @@ export const Header: React.FC = () => {
             ))}
           </nav>
 
-          <a
+          <Button
             href="#contact"
+            variant="primary"
+            size="md"
+            fullWidth
             onClick={() => setMobileMenuOpen(false)}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded text-xs font-mono font-medium bg-[#2563EB] text-white border border-[#38BDF8]/40 shadow-lg"
+            icon={<ArrowUpRight className="w-3.5 h-3.5" />}
+            iconPosition="right"
           >
-            <span>{cta}</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+            {cta}
+          </Button>
         </div>
       )}
     </header>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { siteContent } from '../../constants/siteContent';
 import { BentoCard } from '../common/BentoCard';
+import { Button } from '../common/Button';
 import { ArrowRight, ShieldCheck, Terminal, Compass, CheckCircle2 } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
@@ -39,21 +40,27 @@ export const HeroSection: React.FC = () => {
 
           {/* Hero CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <a
+            <Button
               href="#services"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-[8px] text-sm font-mono font-medium tracking-wider bg-[#2563EB] hover:bg-[#1d4ed8] text-white shadow-[0_0_25px_rgba(37,99,235,0.4)] border border-[#38BDF8]/40 transition-all duration-200 hover:scale-[1.02]"
+              variant="primary"
+              size="lg"
+              icon={<ArrowRight className="w-4 h-4" />}
+              iconPosition="right"
+              className="w-full sm:w-auto"
             >
-              <span>{ctaPrimary}</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
+              {ctaPrimary}
+            </Button>
 
-            <a
+            <Button
               href="#contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-[8px] text-sm font-mono font-medium tracking-wider bg-[#0D111A] hover:bg-[#131926] text-[#F8FAFC] border border-white/10 hover:border-[#38BDF8]/40 transition-all duration-200"
+              variant="secondary"
+              size="lg"
+              icon={<Terminal className="w-4 h-4 text-[#38BDF8]" />}
+              iconPosition="right"
+              className="w-full sm:w-auto"
             >
-              <span>{ctaSecondary}</span>
-              <Terminal className="w-4 h-4 text-[#38BDF8]" />
-            </a>
+              {ctaSecondary}
+            </Button>
           </div>
         </div>
 

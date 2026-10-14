@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BentoCard } from '../common/BentoCard';
 import { SectionTag } from '../common/SectionTag';
+import { Button } from '../common/Button';
 import { ArrowRight } from 'lucide-react';
 
 interface MetricState {
@@ -229,13 +230,16 @@ export const ArchitectureDebtCalculator: React.FC = () => {
               </div>
 
               <div className="pt-6">
-                <a
+                <Button
                   href="#contact"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-[6px] bg-[#2563EB] hover:bg-[#1d4ed8] text-white font-mono text-xs font-medium tracking-wider shadow-[0_0_15px_rgba(37,99,235,0.3)] transition-all"
+                  variant="primary"
+                  size="md"
+                  fullWidth
+                  icon={<ArrowRight className="w-3.5 h-3.5" />}
+                  iconPosition="right"
                 >
-                  <span>Demander un audit approfondi</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                  Demander un audit approfondi
+                </Button>
               </div>
             </BentoCard>
           </div>

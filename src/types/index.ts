@@ -70,6 +70,7 @@ export interface SiteContent {
     sectionTag: string;
     headline: string;
     subheadline: string;
+    email: string;
     directContact: {
       location: string;
       availability: string;
@@ -79,6 +80,7 @@ export interface SiteContent {
     legalEntity: string;
     tagline: string;
     copyright: string;
+    email: string;
   };
 }
 

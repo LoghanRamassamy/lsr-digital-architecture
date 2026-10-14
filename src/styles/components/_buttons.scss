@@ -1,0 +1,166 @@
+// ==========================================================================
+// LSR Digital Architecture — Unified Button System SCSS
+// High-Craft Engineering Aesthetic / Blueprint Theme
+// ==========================================================================
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-mono;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  border-radius: $radius-md;
+  border: 1px solid transparent;
+  transition: all $transition-normal;
+  position: relative;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid $accent-cyan;
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  // --- Sizes ---
+  &--sm {
+    padding: 0.375rem 0.875rem; // 6px 14px
+    font-size: 0.75rem; // 12px
+    gap: 0.375rem;
+    line-height: 1.25rem;
+  }
+
+  &--md {
+    padding: 0.625rem 1.25rem; // 10px 20px
+    font-size: 0.8125rem; // 13px
+    gap: 0.5rem;
+    line-height: 1.25rem;
+  }
+
+  &--lg {
+    padding: 0.8125rem 1.625rem; // 13px 26px
+    font-size: 0.875rem; // 14px
+    gap: 0.625rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  // --- Variants ---
+
+  // 1. Primary: High-Tech Blue with cyan border & glowing shadow
+  &--primary {
+    background-color: $accent-blue;
+    color: $text-white;
+    border-color: rgba($accent-cyan, 0.4);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
+
+    &:hover:not(:disabled) {
+      background-color: $accent-blue-hover;
+      border-color: rgba($accent-cyan, 0.7);
+      box-shadow: 0 0 28px rgba(56, 189, 248, 0.45);
+      transform: translateY(-1px) scale(1.015);
+      color: $text-white;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0) scale(0.99);
+      box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+    }
+  }
+
+  // 2. Secondary: Dark Slate Surface with Blueprint Border
+  &--secondary {
+    background-color: $bg-surface;
+    color: $text-primary;
+    border-color: $border-medium;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+
+    &:hover:not(:disabled) {
+      background-color: $bg-surface-elevated;
+      border-color: rgba($accent-cyan, 0.5);
+      color: $text-white;
+      box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.6),
+        0 0 16px rgba(56, 189, 248, 0.15);
+      transform: translateY(-1px) scale(1.015);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0) scale(0.99);
+      background-color: $bg-surface;
+    }
+  }
+
+  // 3. Ghost: Minimal sleek button
+  &--ghost {
+    background-color: rgba(255, 255, 255, 0.04);
+    color: $text-secondary;
+    border-color: $border-subtle;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.09);
+      color: $text-primary;
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    &:active:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  // 4. Tab / Filter
+  &--tab {
+    background-color: transparent;
+    color: $text-secondary;
+    border-color: transparent;
+    border-radius: $radius-sm;
+
+    &:hover:not(:disabled) {
+      color: $text-primary;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    &.is-active,
+    &--active {
+      background-color: rgba($accent-cyan, 0.15);
+      color: $accent-cyan;
+      border-color: rgba($accent-cyan, 0.4);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+  }
+
+  // Icon positioning helpers
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform $transition-fast;
+  }
+
+  &:hover:not(:disabled) &__icon--right {
+    transform: translateX(2px);
+  }
+
+  &:hover:not(:disabled) &__icon--left {
+    transform: translateX(-2px);
+  }
+}
