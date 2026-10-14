@@ -242,7 +242,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                     <div className="form-group">
                       <div className="form-label-row">
                         <label htmlFor="form-name" className="form-label">
-                          <span className="form-label__prefix">//</span>
                           <span className="form-label__text">Nom & Rôle</span>
                           <span className="form-label__required">*</span>
                         </label>
@@ -289,12 +288,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                       )}
                     </div>
 
-                    {/* Email professionnel */}
+                    {/* Email */}
                     <div className="form-group">
                       <div className="form-label-row">
                         <label htmlFor="form-email" className="form-label">
-                          <span className="form-label__prefix">//</span>
-                          <span className="form-label__text">Email professionnel</span>
+                          <span className="form-label__text">Email</span>
                           <span className="form-label__required">*</span>
                         </label>
                         <span className="form-badge form-badge--required">Requis</span>
@@ -335,7 +333,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                       {touched.email && !isEmailValid && (
                         <div className="form-error-msg">
                           <AlertCircle className="w-3.5 h-3.5 shrink-0" />
-                          <span>Format d'email professionnel valide requis.</span>
+                          <span>Format d'email valide requis.</span>
                         </div>
                       )}
                     </div>
@@ -345,7 +343,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                   <div className="form-group">
                     <div className="form-label-row">
                       <label htmlFor="form-company" className="form-label">
-                        <span className="form-label__prefix">//</span>
                         <span className="form-label__text">Entreprise / Organisation</span>
                       </label>
                       <span className="form-badge form-badge--optional">Optionnel</span>
@@ -375,7 +372,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                   <div className="form-group">
                     <div className="form-label-row">
                       <span id="label-project-type" className="form-label">
-                        <span className="form-label__prefix">//</span>
                         <span className="form-label__text">Type d'intervention ciblée</span>
                         <span className="form-label__required">*</span>
                       </span>
@@ -419,7 +415,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                   <div className="form-group">
                     <div className="form-label-row">
                       <label htmlFor="form-message" className="form-label">
-                        <span className="form-label__prefix">//</span>
                         <span className="form-label__text">Votre projet en quelques mots</span>
                       </label>
                       <span className="form-badge form-badge--optional">Optionnel</span>
@@ -438,9 +433,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenLegal }) =
                       />
                     </div>
                     <div className="form-footer-meta">
-                      <span className="text-[#64748B]">
-                        Détails techniques et volumétries bienvenus
-                      </span>
                       <span>{formData.message.length} caractères</span>
                     </div>
                   </div>
