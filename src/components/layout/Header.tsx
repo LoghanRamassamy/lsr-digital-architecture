@@ -135,7 +135,9 @@ export const Header: React.FC = () => {
               size="sm"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2"
-              aria-label={mobileMenuOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation'}
+              aria-label={
+                mobileMenuOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation'
+              }
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-drawer"
             >

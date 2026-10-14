@@ -79,7 +79,10 @@ export const ServicesSection: React.FC = () => {
                           Périmètre & Livrables :
                         </span>
                         {card.deliverables.map((item, dIdx) => (
-                          <div key={dIdx} className="flex items-center gap-2 text-xs text-[#E2E8F0]">
+                          <div
+                            key={dIdx}
+                            className="flex items-center gap-2 text-xs text-[#E2E8F0]"
+                          >
                             <CheckCircle className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
                             <span className="leading-snug">{item}</span>
                           </div>

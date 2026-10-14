@@ -1,13 +1,14 @@
 import React from 'react';
 import { siteContent } from '../../constants/siteContent';
-import { ShieldCheck, ArrowUp } from 'lucide-react';
+import { ShieldCheck, ArrowUp, Cpu, Lock, ArrowUpRight } from 'lucide-react';
 import { Button } from '../common/Button';
 
 interface FooterProps {
   onOpenLegal?: (tab: 'legal' | 'privacy' | 'cookies') => void;
+  onOpenGlossary?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenGlossary }) => {
   const { legalEntity, tagline, copyright, email } = siteContent.footer;
   const { navigation } = siteContent.header;
 
@@ -47,9 +48,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
 
       {/* Main footer content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
           {/* Brand & Entity */}
-          <div className="md:col-span-4 space-y-3">
+          <div className="md:col-span-6 lg:col-span-4 space-y-3">
             <div className="flex items-center gap-2 text-[#F8FAFC]">
               <span className="font-heading font-extrabold text-base tracking-tight">
                 LSR <span className="font-light text-[#94A3B8]">Digital Architecture</span>
@@ -71,8 +72,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           </div>
 
           {/* Nav links */}
-          <div className="md:col-span-3 space-y-2">
-            <span className="text-[11px] uppercase tracking-wider text-[#64748B] block mb-2">
+          <div className="md:col-span-6 lg:col-span-2 space-y-2">
+            <span className="text-[11px] uppercase tracking-wider text-[#64748B] block mb-2 font-mono">
               Architecture du site
             </span>
             <div className="flex flex-col gap-1.5 text-xs">
@@ -85,12 +86,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                   {item.label}
                 </a>
               ))}
+              <a
+                href="#glossaire"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onOpenGlossary?.();
+                }}
+                className="hover:text-[#38BDF8] transition-colors py-0.5"
+              >
+                06. Glossaire technique
+              </a>
             </div>
           </div>
 
           {/* Legal & Compliance */}
-          <div className="md:col-span-3 space-y-2">
-            <span className="text-[11px] uppercase tracking-wider text-[#64748B] block mb-2">
+          <div className="md:col-span-6 lg:col-span-3 space-y-2">
+            <span className="text-[11px] uppercase tracking-wider text-[#64748B] block mb-2 font-mono">
               Cadre Légal & RGPD
             </span>
             <div className="flex flex-col gap-1.5 text-xs">
@@ -119,22 +130,68 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
           </div>
 
           {/* Security & Standards */}
-          <div className="md:col-span-2 space-y-2">
-            <span className="text-[11px] uppercase tracking-wider text-[#64748B] block mb-2">
-              Standards
-            </span>
-            <div className="space-y-1.5 text-[11px] text-[#64748B]">
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#38BDF8]" />
-                <span>Clean Architecture</span>
+          <div className="md:col-span-6 lg:col-span-3 space-y-2">
+            <div className="footer-standards">
+              <div className="footer-standards__header">
+                <span className="footer-standards__title">Standards & Conformité</span>
+                <span className="footer-standards__status-pill">
+                  <span className="pulse-dot" />
+                  Conforme
+                </span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>RGPD / CNIL</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#38BDF8]" />
-                <span>Zero-Trust Ready</span>
+
+              <div className="footer-standards__list">
+                {/* Clean Architecture */}
+                <div className="footer-standards__item">
+                  <div className="footer-standards__icon-wrap">
+                    <Cpu className="w-3.5 h-3.5" />
+                  </div>
+                  <div className="footer-standards__content">
+                    <div className="footer-standards__meta">
+                      <span className="footer-standards__name">Clean Architecture</span>
+                      <span className="footer-standards__tag footer-standards__tag--cyan">DDD</span>
+                    </div>
+                    <span className="footer-standards__desc">Découplage strict & Zéro dette</span>
+                  </div>
+                </div>
+
+                {/* RGPD / CNIL */}
+                <button
+                  type="button"
+                  onClick={() => onOpenLegal?.('privacy')}
+                  className="footer-standards__item footer-standards__item--interactive"
+                  title="Consulter le cadre de conformité RGPD & CNIL"
+                >
+                  <div className="footer-standards__icon-wrap footer-standards__icon-wrap--emerald">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                  </div>
+                  <div className="footer-standards__content">
+                    <div className="footer-standards__meta">
+                      <span className="footer-standards__name">RGPD / CNIL</span>
+                      <span className="footer-standards__tag footer-standards__tag--emerald">
+                        AUDITÉ
+                      </span>
+                    </div>
+                    <span className="footer-standards__desc">
+                      Privacy by design & hébergement UE
+                    </span>
+                  </div>
+                  <ArrowUpRight className="w-3 h-3 footer-standards__arrow" />
+                </button>
+
+                {/* Zero-Trust Ready */}
+                <div className="footer-standards__item">
+                  <div className="footer-standards__icon-wrap">
+                    <Lock className="w-3.5 h-3.5" />
+                  </div>
+                  <div className="footer-standards__content">
+                    <div className="footer-standards__meta">
+                      <span className="footer-standards__name">Zero-Trust Ready</span>
+                      <span className="footer-standards__tag">SECOPS</span>
+                    </div>
+                    <span className="footer-standards__desc">Chiffrement & moindre privilège</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -182,6 +239,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
               className="hover:text-[#38BDF8] transition-colors"
             >
               Sitemap
+            </a>
+            <span>•</span>
+            <a
+              href="#glossaire"
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenGlossary?.();
+              }}
+              className="hover:text-[#38BDF8] transition-colors font-medium text-[#E2E8F0]"
+              title="Définition des termes techniques et méthodologiques du site"
+            >
+              Glossaire
             </a>
           </div>
         </div>

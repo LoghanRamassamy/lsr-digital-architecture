@@ -44,4 +44,6 @@ LSR Digital Architecture accompagne les DSI, CTO, fondateurs tech et équipes d'
 ## Ressources Complémentaires
 
 - [Documentation Complète pour LLM (llms-full.txt)](https://lsr-digital-architecture.com/llms-full.txt) : Spécifications détaillées, métriques et manifeste d'ingénierie.
+- [Glossaire Technique & Méthodologique](https://lsr-digital-architecture.com/#glossaire) : Référentiel complet des définitions (Clean Architecture, DDD, Latence p99, PRA, SPOF, Craftsmanship, DAT, RGPD, etc.).
 - [Sitemap XML](https://lsr-digital-architecture.com/sitemap.xml) : Index des URLs et ressources du site.
+

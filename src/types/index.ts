@@ -84,7 +84,30 @@ export interface SiteContent {
   };
 }
 
-// Re-export canonical domain types
+// Glossary Domain Types
+export type GlossaryCategory =
+  | 'all'
+  | 'architecture'
+  | 'resilience'
+  | 'craftsmanship'
+  | 'governance';
+
+export type TermKind = 'technique' | 'methodologique';
+
+export interface GlossaryItem {
+  id: string;
+  term: string;
+  acronym?: string;
+  kind: TermKind;
+  category: 'architecture' | 'resilience' | 'craftsmanship' | 'governance';
+  categoryLabel: string;
+  shortDefinition: string;
+  fullDefinition: string;
+  siteContext: string;
+  keyBenefit?: string;
+  tags: string[];
+}
+
 export type {
   BlueprintNode,
   BlueprintNodeType,

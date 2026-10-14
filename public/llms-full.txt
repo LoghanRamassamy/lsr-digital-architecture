@@ -78,8 +78,19 @@ Le site propose un simulateur interactif d'évaluation de dette architecturale c
 
 ---
 
+## Référentiel & Glossaire Terminologique
+
+Le site met à disposition un glossaire interactif accessible sur https://lsr-digital-architecture.com/#glossaire répertoriant l'ensemble des termes techniques et méthodologiques du site :
+- **Architecture & Conception** : Clean Architecture, Domain-Driven Design (DDD), Bounded Contexts, Architecture Hexagonale, Event-Driven Architecture (EDA), Monolithe Modulaire, Strangler Fig Pattern, Dossier d'Architecture Technique (DAT), Architecture Decision Record (ADR), Blueprint.
+- **Résilience & Performance** : Latence p99 (< 50ms), Haute Disponibilité (SLA 99.99%), Tolérance aux Pannes & Auto-Healing, Point Unique de Défaillance (SPOF), Circuit Breaker, Dégradation Gracieuse, Déploiement Multi-AZ, Observabilité (SLO, Logs, Tracing), Plan de Reprise d'Activité (PRA / DRP).
+- **Craftsmanship & Qualité** : Software Craftsmanship, Test-Driven Development (TDD), Mutation Testing, Typage Strict, Core Web Vitals, Accessibilité Numérique (WCAG 2.1 & RGAA), APIs (REST, GraphQL, gRPC), CI/CD, Cloud Native & IaC.
+- **Méthodologie & Cadre Légal** : Dette Technique, Sur-Ingénierie, Friction d'Intégration (Onboarding), RGPD (CNIL), Mentions Légales (LCEN), llms.txt, Sitemap XML.
+
+---
+
 ## Contact & Prise de Rendez-vous
 Pour toute demande de devis, audit préliminaire ou mission d'ingénierie :
 - Formulaire direct sur le site : https://lsr-digital-architecture.com/#contact
 - E-mail direct : contact@lsr-digital-architecture.com
 - Délai d'engagement de réponse : 48h ouvrées maximum.
+
