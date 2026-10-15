@@ -103,13 +103,16 @@ export const GlossaryModal: React.FC<GlossaryModalProps> = ({
     });
   }, [searchQuery, selectedCategory, selectedKind, selectedLetter]);
 
-  const handleCopyLink = (termId: string) => {
+  const handleCopyLink = async (termId: string) => {
     onSelectTerm?.(termId);
     const url = `${window.location.origin}${window.location.pathname}#glossaire-${termId}`;
-    navigator.clipboard.writeText(url).then(() => {
+    try {
+      await navigator.clipboard.writeText(url);
       setCopiedTermId(termId);
       setTimeout(() => setCopiedTermId(null), 2000);
-    });
+    } catch {
+      // Ignore clipboard write failure
+    }
   };
 
   const handleResetFilters = () => {

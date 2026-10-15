@@ -82,7 +82,6 @@ export const Button: React.FC<ButtonProps> = ({
         onKeyDown={handleAnchorKeyDown}
         aria-disabled={disabled}
         tabIndex={disabled ? -1 : undefined}
-        role="button"
       >
         {content}
       </a>

@@ -8,13 +8,13 @@ interface FooterProps {
   onOpenGlossary?: () => void;
 }
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenGlossary }) => {
   const { legalEntity, tagline, copyright, email } = siteContent.footer;
   const { navigation } = siteContent.header;
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <footer className="bg-[#07080C] border-t border-white/[0.08] text-[#94A3B8] font-mono text-xs">

@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
 
       // Simple scrollspy
       const sections = navigation.map((item) => item.id);
-      for (const sectionId of [...sections].reverse()) {
+      for (const sectionId of sections.toReversed()) {
         const el = document.getElementById(sectionId);
         if (el) {
           const rect = el.getBoundingClientRect();
@@ -56,7 +56,7 @@ export const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo & Brand Identity */}
           <a
-            href="#"
+            href="/"
             className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#38BDF8]"
             aria-label="LSR Digital Architecture - Accueil"
           >
