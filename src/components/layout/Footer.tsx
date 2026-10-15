@@ -56,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenGlossary }) =
                 LSR <span className="font-light text-[#94A3B8]">Digital Architecture</span>
               </span>
             </div>
-            <p className="text-sm font-sans text-[#94A3B8] max-w-sm">{tagline}</p>
+            {tagline && <p className="text-sm font-sans text-[#94A3B8] max-w-sm">{tagline}</p>}
             <div className="pt-2 text-[11px] text-[#64748B] space-y-1">
               <div>
                 <span>Raison sociale : </span>

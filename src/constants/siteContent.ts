@@ -149,7 +149,6 @@ export const siteContent: SiteContent = {
   },
   footer: {
     legalEntity: 'LSR Digital Architecture SASU',
-    tagline: 'Conçu avec précision. Bâti pour la performance.',
     copyright: '© 2026 LSR Digital Architecture. Tous droits réservés.',
     email: 'contact@lsr-digital-architecture.com',
   },

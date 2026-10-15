@@ -79,7 +79,7 @@ export interface SiteContent {
   };
   footer: {
     legalEntity: string;
-    tagline: string;
+    tagline?: string;
     copyright: string;
     email: string;
   };

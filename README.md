@@ -144,5 +144,4 @@ Le projet est hébergé sur **Firebase Hosting** avec déploiement continu via *
 
 ## 📄 Licence & Droits
 
-© 2026 **LSR Digital Architecture SAS**. Tous droits réservés.  
-_Conçu avec précision. Bâti pour la performance._
+© 2026 **LSR Digital Architecture SAS**. Tous droits réservés.
