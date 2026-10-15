@@ -73,26 +73,28 @@ export const LegalNoticeTab: React.FC = () => {
         </p>
         <div className="mt-3 p-4 rounded bg-[#131926] border border-white/[0.06] font-mono text-xs space-y-1.5 text-[#E2E8F0]">
           <p>
-            <span className="text-[#64748B]">Hébergeur :</span> Vercel Inc.
+            <span className="text-[#64748B]">Hébergeur :</span> Google Ireland Limited (Google Cloud
+            / Firebase Hosting)
           </p>
           <p>
-            <span className="text-[#64748B]">Adresse :</span> 440 N Barranca Ave #4133, Covina, CA
-            91723, États-Unis
+            <span className="text-[#64748B]">Adresse :</span> Gordon House, Barrow Street, Dublin 4,
+            Irlande
           </p>
           <p>
             <span className="text-[#64748B]">Site Web :</span>{' '}
             <a
-              href="https://vercel.com"
+              href="https://firebase.google.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#38BDF8] inline-flex items-center gap-1 hover:underline"
             >
-              https://vercel.com <ExternalLink className="w-3 h-3" />
+              https://firebase.google.com <ExternalLink className="w-3 h-3" />
             </a>
           </p>
           <p>
-            <span className="text-[#64748B]">Certifications :</span> ISO 27001, SOC 2 Type II,
-            conformité RGPD via clauses contractuelles types (CCT).
+            <span className="text-[#64748B]">Certifications :</span> ISO/IEC 27001, ISO/IEC 27017,
+            ISO/IEC 27018, SOC 1/2/3, conformité RGPD via les clauses contractuelles types (CCT) de
+            Google Cloud.
           </p>
         </div>
       </div>
