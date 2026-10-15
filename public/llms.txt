@@ -6,8 +6,15 @@ LSR Digital Architecture accompagne les DSI, CTO, fondateurs tech et équipes d'
 
 - **Site officiel** : https://lsr-digital-architecture.com
 - **Email de contact** : contact@lsr-digital-architecture.com
-- **Localisation** : Conflans-Sainte-Honorine (78700), Île-de-France, France (Interventions France & Europe)
-- **Forme juridique** : SAS (Société par Actions Simplifiée)
+- **Siège social** : Conflans-Sainte-Honorine (78700), Île-de-France, France
+- **Forme juridique** : SASU (Société par Actions Simplifiée Unipersonnelle)
+- **Capital social** : 2 000,00 €
+- **SIREN** : 107 484 230
+- **SIRET (siège)** : 107 484 230 00019
+- **RCS** : 107 484 230 R.C.S. Versailles
+- **N° TVA Intracommunautaire** : FR64107484230
+- **Code NAF / APE** : 62.01Z (Programmation informatique)
+- **Président** : Loghan Ramassamy
 - **Disponibilité** : Projets Q4 2026 / 2027
 
 ## Expertises Fondamentales

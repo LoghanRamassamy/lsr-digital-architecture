@@ -63,6 +63,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal, onOpenGlossary }) =
                 <span className="text-[#F8FAFC]">{legalEntity}</span>
               </div>
               <div>
+                <span>Immatriculation : </span>
+                <span className="text-[#94A3B8] font-mono">RCS Versailles 107 484 230</span>
+              </div>
+              <div>
                 <span>Contact : </span>
                 <a href={`mailto:${email}`} className="text-[#38BDF8] hover:underline">
                   {email}

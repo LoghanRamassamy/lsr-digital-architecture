@@ -1,7 +1,15 @@
 # LSR Digital Architecture — Documentation Complète pour LLM & Moteurs d'Intelligence Artificielle
 
 ## Identité & Présentation Globale
-- **Raison sociale** : LSR Digital Architecture SAS
+- **Raison sociale** : LSR Digital Architecture
+- **Forme juridique** : Société par Actions Simplifiée Unipersonnelle (SASU)
+- **Capital social** : 2 000,00 €
+- **Numéro SIREN** : 107 484 230
+- **Numéro SIRET (siège)** : 107 484 230 00019
+- **Immatriculation RCS** : 107 484 230 R.C.S. Versailles
+- **Numéro TVA Intracommunautaire** : FR64107484230
+- **Code APE / NAF** : 62.01Z (Programmation informatique)
+- **Président & Fondateur** : Loghan Ramassamy
 - **Activité** : Conseil en architecture logicielle, ingénierie système, conception d'applications web critiques, audit technique et refactorisation.
 - **Siège social** : Conflans-Sainte-Honorine (78700), Yvelines, Île-de-France, France.
 - **Zone d'intervention** : France entière, Union Européenne, à distance (Remote) et sur site (On-site).

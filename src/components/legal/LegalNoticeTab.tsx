@@ -17,15 +17,38 @@ export const LegalNoticeTab: React.FC = () => {
         <div className="mt-3 p-4 rounded bg-[#131926] border border-white/[0.06] font-mono text-xs space-y-1.5 text-[#E2E8F0]">
           <p>
             <span className="text-[#64748B]">Dénomination sociale :</span> LSR Digital Architecture
-            SAS
           </p>
           <p>
             <span className="text-[#64748B]">Forme juridique :</span> Société par Actions Simplifiée
-            (SAS)
+            Unipersonnelle (SASU)
+          </p>
+          <p>
+            <span className="text-[#64748B]">Capital social :</span> 2 000,00 €
           </p>
           <p>
             <span className="text-[#64748B]">Siège social :</span> Conflans-Sainte-Honorine (78700),
             Île-de-France, France
+          </p>
+          <p>
+            <span className="text-[#64748B]">Numéro SIREN :</span> 107 484 230
+          </p>
+          <p>
+            <span className="text-[#64748B]">Numéro SIRET (siège) :</span> 107 484 230 00019
+          </p>
+          <p>
+            <span className="text-[#64748B]">Registre du Commerce et des Sociétés :</span> RCS
+            Versailles 107 484 230
+          </p>
+          <p>
+            <span className="text-[#64748B]">Numéro TVA intracommunautaire :</span> FR64107484230
+          </p>
+          <p>
+            <span className="text-[#64748B]">Code NAF / APE :</span> 62.01Z (Programmation
+            informatique)
+          </p>
+          <p>
+            <span className="text-[#64748B]">Président & Directeur de la publication :</span> Loghan
+            Ramassamy
           </p>
           <p>
             <span className="text-[#64748B]">Email de contact :</span>{' '}
@@ -35,14 +58,6 @@ export const LegalNoticeTab: React.FC = () => {
             >
               contact@lsr-digital-architecture.com
             </a>
-          </p>
-          <p>
-            <span className="text-[#64748B]">Immatriculation :</span> En cours d'immatriculation au
-            RCS de Versailles
-          </p>
-          <p>
-            <span className="text-[#64748B]">Directeur de la publication :</span> Le représentant
-            légal de LSR Digital Architecture SAS
           </p>
         </div>
       </div>
@@ -90,7 +105,7 @@ export const LegalNoticeTab: React.FC = () => {
         <p>
           L'ensemble des éléments graphiques, schémas d'architecture, logos, marques, textes et code
           source composant ce site internet sont la propriété exclusive de{' '}
-          <strong>LSR Digital Architecture SAS</strong>, au titre des droits de propriété
+          <strong>LSR Digital Architecture SASU</strong>, au titre des droits de propriété
           intellectuelle.
         </p>
         <p className="mt-2">

@@ -9,7 +9,7 @@ export const PrivacyPolicyTab: React.FC = () => {
           1. Engagement de conformité RGPD
         </h3>
         <p>
-          La société <strong>LSR Digital Architecture SAS</strong> accorde une importance
+          La société <strong>LSR Digital Architecture SASU</strong> accorde une importance
           primordiale à la protection de la vie privée et des données à caractère personnel de ses
           interlocuteurs. Cette politique décrit la manière dont nous traitons les données
           collectées conformément au
@@ -25,8 +25,10 @@ export const PrivacyPolicyTab: React.FC = () => {
         </h3>
         <p>
           Le responsable du traitement des données est la société{' '}
-          <strong>LSR Digital Architecture SAS</strong>. Pour toute question relative à vos données
-          personnelles, vous pouvez nous contacter directement par email :
+          <strong>LSR Digital Architecture SASU</strong>, située à Conflans-Sainte-Honorine (78700),
+          Île-de-France (immatriculée au RCS de Versailles sous le SIREN 107 484 230). Pour toute
+          question relative à vos données personnelles, vous pouvez nous contacter directement par
+          email :
         </p>
         <p className="mt-2 font-mono text-xs text-[#38BDF8]">
           contact@lsr-digital-architecture.com
