@@ -120,8 +120,7 @@ export const siteContent: SiteContent = {
   },
   manifesto: {
     sectionTag: 'PHILOSOPHIE',
-    quote:
-      "« L'art de l'architecture logicielle consiste à concevoir un système qui demeurera lisible, robuste et élégant face aux défis de demain. »",
+    quote: '« Concevoir des architectures lisibles, robustes et taillées pour durer. »',
     principles: [
       {
         title: 'Sobriété & Justesse',
