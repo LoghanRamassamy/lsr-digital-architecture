@@ -126,9 +126,19 @@ pnpm preview
 
 ---
 
-## 🌐 Déploiement & Hébergement
+## 🌐 Déploiement & Hébergement (Firebase & CI/CD)
 
-L'application produit des artefacts statiques purs (`dist/`) ultra-légers et hautement performants, directement compatibles avec Cloudflare Pages, Vercel, Netlify ou GitHub Pages.
+Le projet est hébergé sur **Firebase Hosting** avec déploiement continu via **GitHub Actions** :
+
+- **Canal de Production (`live`) :** Déploiement automatique lors d'un push sur la branche `main`.
+- **Canaux de Prévisualisation (`preview`) :** Déploiement automatique d'une URL de prévisualisation temporaire pour chaque Pull Request ouverte.
+- **Pipeline de Qualité :**
+  1. Validation des dépendances (`pnpm install --frozen-lockfile`)
+  2. Vérification statique des types (`pnpm typecheck`)
+  3. Analyse de linting (`pnpm lint`)
+  4. Vérification de formatage (`pnpm format:check`)
+  5. Compilation du bundle de production (`pnpm build`)
+  6. Déploiement sécurisé sans clé via **Workload Identity Federation (WIF)** (`google-github-actions/auth` + `FirebaseExtended/action-hosting-deploy`)
 
 ---
 
