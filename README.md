@@ -138,7 +138,7 @@ Le projet est hébergé sur **Firebase Hosting** avec déploiement continu via *
   3. Analyse de linting (`pnpm lint`)
   4. Vérification de formatage (`pnpm format:check`)
   5. Compilation du bundle de production (`pnpm build`)
-  6. Déploiement sécurisé sans clé via **Workload Identity Federation (WIF)** (`google-github-actions/auth` + `FirebaseExtended/action-hosting-deploy`)
+  6. Déploiement sécurisé sans clé via **Workload Identity Federation (WIF)** (`google-github-actions/auth` + `firebase-tools`)
 
 ---
 

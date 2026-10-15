@@ -57,20 +57,18 @@ jobs:
           workload_identity_provider: 'projects/344658308078/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
           service_account: 'github-deployer@lsr-digital-architecture.iam.gserviceaccount.com'
           create_credentials_file: true
+          export_environment_variables: true
 
       - name: Deploy preview to Firebase Hosting (Pull Request)
         if: github.event_name == 'pull_request'
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ steps.auth.outputs.credentials_file_path }}'
-          projectId: lsr-digital-architecture
+        run: |
+          npx --yes firebase-tools hosting:channel:deploy "pr-${{ github.event.pull_request.number }}" --project lsr-digital-architecture --expires 7d
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.auth.outputs.credentials_file_path }}
 
       - name: Deploy to Firebase Hosting (Live)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ steps.auth.outputs.credentials_file_path }}'
-          channelId: live
-          projectId: lsr-digital-architecture
+        run: |
+          npx --yes firebase-tools deploy --only hosting --project lsr-digital-architecture --non-interactive
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.auth.outputs.credentials_file_path }}
